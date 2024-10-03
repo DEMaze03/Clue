@@ -1,0 +1,14 @@
+// Room and Room Cards
+Room, Marquez, M
+Room, Brown, B
+Room, Hill, H
+Room, McNeil, N
+Room, CoorsTek, C
+Room, Labryola, L
+Room, Guggenheim, G
+Room, Venture, V
+Room, Elm, E
+
+// Other spaces on the board
+Space, Unused, X
+Space, Walkway, W
