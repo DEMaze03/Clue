@@ -14,26 +14,26 @@ public class TestBoardCell {
 		this.col = col;
 	}
 	
-	void addAdj(TestBoardCell cell) {
+	public void addAdj(TestBoardCell cell) {
 		adjList.add(cell);
 	}
 	
-	Set<TestBoardCell> getAdjList(){
+	public Set<TestBoardCell> getAdjList(){
 		return adjList;
 	}
 	
-	void setRoom(boolean isRoom) {
+	public void setRoom(boolean isRoom) {
 		this.isRoom = isRoom;
 	}
-	boolean isARoom() {
+	public boolean isARoom() {
 		return isRoom;
 		//Hello
 	}
 	
-	void setOccupied(boolean isOccupied) {
+	public void setOccupied(boolean isOccupied) {
 		occupied = isOccupied;
 	}
-	boolean isOccupied() {
+	public boolean isOccupied() {
 		return occupied;
 	}
 }
