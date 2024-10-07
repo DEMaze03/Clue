@@ -1,5 +1,6 @@
 package tests;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -109,5 +110,19 @@ public class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
 		Assert.assertTrue(targets.contains(board.getCell(2,2)));
 		Assert.assertTrue(targets.contains(board.getCell(3,3)));
+	}
+	
+	@Test
+	public void testCalcTarget() {
+		Set<TestBoardCell> testArr = new HashSet<>();
+		testArr.add(new TestBoardCell(0, 4));
+		testArr.add(new TestBoardCell(0, 2));
+		testArr.add(new TestBoardCell(1, 3));
+		testArr.add(new TestBoardCell(-1, 3));
+		TestBoardCell cell = board.getCell(0, 3);
+		board.calcTargets(cell, 1);
+		Set<TestBoardCell> targetArr = board.getTargets();	
+		Assert.assertEquals(targetArr, testArr);
+		
 	}
 }
