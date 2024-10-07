@@ -10,7 +10,7 @@ public class TestBoardCell {
 	private boolean occupied;
 	private Set<TestBoardCell> adjList = new HashSet<>();
 	
-	TestBoardCell(int row, int col){
+	public TestBoardCell(int row, int col){
 		this.row = row;
 		this.col = col;
 	}
