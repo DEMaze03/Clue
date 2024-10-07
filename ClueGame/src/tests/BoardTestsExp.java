@@ -53,7 +53,7 @@ public class BoardTestsExp {
 	public void testTargetMixed() {
 		//set up occupied cells
 		board.getCell(0,2).setOccupied(true);
-		board.getCell(1,2).setIsRoom(true);
+		board.getCell(1,2).setRoom(true);
 		TestBoardCell cell = board.getCell(0,3);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
