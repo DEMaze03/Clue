@@ -1,9 +1,11 @@
 package experiment;
 
+
+import java.util.HashSet;
 import java.util.Set;
 
 public class TestBoard {	
-	private Set<TestBoardCell> targetList;
+	private Set<TestBoardCell> targetList = new HashSet<>();
 	
 
 	public TestBoard() {
