@@ -1,3 +1,8 @@
+/*
+ * Simplified Cell class meant for initial testing of code
+ * Author: Elijas Sliva
+ */
+
 package experiment;
 
 
@@ -12,6 +17,7 @@ public class TestBoard {
 		super();
 	}
 	
+	//calcTargets - Calculates the available target spaces given the starting cell and the dice roll (or path length)
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
 		int cellCol = startCell.col;
 		int cellRow = startCell.row;

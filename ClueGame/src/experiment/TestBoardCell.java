@@ -1,3 +1,8 @@
+/*
+ * Simplified Cell class meant for initial testing of code
+ * Author: Daylon Maze
+ */
+
 package experiment;
 
 import java.util.HashSet;
@@ -34,6 +39,7 @@ public class TestBoardCell {
 	public void setOccupied(boolean isOccupied) {
 		occupied = isOccupied;
 	}
+	
 	public boolean isOccupied() {
 		return occupied;
 	}

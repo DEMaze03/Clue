@@ -1,3 +1,8 @@
+/*
+ * Tests for Board and BoardCell classes
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package tests;
 
 import java.util.HashSet;
@@ -98,6 +103,7 @@ public class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(1,0)));
 	}
 	
+	//Tests for a board with both occupied and room tiles
 	@Test
 	public void testTargetMixed() {
 		//set up occupied cells
@@ -112,6 +118,7 @@ public class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(3,3)));
 	}
 	
+	//General tests for CalcTarget
 	@Test
 	public void testCalcTarget() {
 		Set<TestBoardCell> testArr = new HashSet<>();
@@ -124,5 +131,17 @@ public class BoardTestsExp {
 		Set<TestBoardCell> targetArr = board.getTargets();	
 		Assert.assertEquals(targetArr, testArr);
 		
+	}
+	
+	//Test to see if calcTargets works if player has no available moves
+	@Test
+	public void testTargetOccupied() {
+		board.getCell(0, 2).setOccupied(true);
+		board.getCell(1, 2).setOccupied(true);
+		board.getCell(1, 3).setOccupied(true);
+		TestBoardCell cell = board.getCell(0, 3);
+		board.calcTargets(cell, 3);
+		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertEquals(0,  targets.size());
 	}
 }
