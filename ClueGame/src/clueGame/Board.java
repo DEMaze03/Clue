@@ -28,6 +28,7 @@ public class Board {
 	public void initialize() {
 		
 		loadSetupConfig();
+		loadLayoutConfig();
 		
 	}
 
@@ -42,8 +43,6 @@ public class Board {
 		         if (l[0].equals("Room")) {
 		        	 char c = l[2].charAt(0);
 		        	 String rn = l[1];
-		        	 System.out.println(c + " " + rn);
-		        	 
 		        	 Room room = new Room(rn);
 		        	 roomMap.put(c, room);
 		         }
@@ -60,6 +59,24 @@ public class Board {
 	}
 	
 	public void loadLayoutConfig() {
+		File layoutFile = new File(layoutConfigFile);
+		int rowCount = 0;
+		int colCount = 0;
+		try {
+			Scanner r = new Scanner(layoutFile);
+			while (r.hasNextLine()) {
+				
+				String data = r.nextLine();
+				String[] l = data.split(",");
+				colCount = l.length;
+				rowCount++;
+			}
+			
+			numRows = rowCount;
+			numColumns = colCount;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -75,6 +92,16 @@ public class Board {
 		return roomMap.get(c);
 	}
 	
+	public int getNumRows() {
+		return numRows;
+	}
+
+
+	public int getNumColumns() {
+		return numColumns;
+	}
+
+
 	public static void main(String[] args) {
 		Board board;
 		board = Board.getInstance();
@@ -82,7 +109,11 @@ public class Board {
 		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
-	
+		
+		System.out.println(board.getRoom('C').getName());
+		System.out.println("ROWS: " + board.getNumRows());
+		System.out.println("COLS: " + board.getNumColumns());
+		
 		
 	}
 
