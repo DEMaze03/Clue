@@ -38,6 +38,12 @@ public class Board {
 //			System.out.println();
 		}
 		
+		for (int row = 0; row < this.getNumRows(); row++) {
+			for (int col = 0; col < this.getNumColumns(); col++) {
+				
+			}
+		}
+		
 
 		
 	}
