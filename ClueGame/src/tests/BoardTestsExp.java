@@ -120,6 +120,11 @@ public class BoardTestsExp {
 	
 	//General tests for CalcTarget
 	//Double check re-write
+	
+	//Explanation behind changes:
+	//	Cells (0,4) and (-1,3) are outside of the game board
+	//	which would cause this test to fail every time because the target
+	//	cells would never contain those.
 	@Test
 	public void testCalcTarget() {
 		Set<TestBoardCell> testArr = new HashSet<>();
