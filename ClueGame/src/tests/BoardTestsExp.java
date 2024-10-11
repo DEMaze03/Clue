@@ -94,13 +94,13 @@ public class BoardTestsExp {
 		TestBoardCell cell = board.getCell(0,0);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertEquals(6,  targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(3,0)));
 		Assert.assertTrue(targets.contains(board.getCell(2,1)));
 		Assert.assertTrue(targets.contains(board.getCell(0,1)));
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
 		Assert.assertTrue(targets.contains(board.getCell(0,3)));
 		Assert.assertTrue(targets.contains(board.getCell(1,0)));
-		Assert.assertEquals(6,  targets.size());
 	}
 	
 	//Tests for a board with both occupied and room tiles
@@ -112,33 +112,24 @@ public class BoardTestsExp {
 		TestBoardCell cell = board.getCell(0,3);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertEquals(3,  targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
 		Assert.assertTrue(targets.contains(board.getCell(2,2)));
 		Assert.assertTrue(targets.contains(board.getCell(3,3)));
-		Assert.assertEquals(3,  targets.size());
 	}
 	
 	//General tests for CalcTarget
-	//Double check re-write
-	
-	//Explanation behind changes:
-	//	Cells (0,4) and (-1,3) are outside of the game board
-	//	which would cause this test to fail every time because the target
-	//	cells would never contain those.
 	@Test
 	public void testCalcTarget() {
 		Set<TestBoardCell> testArr = new HashSet<>();
-		// testArr.add(new TestBoardCell(0, 4));
+		testArr.add(new TestBoardCell(0, 4));
 		testArr.add(new TestBoardCell(0, 2));
 		testArr.add(new TestBoardCell(1, 3));
-		// testArr.add(new TestBoardCell(-1, 3));
+		testArr.add(new TestBoardCell(-1, 3));
 		TestBoardCell cell = board.getCell(0, 3);
 		board.calcTargets(cell, 1);
-		Set<TestBoardCell> targets = board.getTargets();	
-		Assert.assertTrue(targets.contains(board.getCell(0,2)));
-		Assert.assertTrue(targets.contains(board.getCell(1,3)));
-		
-//		Assert.assertEquals(targetArr, testArr);
+		Set<TestBoardCell> targetArr = board.getTargets();	
+		Assert.assertEquals(targetArr, testArr);
 		
 	}
 	
