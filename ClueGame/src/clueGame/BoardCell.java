@@ -6,8 +6,13 @@ import java.util.Set;
 public class BoardCell {
 	public int row;
 	public int col;
+	private char character;
+	private char passageChar;
 	private boolean isRoom;
 	private boolean occupied;
+	private boolean isDoorway;
+	private boolean isLabel;
+	private DoorDirection doorDirection;
 	private Set<BoardCell> adjList = new HashSet<>();
 	
 	public BoardCell(int row, int col){
@@ -31,11 +36,38 @@ public class BoardCell {
 		//Hello
 	}
 	
+	
 	public void setOccupied(boolean isOccupied) {
 		occupied = isOccupied;
 	}
 	
 	public boolean isOccupied() {
 		return occupied;
+	}
+	
+	
+
+	public boolean isDoorway() {
+		return isDoorway;
+	}
+	
+	public DoorDirection getDoorDirection() {
+		return doorDirection;
+	}
+	
+	public char getChar() {
+		return character;
+	}
+
+	public boolean isRoomCenter() {
+		return false;
+	}
+	
+	public boolean isLabel() {
+		return isLabel;
+	}
+	
+	public char getSecretPassage() {
+		return passageChar;
 	}
 }
