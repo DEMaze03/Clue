@@ -92,6 +92,10 @@ public class Board {
 		return roomMap.get(c);
 	}
 	
+	public Room getRoom(BoardCell cell) {
+		return roomMap.get(cell.getChar());
+	}
+	
 	public int getNumRows() {
 		return numRows;
 	}
@@ -99,6 +103,10 @@ public class Board {
 
 	public int getNumColumns() {
 		return numColumns;
+	}
+	
+	public BoardCell getCell(int row, int col) {
+		return grid[row][col];
 	}
 
 
@@ -114,8 +122,13 @@ public class Board {
 		System.out.println("ROWS: " + board.getNumRows());
 		System.out.println("COLS: " + board.getNumColumns());
 		
+		BoardCell cell = board.getCell(3, 3);
+		
 		
 	}
+
+
+
 
 
 }
