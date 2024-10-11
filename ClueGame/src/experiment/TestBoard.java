@@ -9,8 +9,6 @@ package experiment;
 import java.util.HashSet;
 import java.util.Set;
 
-import clueGame.Board;
-
 public class TestBoard {	
 	final static int ROWS = 4;
 	final static int COLS = 4;

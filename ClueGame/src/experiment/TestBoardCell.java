@@ -8,8 +8,6 @@ package experiment;
 import java.util.HashSet;
 import java.util.Set;
 
-import clueGame.Board;
-
 public class TestBoardCell {
 	public int row;
 	public int col;
