@@ -15,21 +15,23 @@ public class TestBoardCell {
 	private boolean isOccupied;
 	private Set<TestBoardCell> adjList = new HashSet<>();
 	
+	// basic constructor
 	public TestBoardCell(int row, int col){
 		super();
 		this.row = row;
 		this.col = col;
 	}
 	
+	// adds cell to adjList
 	public void addAdj(TestBoardCell cell) {
 		adjList.add(cell);
 	}
 	
+	//returns adjList
 	public Set<TestBoardCell> getAdjList(){
 		return adjList;
 	}
-	
-	
+
 	public void setRoom(boolean isRoom) {
 		this.isRoom = isRoom;
 	}
