@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -61,6 +62,20 @@ class FileInitTests {
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
 	}
+	
+	@Test
+	void testNumberofDoors() {
+		int doorCount = 0;
+		for (int rows = 0; rows < board.getNumRows(); rows++ ) {
+			for (int cols = 0; cols < board.getNumColumns(); cols++) {
+				if (board.getCell(rows, cols).isDoorway()) {
+					doorCount++;
+				}
+			}
+		}
+		Assert.assertEquals(11, doorCount);
+	}
+	
 
 
 }
