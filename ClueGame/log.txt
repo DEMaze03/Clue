@@ -1,0 +1,102 @@
+commit 2b6f2ade55b7a7d00f965064337fc468c15bebe6
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Oct 7 23:24:06 2024 -0600
+
+    Added final tests and comments to code
+
+commit 8e5a9f68fcf2bbc0832901bcc915d9166583a89b
+Merge: f6061a6 040fe2e
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Oct 7 17:44:55 2024 -0600
+
+    Merge branch 'main' of github.com:DEMaze03/Clue
+
+commit f6061a68aeabc92ac63e416c228fe253e5d7af62
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Oct 7 17:41:12 2024 -0600
+
+    Added Adjacency list tests
+
+commit 040fe2e5bcfcd2dbf5cd7f97c5e012194c63c730
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 7 12:53:33 2024 -0600
+
+    Added calcTargetTest()
+
+commit ff309db57468e26f9657a8f662bb3b1990c513e0
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Oct 6 20:05:06 2024 -0600
+
+    Changed .setIsRoom to .setRoom
+
+commit 7df933398b0782561dafb364766a6c54c676351d
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Oct 6 20:04:37 2024 -0600
+
+    Initalized Sets to fail tests instead of throw errors
+
+commit b4882dd7d432456549f4d5ba51e71b488218662f
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 4 12:50:04 2024 -0600
+
+    Changed col and row to public to be accessed in TestBoard class
+
+commit f61ebffd51729d97a2590739b35ced2b2910bba7
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 4 12:49:38 2024 -0600
+
+    Added implementations of class functions
+
+commit 86157eb6613cb2cf9096ef4d49c7d58bab400168
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 4 12:49:28 2024 -0600
+
+    began implementing tests. Still needs work
+
+commit 3dca5336b31eed5af7538b3f27d5aa7a08e8a7c2
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 4 12:47:02 2024 -0600
+
+    made TestBoardCell methods public
+
+commit 4c925171cad5fb507994af93e4c6442d5ee0c6be
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 4 12:22:58 2024 -0600
+
+    Implemented TestBoardCell class
+
+commit a43e2bb3d37b9ad91582b54944a1455c71e76313
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Thu Oct 3 12:16:03 2024 -0600
+
+    modified gitignore
+
+commit b5d83f3fea0fb86349208125a027af360f106bb0
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Thu Oct 3 12:12:07 2024 -0600
+
+    Init Java project files
+
+commit 2437eb69aa8b2c896c974b605979b30d31ea7363
+Author: Daylon Maze <84214480+DEMaze03@users.noreply.github.com>
+Date:   Thu Oct 3 11:47:35 2024 -0600
+
+    Added ClueLayout.csv and ClueLayout.xlsx
+
+commit 9aa013ea6482664576ee8f2b8c621a0175a9b603
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Thu Oct 3 11:15:07 2024 -0600
+
+    add files via upload
+
+commit abcd30b2efb07463478733e1aee286a6b047b313
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Thu Oct 3 11:03:09 2024 -0600
+
+    add file via upload
+
+commit 17848f132aa54cb2ba1897ba40105536e9fff495
+Author: Daylon Maze <84214480+DEMaze03@users.noreply.github.com>
+Date:   Thu Oct 3 10:40:17 2024 -0600
+
+    Initial commit
