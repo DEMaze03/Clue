@@ -1,12 +1,15 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
+import clueGame.BoardCell;
+import clueGame.DoorDirection;
 
 class FileInitTests {
 	
@@ -32,6 +35,31 @@ class FileInitTests {
 		assertEquals("Elm", board.getRoom('E').getName() );
 		assertEquals("Venture", board.getRoom('V').getName() );
 		assertEquals("CoorsTek", board.getRoom('C').getName() );
+	}
+	
+	@Test
+	void testBoardDimensions() {
+		assertEquals(NUM_ROWS, board.getNumRows());
+		assertEquals(NUM_COLUMNS, board.getNumColumns());
+	}
+	
+	@Test
+	void testDoorDirections() {
+		BoardCell cell = board.getCell(9, 6);
+		assertTrue(cell.isDoorway());
+		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
+		cell = board.getCell(23, 8);
+		assertTrue(cell.isDoorway());
+		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
+		
+		cell = board.getCell(14, 27);
+		assertTrue(cell.isDoorway());
+		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
+		
+		cell = board.getCell(13, 2);
+		assertTrue(cell.isDoorway());
+		assertEquals(DoorDirection.UP, cell.getDoorDirection());
 	}
 
 
