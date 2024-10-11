@@ -3,15 +3,15 @@ package clueGame;
 import java.util.HashSet;
 import java.util.Set;
 
-import experiment.TestBoardCell;
-
 public class BoardCell {
 	public int row;
 	public int col;
 	private char character;
+	private char passageChar;
 	private boolean isRoom;
 	private boolean occupied;
 	private boolean isDoorway;
+	private boolean isLabel;
 	private DoorDirection doorDirection;
 	private Set<BoardCell> adjList = new HashSet<>();
 	
@@ -60,7 +60,14 @@ public class BoardCell {
 	}
 
 	public boolean isRoomCenter() {
-		
 		return false;
+	}
+	
+	public boolean isLabel() {
+		return isLabel;
+	}
+	
+	public char getSecretPassage() {
+		return passageChar;
 	}
 }

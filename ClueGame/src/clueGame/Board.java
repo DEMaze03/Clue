@@ -7,32 +7,42 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Board {
-	private BoardCell[][] grid;
 	private int numRows;
 	private int numColumns;
+	private BoardCell[][] grid;
 	private String layoutConfigFile;
-	private static String setupConfigFile;
-	private static Map<Character, Room> roomMap = new HashMap<Character, Room>();
+	private String setupConfigFile;
+	private Map<Character, Room> roomMap = new HashMap<Character, Room>();
 	static Board theInstance = new Board();
 	
 	private Board() {
 		super();
 	}
-	
-
 	public static Board getInstance() {
 		return theInstance;
 	}
-	
 	
 	public void initialize() {
 		
 		loadSetupConfig();
 		loadLayoutConfig();
 		
+		grid = new BoardCell[numRows][numColumns];
+		
+		for (int row = 0; row < this.getNumRows(); row++) {
+			for (int col = 0; col < this.getNumColumns(); col++) {
+//				System.out.printf("(%d, %d)", row, col);
+				grid[row][col] = new BoardCell(row, col);
+			}
+			
+//			System.out.println();
+		}
+		
+
+		
 	}
 
-	public static void loadSetupConfig() {
+	public void loadSetupConfig() {
 		
 		File setupFile = new File(setupConfigFile);
 		try {
@@ -40,15 +50,16 @@ public class Board {
 		      while (r.hasNextLine()) {
 		         String data = r.nextLine();
 		         String[] l = data.split(", ");
-		         if (l[0].equals("Room")) {
+		         if (l[0].equals("Room") || l[0].equals("Space")) {
 		        	 char c = l[2].charAt(0);
 		        	 String rn = l[1];
+		        	 
+		        	 System.out.println(c  + " " + rn);
 		        	 Room room = new Room(rn);
 		        	 roomMap.put(c, room);
 		         }
-		         
 		     }
-		      
+		      r.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,6 +70,7 @@ public class Board {
 	}
 	
 	public void loadLayoutConfig() {
+		
 		File layoutFile = new File(layoutConfigFile);
 		int rowCount = 0;
 		int colCount = 0;
@@ -71,6 +83,7 @@ public class Board {
 				colCount = l.length;
 				rowCount++;
 			}
+			r.close();
 			
 			numRows = rowCount;
 			numColumns = colCount;
@@ -110,22 +123,22 @@ public class Board {
 	}
 
 
-	public static void main(String[] args) {
-		Board board;
-		board = Board.getInstance();
-		// set the file names to use my config files
-		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
-		// Initialize will load BOTH config files
-		board.initialize();
-		
-		System.out.println(board.getRoom('C').getName());
-		System.out.println("ROWS: " + board.getNumRows());
-		System.out.println("COLS: " + board.getNumColumns());
-		
-		BoardCell cell = board.getCell(3, 3);
-		
-		
-	}
+//	public static void main(String[] args) {
+//		Board board;
+//		board = Board.getInstance();
+//		// set the file names to use my config files
+//		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
+//		// Initialize will load BOTH config files
+//		board.initialize();
+//		
+//		System.out.println(board.getRoom('C').getName());
+//		System.out.println("ROWS: " + board.getNumRows());
+//		System.out.println("COLS: " + board.getNumColumns());
+//		
+//		BoardCell cell = board.getCell(3, 3);
+//		
+//		
+//	}
 
 
 
