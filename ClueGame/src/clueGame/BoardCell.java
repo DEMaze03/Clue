@@ -6,7 +6,7 @@ import java.util.Set;
 public class BoardCell {
 	public int row;
 	public int col;
-	private char character;
+	private String character;
 	private char passageChar;
 	private boolean isRoom;
 	private boolean occupied;
@@ -55,7 +55,7 @@ public class BoardCell {
 		return doorDirection;
 	}
 	
-	public char getChar() {
+	public String getChar() {
 		return character;
 	}
 

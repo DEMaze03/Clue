@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.DoorDirection;
+import clueGame.Room;
 
 class FileInitTests {
 	
@@ -74,6 +76,44 @@ class FileInitTests {
 			}
 		}
 		Assert.assertEquals(11, doorCount);
+	}
+	
+	@Test
+	void testCellInitial() {
+		//Test W tile
+		BoardCell cell = board.getCell(7, 8);
+		Room room = board.getRoom( cell ) ;
+		assertTrue( room != null );
+		assertEquals( room.getName(), "Walkway" ) ;
+		assertFalse( cell.isRoomCenter() );
+		assertFalse( cell.isLabel() );
+		
+		//Test X tiles
+		cell = board.getCell(7, 15);
+		room = board.getRoom(cell);
+		assertTrue( room != null );
+		assertEquals( room.getName(), "Unused" ) ;
+		assertFalse( cell.isRoomCenter() );
+		assertFalse( cell.isLabel() );
+		
+		//Test G tile
+		cell = board.getCell(14, 9);
+		room = board.getRoom(cell);
+		assertTrue( room != null );
+		assertEquals( room.getName(), "Guggenheim" ) ;
+		assertFalse( cell.isRoomCenter() );
+		assertFalse( cell.isLabel() );
+		
+		//Test Upway door tile
+		cell = board.getCell(22, 13);
+		room = board.getRoom(cell);
+		assertTrue( room != null );
+		assertEquals( room.getName(), "Doorway" ) ;
+		assertFalse( cell.isRoomCenter() );
+		assertFalse( cell.isLabel() );
+		assertTrue(cell.isDoorway());
+		assertEquals(DoorDirection.UP, cell.getDoorDirection());
+		
 	}
 	
 
