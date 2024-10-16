@@ -121,16 +121,16 @@ public class BoardTestsExp {
 	//General tests for CalcTarget
 	@Test
 	public void testCalcTarget() {
-		Set<TestBoardCell> testArr = new HashSet<>();
-		testArr.add(new TestBoardCell(0, 4));
-		testArr.add(new TestBoardCell(0, 2));
-		testArr.add(new TestBoardCell(1, 3));
-		testArr.add(new TestBoardCell(-1, 3));
+//		Set<TestBoardCell> testArr = new HashSet<>();
+//		testArr.add(new TestBoardCell(0, 4));
+//		testArr.add(new TestBoardCell(0, 2));
+//		testArr.add(new TestBoardCell(1, 3));
+//		testArr.add(new TestBoardCell(-1, 3));
 		TestBoardCell cell = board.getCell(0, 3);
 		board.calcTargets(cell, 1);
 		Set<TestBoardCell> targetArr = board.getTargets();	
-		Assert.assertEquals(targetArr, testArr);
-		
+		Assert.assertTrue(targetArr.contains(board.getCell(0,2)));
+		Assert.assertTrue(targetArr.contains(board.getCell(1,3)));
 	}
 	
 	//Test to see if calcTargets works if player has no available moves

@@ -16,8 +16,8 @@ import clueGame.Room;
 
 class FileInitTests {
 	
-	public static final int NUM_ROWS = 27;
-	public static final int NUM_COLUMNS = 33;
+	public static final int NUM_ROWS = 28;
+	public static final int NUM_COLUMNS = 34;
 	
 	private static Board board;
 	
@@ -105,10 +105,10 @@ class FileInitTests {
 		assertFalse( cell.isLabel() );
 		
 		//Test Upway door tile
-		cell = board.getCell(22, 13);
+		cell = board.getCell(2, 7);
 		room = board.getRoom(cell);
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Doorway" ) ;
+		assertEquals( room.getName(), "Walkway" ) ;
 		assertFalse( cell.isRoomCenter() );
 		assertFalse( cell.isLabel() );
 		assertTrue(cell.isDoorway());
