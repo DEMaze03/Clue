@@ -24,13 +24,24 @@ public class Board {
 	}
 
 	public void initialize() {
-
-		loadSetupConfig();
-		loadLayoutConfig();
+		
+		try {
+			loadSetupConfig();
+		} catch (BadConfigFormatException e) {
+			System.out.println(e);
+			e.getStackTrace();
+		}
+			
+		try {
+			loadLayoutConfig();
+		} catch (BadConfigFormatException e) {
+			System.out.println(e);
+			e.getStackTrace();
+		}
 
 	}
 
-	public void loadSetupConfig() {
+	public void loadSetupConfig() throws BadConfigFormatException {
 
 		File setupFile = new File(setupConfigFile);
 		try {
@@ -38,6 +49,16 @@ public class Board {
 			while (r.hasNextLine()) {
 				String data = r.nextLine();
 				String[] l = data.split(", ");
+				
+				if (l.length == 1 ) { // continue over empty lines
+					continue;
+				}
+				
+				if (l[0].charAt(0) == '/') { // continue over comments in file
+					continue;
+				}
+				
+				
 				if (l[0].equals("Room") || l[0].equals("Space")) {
 					char c = l[2].charAt(0);
 					String rn = l[1];
@@ -45,6 +66,8 @@ public class Board {
 					Room room = new Room(rn);
 					System.out.println(c + " " + room.getName());
 					roomMap.put(Character.valueOf(c), room);
+				} else {
+					throw new BadConfigFormatException("invalid room type");
 				}
 			}
 			r.close();
@@ -56,7 +79,7 @@ public class Board {
 	
 	}
 
-	public void loadLayoutConfig() {
+	public void loadLayoutConfig() throws BadConfigFormatException{
 
 		// Read File 1st time to get board dimensions
 		File layoutFile = new File(layoutConfigFile);
@@ -83,17 +106,32 @@ public class Board {
 		// Read file again to go over each cell and get the proper settings
 		
 		rowCount = 0;
-		colCount = 0;
 		
 		try {
 			Scanner r = new Scanner(layoutFile);
 			while (r.hasNextLine()) {
+			
 				String data = r.nextLine();
 				String[] l = data.split(",");
-				colCount = l.length;
-				for (int idx = 0; idx < colCount; idx++) {
+				
+
+				System.out.println(colCount);
+				for (int idx = 0; idx < numColumns; idx++) {
 					grid[rowCount][idx] = new BoardCell(idx, colCount);
-					grid[rowCount][idx].setChar(l[idx].charAt(0));
+//					System.out.printf("(%d, %d) %s \n",rowCount, idx, l[idx]);
+					
+				
+					try {
+						grid[rowCount][idx].setChar(l[idx].charAt(0)); // if the cell is empty, this will throw something that will need to be handled
+					} catch (ArrayIndexOutOfBoundsException e) {
+						throw new BadConfigFormatException("Bad config file");
+					}
+					
+					if (roomMap.containsKey(l[idx].charAt(0)) != true) {
+						throw new BadConfigFormatException("unknown map character");
+					}
+						
+					
 					
 					if (l[idx].length() == 2) {
 						if (l[idx].charAt(1) == '#') { // if cell is label
@@ -134,7 +172,7 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	public void setConfigFiles(String csv, String txt) {
