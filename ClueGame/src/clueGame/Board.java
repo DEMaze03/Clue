@@ -3,8 +3,10 @@ package clueGame;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Board {
 	private int numRows;
@@ -13,6 +15,8 @@ public class Board {
 	private String layoutConfigFile;
 	private String setupConfigFile;
 	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
+	public Set<BoardCell> targetList = new HashSet<BoardCell>();
+	public Set<BoardCell> adjList = new HashSet<BoardCell>();
 	static Board theInstance = new Board();
 
 	private Board() {
@@ -200,6 +204,21 @@ public class Board {
 
 	public BoardCell getCell(int row, int col) {
 		return this.grid[row][col];
+	}
+
+	public void calcTargets(BoardCell cell, int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Set<BoardCell> getTargets() {
+		// TODO Auto-generated method stub
+		return targetList;
+	}
+
+	public Set<BoardCell> getAdjList(int i, int j) {
+		// TODO Auto-generated method stub
+		return adjList;
 	}
 
 //	public static void main(String[] args) {
