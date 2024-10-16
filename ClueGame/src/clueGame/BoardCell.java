@@ -6,10 +6,11 @@ import java.util.Set;
 public class BoardCell {
 	public int row;
 	public int col;
-	private String character;
+	private char character;
 	private char passageChar;
 	private boolean isRoom;
 	private boolean occupied;
+	private boolean isCenter;
 	private boolean isDoorway;
 	private boolean isLabel;
 	private DoorDirection doorDirection;
@@ -55,19 +56,36 @@ public class BoardCell {
 		return doorDirection;
 	}
 	
-	public String getChar() {
+	public char getChar() {
 		return character;
+	}
+	
+	public void setChar(char character) {
+		this.character = character;
 	}
 
 	public boolean isRoomCenter() {
-		return false;
+		return isCenter;
+	}
+	
+	public void setRoomCenter(boolean center) {
+		this.isCenter = center;
 	}
 	
 	public boolean isLabel() {
 		return isLabel;
 	}
 	
+	public void setLabel(boolean label) {
+		this.isLabel = label;
+	}
+	
+	
 	public char getSecretPassage() {
 		return passageChar;
+	}
+	
+	public void setSecretPassage(char c) {
+		this.passageChar = c;
 	}
 }

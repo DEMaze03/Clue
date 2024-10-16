@@ -13,8 +13,16 @@ public class Room {
 		return centerCell;
 	}
 	
+	public void setCenterCell(BoardCell cell) {
+		this.centerCell = cell;
+	}
+	
 	public BoardCell getLabelCell() {
 		return labelCell;
+	}
+	
+	public void setLabelCell(BoardCell cell) {
+		this.labelCell = cell;
 	}
 	
 	public String getName() {
