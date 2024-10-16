@@ -46,14 +46,19 @@ public class BoardCell {
 		return occupied;
 	}
 	
-	
-
 	public boolean isDoorway() {
 		return isDoorway;
 	}
 	
+	public void setDoorway(boolean d) {
+		this.isDoorway = d;
+	}
+	
 	public DoorDirection getDoorDirection() {
 		return doorDirection;
+	}
+	public void setDoorDirection(DoorDirection dir) {
+		this.doorDirection = dir;
 	}
 	
 	public char getChar() {

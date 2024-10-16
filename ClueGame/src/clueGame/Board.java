@@ -105,7 +105,22 @@ public class Board {
 							grid[rowCount][idx].setRoomCenter(true);
 							Room room = roomMap.get(l[idx].charAt(0));
 							room.setCenterCell(grid[rowCount][idx]);
+						
+						} else if (l[idx].charAt(1) == '^') {
+							grid[rowCount][idx].setDoorway(true);
+							grid[rowCount][idx].setDoorDirection(DoorDirection.UP);
 							
+						} else if (l[idx].charAt(1) == 'v') {
+							grid[rowCount][idx].setDoorway(true);
+							grid[rowCount][idx].setDoorDirection(DoorDirection.DOWN);
+						} else if (l[idx].charAt(1) == '<') {
+							grid[rowCount][idx].setDoorway(true);
+							grid[rowCount][idx].setDoorDirection(DoorDirection.LEFT);
+				
+						} else if (l[idx].charAt(1) == '>') {
+							grid[rowCount][idx].setDoorway(true);
+							grid[rowCount][idx].setDoorDirection(DoorDirection.RIGHT);
+				
 						} else if (l[idx].charAt(1) != '^' && l[idx].charAt(1) != 'v' && l[idx].charAt(1) != '<' && l[idx].charAt(1) != '>'){
 							grid[rowCount][idx].setSecretPassage(l[idx].charAt(1));
 						}
