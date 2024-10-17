@@ -1,0 +1,45 @@
+10b78f8 Finished tests
+6b1b4b4 BoardTestsExp updated
+f9cc1eb Merge branch 'main' of github.com:DEMaze03/Clue
+e271794 Made DoorDirection public
+f129522 added reasoning for test change
+1a14055 added comments
+233d0e3 explained why test case changed
+c3077bd added door count test
+d694a40 added door direction test
+a0cc776 added name check test
+693e29f added exception test starter
+bd6d2b9 added failing csv and txt file
+cfad9ff inital file add
+92e08da added meths for 306 tests
+b55c551 made emun public
+25e6380 removed unused exports
+d03db84 added helper functions for tests
+e12edd3 changed types
+6561ac5 slight change to tests
+234af71 implemented search functions
+2feb4e8 Began BadCOnfigFormatException
+7116e29 got num of rows / cols from layout file
+4e3ffb3 implemented loadSetupConfig()
+db292be started board
+463c219 added function signatures and delcared variables
+d0b92c8 init clueGame package and files
+2909bdc moved game files to data directory
+cb18251 added init files from canvas
+2b6f2ad Added final tests and comments to code
+8e5a9f6 Merge branch 'main' of github.com:DEMaze03/Clue
+f6061a6 Added Adjacency list tests
+040fe2e Added calcTargetTest()
+ff309db Changed .setIsRoom to .setRoom
+7df9333 Initalized Sets to fail tests instead of throw errors
+b4882dd Changed col and row to public to be accessed in TestBoard class
+f61ebff Added implementations of class functions
+86157eb began implementing tests. Still needs work
+3dca533 made TestBoardCell methods public
+4c92517 Implemented TestBoardCell class
+a43e2bb modified gitignore
+b5d83f3 Init Java project files
+2437eb6 Added ClueLayout.csv and ClueLayout.xlsx
+9aa013e add files via upload
+abcd30b add file via upload
+17848f1 Initial commit

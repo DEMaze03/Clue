@@ -1,0 +1,2 @@
+--Elijas Sliva and Daylon Maze--
+We selected the specific cells for our tests based off of areas in our board that would be easy for our algorithms to mess up. Such as upwards doorways, areas where there are several nearby tiles that are different, and room tiles. We thought that this will be an effective way to test our board and cells.
