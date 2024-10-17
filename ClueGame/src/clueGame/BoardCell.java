@@ -1,3 +1,8 @@
+/*
+ * BoardCell - class for an individual cell on the Clue game board.
+ * Author: Daylon Maze
+ */
+
 package clueGame;
 
 import java.util.HashSet;

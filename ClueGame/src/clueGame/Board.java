@@ -1,3 +1,8 @@
+/*
+ * Board - board class for Clue game
+ * Author: Elijas Sliva
+ */
+
 package clueGame;
 
 import java.io.File;
@@ -23,10 +28,12 @@ public class Board {
 		super();
 	}
 
+	//getInstance - getter for the instance of the game board
 	public static Board getInstance() {
 		return theInstance;
 	}
 
+	//initialize - method to initialize the game board by calling loadSetupConfig and loadLayoutConfig
 	public void initialize() {
 		
 		try {
@@ -45,6 +52,7 @@ public class Board {
 
 	}
 
+	//loadSetupConfig - method to load the setup configuration file for the board. Throws BadConfigFormatException if file format is bad
 	public void loadSetupConfig() throws BadConfigFormatException {
 
 		File setupFile = new File(setupConfigFile);
@@ -83,6 +91,7 @@ public class Board {
 	
 	}
 
+	//loadLayoutConfig - method to load the layout configuration file for the board. Throws BadConfigFormatException if file format is bad
 	public void loadLayoutConfig() throws BadConfigFormatException{
 
 		// Read File 1st time to get board dimensions
@@ -179,6 +188,7 @@ public class Board {
 		
 	}
 
+	//setConfigFiles - set the config .csv and .txt files
 	public void setConfigFiles(String csv, String txt) {
 		// TODO Auto-generated method stub
 		theInstance.layoutConfigFile = "data/" + csv;
