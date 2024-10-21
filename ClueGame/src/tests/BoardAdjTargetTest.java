@@ -51,6 +51,7 @@ private static Board board;
 				assertTrue(testList.contains(board.getCell(2, 2)));
 				assertTrue(testList.contains(board.getCell(3, 7)));
 				assertTrue(testList.contains(board.getCell(2, 8)));
+				
 	}
 	
 	// Test a variety of walkway scenarios
@@ -141,7 +142,7 @@ private static Board board;
 			
 			// check leaving a room with a blocked doorway
 			board.getCell(22, 31).setOccupied(true);
-			board.calcTargets(board.getCell(12, 20), 1);
+			board.calcTargets(board.getCell(25, 30), 1);
 			board.getCell(22, 31).setOccupied(false);
 			targets= board.getTargets();
 			assertEquals(1, targets.size());
