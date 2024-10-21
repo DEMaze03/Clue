@@ -49,6 +49,7 @@ public class Board {
 			System.out.println(e);
 			e.getStackTrace();
 		}
+		
 
 	}
 
@@ -249,15 +250,20 @@ public class Board {
 					}
 					//if Walkway is a doorway, find out which room it points to, and assign that room's center to the adj list
 					if(currentCell.isDoorway()) {
+						Room roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
 						switch(currentCell.getDoorDirection()) {
 						case DoorDirection.UP:
-							
+							roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
+							currentCell.addAdj(roomCell.getCenterCell());
 						case DoorDirection.DOWN:
-							
+							roomCell = theInstance.getRoom(theInstance.getCell(i, j+1));
+							currentCell.addAdj(roomCell.getCenterCell());
 						case DoorDirection.LEFT:
-							
+							roomCell = theInstance.getRoom(theInstance.getCell(i-1, j));
+							currentCell.addAdj(roomCell.getCenterCell());
 						case DoorDirection.RIGHT:
-							
+							roomCell = theInstance.getRoom(theInstance.getCell(i+1, j));
+							currentCell.addAdj(roomCell.getCenterCell());
 						}
 					}
 				}
@@ -265,8 +271,9 @@ public class Board {
 		}
 	}
 
-	public Set<BoardCell> getAdjList(BoardCell cell) {
-		return cell.getAdjList();
+	public Set<BoardCell> getAdjList(int row, int col) {
+		calcAdjList(grid[row][col]);
+		return this.grid[row][col].getAdjList();
 	}
 
 //	public static void main(String[] args) {
