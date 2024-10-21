@@ -1,6 +1,6 @@
 /*
  * Board - board class for Clue game
- * Author: Elijas Sliva
+ * Author: Elijas Sliva & Daylon Maze
  */
 
 package clueGame;
@@ -127,55 +127,55 @@ public class Board {
 			while (r.hasNextLine()) {
 			
 				String data = r.nextLine();
-				String[] l = data.split(",");
+				String[] dataList = data.split(",");
 				
 
 				System.out.println(colCount);
-				for (int idx = 0; idx < numColumns; idx++) {
-					grid[rowCount][idx] = new BoardCell(rowCount, idx);
+				for (int col = 0; col < numColumns; col++) {
+					grid[rowCount][col] = new BoardCell(rowCount, col);
 //					System.out.printf("(%d, %d) %s \n",rowCount, idx, l[idx]);
 					
 				
 					try {
-						grid[rowCount][idx].setChar(l[idx].charAt(0)); // if the cell is empty, this will throw something that will need to be handled
+						grid[rowCount][col].setChar(dataList[col].charAt(0)); // if the cell is empty, this will throw something that will need to be handled
 					} catch (ArrayIndexOutOfBoundsException e) {
 						throw new BadConfigFormatException("Bad config file");
 					}
 					
-					if (roomMap.containsKey(l[idx].charAt(0)) != true) {
+					if (roomMap.containsKey(dataList[col].charAt(0)) != true) {
 						throw new BadConfigFormatException("unknown map character");
 					}
 						
 					
 					
-					if (l[idx].length() == 2) {
-						if (l[idx].charAt(1) == '#') { // if cell is label
-							grid[rowCount][idx].setLabel(true);
-							Room room = roomMap.get(l[idx].charAt(0));
-							room.setLabelCell(grid[rowCount][idx]);
+					if (dataList[col].length() == 2) {
+						if (dataList[col].charAt(1) == '#') { // if cell is label
+							grid[rowCount][col].setLabel(true);
+							Room room = roomMap.get(dataList[col].charAt(0));
+							room.setLabelCell(grid[rowCount][col]);
 							
-						} else if (l[idx].charAt(1) == '*') {
-							grid[rowCount][idx].setRoomCenter(true);
-							Room room = roomMap.get(l[idx].charAt(0));
-							room.setCenterCell(grid[rowCount][idx]);
+						} else if (dataList[col].charAt(1) == '*') {
+							grid[rowCount][col].setRoomCenter(true);
+							Room room = roomMap.get(dataList[col].charAt(0));
+							room.setCenterCell(grid[rowCount][col]);
 						
-						} else if (l[idx].charAt(1) == '^') {
-							grid[rowCount][idx].setDoorway(true);
-							grid[rowCount][idx].setDoorDirection(DoorDirection.UP);
+						} else if (dataList[col].charAt(1) == '^') {
+							grid[rowCount][col].setDoorway(true);
+							grid[rowCount][col].setDoorDirection(DoorDirection.UP);
 							
-						} else if (l[idx].charAt(1) == 'v') {
-							grid[rowCount][idx].setDoorway(true);
-							grid[rowCount][idx].setDoorDirection(DoorDirection.DOWN);
-						} else if (l[idx].charAt(1) == '<') {
-							grid[rowCount][idx].setDoorway(true);
-							grid[rowCount][idx].setDoorDirection(DoorDirection.LEFT);
+						} else if (dataList[col].charAt(1) == 'v') {
+							grid[rowCount][col].setDoorway(true);
+							grid[rowCount][col].setDoorDirection(DoorDirection.DOWN);
+						} else if (dataList[col].charAt(1) == '<') {
+							grid[rowCount][col].setDoorway(true);
+							grid[rowCount][col].setDoorDirection(DoorDirection.LEFT);
 				
-						} else if (l[idx].charAt(1) == '>') {
-							grid[rowCount][idx].setDoorway(true);
-							grid[rowCount][idx].setDoorDirection(DoorDirection.RIGHT);
+						} else if (dataList[col].charAt(1) == '>') {
+							grid[rowCount][col].setDoorway(true);
+							grid[rowCount][col].setDoorDirection(DoorDirection.RIGHT);
 				
-						} else if (l[idx].charAt(1) != '^' && l[idx].charAt(1) != 'v' && l[idx].charAt(1) != '<' && l[idx].charAt(1) != '>'){
-							grid[rowCount][idx].setSecretPassage(l[idx].charAt(1));
+						} else if (dataList[col].charAt(1) != '^' && dataList[col].charAt(1) != 'v' && dataList[col].charAt(1) != '<' && dataList[col].charAt(1) != '>'){
+							grid[rowCount][col].setSecretPassage(dataList[col].charAt(1));
 						}
 						
 					
@@ -219,6 +219,7 @@ public class Board {
 		return this.grid[row][col];
 	}
 
+	//calcTargets - method to clear tagetList and VisitedList before calling findAllTargets
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		// TODO Auto-generated method stub
 		targetList.clear();
@@ -229,6 +230,7 @@ public class Board {
 		
 	}
 	
+	//findAllTargets - recursive method to find all targets for the given number of steps on a given starting cell
 	public void findAllTargets(BoardCell startcell, int numSteps) {
 		Set<BoardCell> adjCells = startcell.getAdjList();
 		for (BoardCell cell : adjCells) {
@@ -264,6 +266,7 @@ public class Board {
 		}
 	}
 
+	//getTargets - return the board's targetList
 	public Set<BoardCell> getTargets() {
 		// TODO Auto-generated method stub
 		
@@ -274,51 +277,52 @@ public class Board {
 		return targetList;
 	}
 	
+	//calcAdjList - method to calculate all cell adjacencies during board setup
 	public void calcAdjList() {
 		//loop over rows and columns
-		for(int i = 0; i < numRows; i++) {
-			for(int j = 0; j < numColumns; j++) {
-				BoardCell currentCell = theInstance.getCell(i, j);
+		for(int row = 0; row < numRows; row++) {
+			for(int col = 0; col < numColumns; col++) {
+				BoardCell currentCell = theInstance.getCell(row, col);
 				
 				
 				//if the current tile is a Walkway, connect all adjacent walkways
 				if(currentCell.getChar() == 'W') { 
-					if (i - 1 >= 0 && theInstance.getCell(i-1, j).getChar() == 'W' ) {
-						currentCell.addAdj(grid[i - 1][j]);
+					if (row - 1 >= 0 && theInstance.getCell(row-1, col).getChar() == 'W' ) {
+						currentCell.addAdj(grid[row - 1][col]);
 					}
 
-					if (j - 1 >= 0 && theInstance.getCell(i, j-1).getChar() == 'W') {
-						currentCell.addAdj(grid[i][j-1]);
+					if (col - 1 >= 0 && theInstance.getCell(row, col-1).getChar() == 'W') {
+						currentCell.addAdj(grid[row][col-1]);
 					}
 
-					if (i + 1 < numRows  && theInstance.getCell(i+1, j).getChar() == 'W') {
-						currentCell.addAdj(grid[i+1][j]);
+					if (row + 1 < numRows  && theInstance.getCell(row+1, col).getChar() == 'W') {
+						currentCell.addAdj(grid[row+1][col]);
 					}
 
-					if (j + 1 < numColumns  && theInstance.getCell(i, j+1).getChar() == 'W') {
-						currentCell.addAdj(grid[i][j+1]);
+					if (col + 1 < numColumns  && theInstance.getCell(row, col+1).getChar() == 'W') {
+						currentCell.addAdj(grid[row][col+1]);
 					}
 					//if Walkway is a doorway, find out which room it points to, and assign that room's center to the adj list
 					if(currentCell.isDoorway()) {
-						Room roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
+						Room roomCell = theInstance.getRoom(theInstance.getCell(row, col-1));
 						switch(currentCell.getDoorDirection()) {
 						case DoorDirection.UP:
-							roomCell = theInstance.getRoom(theInstance.getCell(i-1, j));
+							roomCell = theInstance.getRoom(theInstance.getCell(row-1, col));
 							currentCell.addAdj(roomCell.getCenterCell());
 							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.DOWN:
-							roomCell = theInstance.getRoom(theInstance.getCell(i+1, j));
+							roomCell = theInstance.getRoom(theInstance.getCell(row+1, col));
 							currentCell.addAdj(roomCell.getCenterCell());
 							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.LEFT:
-							roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
+							roomCell = theInstance.getRoom(theInstance.getCell(row, col-1));
 							currentCell.addAdj(roomCell.getCenterCell());
 							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.RIGHT:
-							roomCell = theInstance.getRoom(theInstance.getCell(i, j+1));
+							roomCell = theInstance.getRoom(theInstance.getCell(row, col+1));
 							currentCell.addAdj(roomCell.getCenterCell());
 							roomCell.getCenterCell().addAdj(currentCell);
 						break;

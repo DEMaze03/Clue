@@ -87,10 +87,10 @@ private static Board board;
 			// test a roll of 3
 			board.calcTargets(board.getCell(25, 30), 3);
 			targets= board.getTargets();
-			assertEquals(7, targets.size());
+			assertEquals(6, targets.size());
 			assertTrue(targets.contains(board.getCell(22, 29)));
-			assertTrue(targets.contains(board.getCell(2, 8)));	
-			assertTrue(targets.contains(board.getCell(3, 7)));
+			assertTrue(targets.contains(board.getCell(22, 33)));	
+			assertTrue(targets.contains(board.getCell(2, 2)));
 			assertTrue(targets.contains(board.getCell(21, 30)));	
 		}
 		@Test
@@ -106,8 +106,8 @@ private static Board board;
 			// test a roll of 3
 			board.calcTargets(board.getCell(19, 2), 3);
 			targets= board.getTargets();
-			assertEquals(7, targets.size());
-			assertTrue(targets.contains(board.getCell(5, 28)));
+			assertEquals(9, targets.size());
+			assertTrue(targets.contains(board.getCell(16, 2)));
 			assertTrue(targets.contains(board.getCell(18, 4)));	
 			assertTrue(targets.contains(board.getCell(17, 1)));
 			assertTrue(targets.contains(board.getCell(19, 5)));	
