@@ -255,18 +255,22 @@ public class Board {
 						case DoorDirection.UP:
 							roomCell = theInstance.getRoom(theInstance.getCell(i-1, j));
 							currentCell.addAdj(roomCell.getCenterCell());
+							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.DOWN:
 							roomCell = theInstance.getRoom(theInstance.getCell(i+1, j));
 							currentCell.addAdj(roomCell.getCenterCell());
+							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.LEFT:
 							roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
 							currentCell.addAdj(roomCell.getCenterCell());
+							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case DoorDirection.RIGHT:
 							roomCell = theInstance.getRoom(theInstance.getCell(i, j+1));
 							currentCell.addAdj(roomCell.getCenterCell());
+							roomCell.getCenterCell().addAdj(currentCell);
 						break;
 						case NONE:
 						break;

@@ -28,6 +28,7 @@ public class BoardCell {
 	
 	public void addAdj(BoardCell cell) {
 		adjList.add(cell);
+		System.out.println("added " + cell);
 	}
 	
 	public Set<BoardCell> getAdjList(){
