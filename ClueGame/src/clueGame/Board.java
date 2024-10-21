@@ -49,7 +49,7 @@ public class Board {
 			System.out.println(e);
 			e.getStackTrace();
 		}
-		
+		calcAdjList();
 
 	}
 
@@ -227,7 +227,7 @@ public class Board {
 		return targetList;
 	}
 	
-	public void calcAdjList(BoardCell cell) {
+	public void calcAdjList() {
 		//loop over rows and columns
 		for(int i = 0; i < numRows; i++) {
 			for(int j = 0; j < numColumns; j++) {
@@ -253,17 +253,23 @@ public class Board {
 						Room roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
 						switch(currentCell.getDoorDirection()) {
 						case DoorDirection.UP:
-							roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
-							currentCell.addAdj(roomCell.getCenterCell());
-						case DoorDirection.DOWN:
-							roomCell = theInstance.getRoom(theInstance.getCell(i, j+1));
-							currentCell.addAdj(roomCell.getCenterCell());
-						case DoorDirection.LEFT:
 							roomCell = theInstance.getRoom(theInstance.getCell(i-1, j));
 							currentCell.addAdj(roomCell.getCenterCell());
-						case DoorDirection.RIGHT:
+						break;
+						case DoorDirection.DOWN:
 							roomCell = theInstance.getRoom(theInstance.getCell(i+1, j));
 							currentCell.addAdj(roomCell.getCenterCell());
+						break;
+						case DoorDirection.LEFT:
+							roomCell = theInstance.getRoom(theInstance.getCell(i, j-1));
+							currentCell.addAdj(roomCell.getCenterCell());
+						break;
+						case DoorDirection.RIGHT:
+							roomCell = theInstance.getRoom(theInstance.getCell(i, j+1));
+							currentCell.addAdj(roomCell.getCenterCell());
+						break;
+						case NONE:
+						break;
 						}
 					}
 				}
@@ -272,7 +278,6 @@ public class Board {
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) {
-		calcAdjList(grid[row][col]);
 		return this.grid[row][col].getAdjList();
 	}
 
