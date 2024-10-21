@@ -13,8 +13,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import experiment.TestBoardCell;
-
 public class Board {
 	private int numRows;
 	private int numColumns;
@@ -22,8 +20,8 @@ public class Board {
 	private String layoutConfigFile;
 	private String setupConfigFile;
 	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
-	public Set<BoardCell> targetList = new HashSet<BoardCell>();
-	public Set<BoardCell> visitedList = new HashSet<BoardCell>();
+	private Set<BoardCell> targetList = new HashSet<>();
+	private Set<BoardCell> visitedList = new HashSet<BoardCell>();
 	public Set<BoardCell> adjList = new HashSet<BoardCell>();
 	static Board theInstance = new Board();
 
@@ -180,23 +178,6 @@ public class Board {
 							grid[rowCount][idx].setSecretPassage(l[idx].charAt(1));
 						}
 						
-						
-						
-						if (rowCount - 1 >= 0) {
-							grid[rowCount][idx].addAdj(grid[rowCount - 1][idx]);
-						}
-
-						if (idx - 1 >= 0) {
-							grid[rowCount][idx].addAdj(grid[rowCount][idx - 1]);
-						}
-
-						if (rowCount + 1 < numRows) {
-							grid[rowCount][idx].addAdj(grid[rowCount + 1][idx]);
-						}
-
-						if (idx + 1 < numColumns) {
-							grid[rowCount][idx].addAdj(grid[rowCount][idx + 1]);
-						}
 					
 					}
 				}
@@ -240,6 +221,9 @@ public class Board {
 
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		// TODO Auto-generated method stub
+		targetList.clear();
+		visitedList.clear();
+		
 		visitedList.add(startCell);
 		findAllTargets(startCell, pathlength);
 		
@@ -251,12 +235,15 @@ public class Board {
 			if (visitedList.contains(cell)) {
 				continue;
 			}
-			visitedList.add(cell);
 
 			if (cell.isOccupied()) {
+				if (cell.isRoomCenter()) {
+					targetList.add(cell);
+				}
 				continue;
 			}
 
+			visitedList.add(cell);
 			if (cell.isARoom()) {
 				targetList.add(cell);
 				continue;
@@ -282,7 +269,10 @@ public class Board {
 		for(int i = 0; i < numRows; i++) {
 			for(int j = 0; j < numColumns; j++) {
 				BoardCell currentCell = theInstance.getCell(i, j);
-				if(currentCell.getChar() == 'W') { //if the current tile is a Walkway, connect all adjacent walkways
+				
+				
+				//if the current tile is a Walkway, connect all adjacent walkways
+				if(currentCell.getChar() == 'W') { 
 					if (i - 1 >= 0 && theInstance.getCell(i-1, j).getChar() == 'W') {
 						currentCell.addAdj(grid[i - 1][j]);
 					}
@@ -332,12 +322,12 @@ public class Board {
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) {
+		System.out.printf("AdjList for (%d, %d)\n", row, col);
+		for (BoardCell cell : this.grid[row][col].getAdjList()) {
+			
+			System.out.printf("(%d, %d)\n",cell.col, cell.row);
+		}
 		return this.grid[row][col].getAdjList();
-	}
-
-	public Set<BoardCell> getAdjList(int i, int j) {
-		// TODO Auto-generated method stub
-		return this.getCell(i, j).getAdjList();
 	}
 
 //	public static void main(String[] args) {
