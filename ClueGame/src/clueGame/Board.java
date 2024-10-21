@@ -225,10 +225,48 @@ public class Board {
 		// TODO Auto-generated method stub
 		return targetList;
 	}
+	
+	public void calcAdjList(BoardCell cell) {
+		//loop over rows and columns
+		for(int i = 0; i < numRows; i++) {
+			for(int j = 0; j < numColumns; j++) {
+				BoardCell currentCell = theInstance.getCell(i, j);
+				if(currentCell.getChar() == 'W') { //if the current tile is a Walkway, connect all adjacent walkways
+					if (i - 1 >= 0 && theInstance.getCell(i-1, j).getChar() == 'W') {
+						currentCell.addAdj(grid[i - 1][j]);
+					}
 
-	public Set<BoardCell> getAdjList(int i, int j) {
-		// TODO Auto-generated method stub
-		return adjList;
+					if (j - 1 >= 0 && theInstance.getCell(i, j-1).getChar() == 'W') {
+						currentCell.addAdj(grid[i][j-1]);
+					}
+
+					if (i + 1 < numRows  && theInstance.getCell(i+1, j).getChar() == 'W') {
+						currentCell.addAdj(grid[i+1][j]);
+					}
+
+					if (j + 1 < numColumns  && theInstance.getCell(i, j+1).getChar() == 'W') {
+						currentCell.addAdj(grid[i][j+1]);
+					}
+					//if Walkway is a doorway, find out which room it points to, and assign that room's center to the adj list
+					if(currentCell.isDoorway()) {
+						switch(currentCell.getDoorDirection()) {
+						case DoorDirection.UP:
+							
+						case DoorDirection.DOWN:
+							
+						case DoorDirection.LEFT:
+							
+						case DoorDirection.RIGHT:
+							
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public Set<BoardCell> getAdjList(BoardCell cell) {
+		return cell.getAdjList();
 	}
 
 //	public static void main(String[] args) {
