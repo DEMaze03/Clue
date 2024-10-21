@@ -18,6 +18,7 @@ public class BoardCell {
 	private boolean isCenter;
 	private boolean isDoorway;
 	private boolean isLabel;
+	private boolean secretPassage = false;
 	private DoorDirection doorDirection;
 	private Set<BoardCell> adjList = new HashSet<>();
 	
@@ -91,11 +92,16 @@ public class BoardCell {
 	}
 	
 	
+	public boolean isSecretPassage() {
+		return secretPassage;
+	}
+	
 	public char getSecretPassage() {
 		return passageChar;
 	}
 	
 	public void setSecretPassage(char c) {
 		this.passageChar = c;
+		this.secretPassage = true;
 	}
 }

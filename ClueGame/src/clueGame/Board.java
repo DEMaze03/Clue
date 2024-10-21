@@ -132,7 +132,7 @@ public class Board {
 
 				System.out.println(colCount);
 				for (int idx = 0; idx < numColumns; idx++) {
-					grid[rowCount][idx] = new BoardCell(idx, colCount);
+					grid[rowCount][idx] = new BoardCell(rowCount, idx);
 //					System.out.printf("(%d, %d) %s \n",rowCount, idx, l[idx]);
 					
 				
@@ -316,17 +316,20 @@ public class Board {
 						break;
 						}
 					}
+				}else if (currentCell.isSecretPassage()){
+					Room room = roomMap.get(currentCell.getChar());
+					Room passageRoom = roomMap.get(currentCell.getSecretPassage());
+					BoardCell roomCenter = room.getCenterCell();
+					BoardCell passageCenter = passageRoom.getCenterCell();
+					roomCenter.addAdj(passageCenter);
+					passageCenter.addAdj(roomCenter);
 				}
 			}
 		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) {
-		System.out.printf("AdjList for (%d, %d)\n", row, col);
-		for (BoardCell cell : this.grid[row][col].getAdjList()) {
-			
-			System.out.printf("(%d, %d)\n",cell.col, cell.row);
-		}
+		
 		return this.grid[row][col].getAdjList();
 	}
 

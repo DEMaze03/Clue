@@ -36,7 +36,7 @@ private static Board board;
 				Set<BoardCell> testList = board.getAdjList(23, 2);
 				assertEquals(3, testList.size());
 				assertTrue(testList.contains(board.getCell(6, 30)));
-				assertTrue(testList.contains(board.getCell(21, 2)));
+				assertTrue(testList.contains(board.getCell(19, 2)));
 				assertTrue(testList.contains(board.getCell(23, 6)));
 				
 				// Coorstek, 2 doors
@@ -48,7 +48,7 @@ private static Board board;
 				// Doorway to Labriola, room center, and adjacent walkways
 				testList = board.getAdjList(2, 7);
 				assertEquals(3, testList.size());
-				assertTrue(testList.contains(board.getCell(25, 30)));
+				assertTrue(testList.contains(board.getCell(2, 2)));
 				assertTrue(testList.contains(board.getCell(3, 7)));
 				assertTrue(testList.contains(board.getCell(2, 8)));
 	}
