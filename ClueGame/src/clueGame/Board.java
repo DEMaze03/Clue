@@ -242,6 +242,11 @@ public class Board {
 				}
 				continue;
 			}
+			
+			if (cell.isRoomCenter()) {
+				targetList.add(cell);
+				continue;
+			}
 
 			visitedList.add(cell);
 			if (cell.isARoom()) {
@@ -261,6 +266,11 @@ public class Board {
 
 	public Set<BoardCell> getTargets() {
 		// TODO Auto-generated method stub
+		
+		System.out.printf("Targets\n");
+		for (BoardCell cell : targetList) {
+			System.out.printf("(%d, %d)\n", cell.row, cell.col);
+		}
 		return targetList;
 	}
 	
@@ -273,7 +283,7 @@ public class Board {
 				
 				//if the current tile is a Walkway, connect all adjacent walkways
 				if(currentCell.getChar() == 'W') { 
-					if (i - 1 >= 0 && theInstance.getCell(i-1, j).getChar() == 'W') {
+					if (i - 1 >= 0 && theInstance.getCell(i-1, j).getChar() == 'W' ) {
 						currentCell.addAdj(grid[i - 1][j]);
 					}
 
@@ -316,7 +326,7 @@ public class Board {
 						break;
 						}
 					}
-				}else if (currentCell.isSecretPassage()){
+				} else if (currentCell.isSecretPassage()){
 					Room room = roomMap.get(currentCell.getChar());
 					Room passageRoom = roomMap.get(currentCell.getSecretPassage());
 					BoardCell roomCenter = room.getCenterCell();
@@ -329,7 +339,10 @@ public class Board {
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) {
-		
+		System.out.printf("AdjList: (%d, %d)\n", row, col);
+		for (BoardCell cell : this.grid[row][col].getAdjList()) {
+			System.out.printf("(%d, %d)\n", cell.row, cell.col);
+		}
 		return this.grid[row][col].getAdjList();
 	}
 
