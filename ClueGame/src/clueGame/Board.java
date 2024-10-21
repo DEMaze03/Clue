@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import experiment.TestBoardCell;
+
 public class Board {
 	private int numRows;
 	private int numColumns;
@@ -21,6 +23,7 @@ public class Board {
 	private String setupConfigFile;
 	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
 	public Set<BoardCell> targetList = new HashSet<BoardCell>();
+	public Set<BoardCell> visitedList = new HashSet<BoardCell>();
 	public Set<BoardCell> adjList = new HashSet<BoardCell>();
 	static Board theInstance = new Board();
 
@@ -117,8 +120,8 @@ public class Board {
 		}
 		grid = new BoardCell[numRows][numColumns];
 		System.out.printf("%d, %d\n",numRows, numColumns);
-		// Read file again to go over each cell and get the proper settings
 		
+		// Read file again to go over each cell and get the proper settings
 		rowCount = 0;
 		
 		try {
@@ -176,6 +179,24 @@ public class Board {
 						} else if (l[idx].charAt(1) != '^' && l[idx].charAt(1) != 'v' && l[idx].charAt(1) != '<' && l[idx].charAt(1) != '>'){
 							grid[rowCount][idx].setSecretPassage(l[idx].charAt(1));
 						}
+						
+						
+						
+						if (rowCount - 1 >= 0) {
+							grid[rowCount][idx].addAdj(grid[rowCount - 1][idx]);
+						}
+
+						if (idx - 1 >= 0) {
+							grid[rowCount][idx].addAdj(grid[rowCount][idx - 1]);
+						}
+
+						if (rowCount + 1 < numRows) {
+							grid[rowCount][idx].addAdj(grid[rowCount + 1][idx]);
+						}
+
+						if (idx + 1 < numColumns) {
+							grid[rowCount][idx].addAdj(grid[rowCount][idx + 1]);
+						}
 					
 					}
 				}
@@ -217,9 +238,38 @@ public class Board {
 		return this.grid[row][col];
 	}
 
-	public void calcTargets(BoardCell cell, int i) {
+	public void calcTargets(BoardCell startCell, int pathlength) {
 		// TODO Auto-generated method stub
+		visitedList.add(startCell);
+		findAllTargets(startCell, pathlength);
 		
+	}
+	
+	public void findAllTargets(BoardCell startcell, int numSteps) {
+		Set<BoardCell> adjCells = startcell.getAdjList();
+		for (BoardCell cell : adjCells) {
+			if (visitedList.contains(cell)) {
+				continue;
+			}
+			visitedList.add(cell);
+
+			if (cell.isOccupied()) {
+				continue;
+			}
+
+			if (cell.isARoom()) {
+				targetList.add(cell);
+				continue;
+			}
+
+			if (numSteps == 1) {
+				targetList.add(cell);
+			} else {
+				findAllTargets(cell, numSteps - 1);
+			}
+
+			visitedList.remove(cell);
+		}
 	}
 
 	public Set<BoardCell> getTargets() {
@@ -283,6 +333,11 @@ public class Board {
 
 	public Set<BoardCell> getAdjList(int row, int col) {
 		return this.grid[row][col].getAdjList();
+	}
+
+	public Set<BoardCell> getAdjList(int i, int j) {
+		// TODO Auto-generated method stub
+		return this.getCell(i, j).getAdjList();
 	}
 
 //	public static void main(String[] args) {
