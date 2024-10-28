@@ -298,27 +298,6 @@ public class Board {
 		}
 	}
 	
-	//GETTERS
-	
-	public Room getRoom(char c) {
-		return roomMap.get(c);
-	}
-
-	public Room getRoom(BoardCell cell) {
-		return roomMap.get(cell.getChar());
-	}
-
-	public int getNumRows() {
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		return numColumns;
-	}
-
-	public BoardCell getCell(int row, int col) {
-		return this.grid[row][col];
-	}
 	
 	//getTargets - return the board's targetList
 		public Set<BoardCell> getTargets() {
@@ -330,7 +309,6 @@ public class Board {
 		return this.grid[row][col].getAdjList();
 	}
 
-	//SETTERS
 	
 	//setConfigFiles - set the config .csv and .txt files
 		public void setConfigFiles(String csv, String txt) {
@@ -340,5 +318,26 @@ public class Board {
 
 		}
 
+		// SETTERS
 
+		// GETTERS
+		public Room getRoom(char c) {
+			return roomMap.get(c);
+		}
+		
+		public Room getRoom(BoardCell cell) {
+			return roomMap.get(cell.getChar());
+		}
+		
+		public int getNumRows() {
+			return numRows;
+		}
+		
+		public int getNumColumns() {
+			return numColumns;
+		}
+		
+		public BoardCell getCell(int row, int col) {
+			return this.grid[row][col];
+		}
 }
