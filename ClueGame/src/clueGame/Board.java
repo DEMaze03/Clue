@@ -78,7 +78,6 @@ public class Board {
 					String rn = l[1];
 
 					Room room = new Room(rn);
-					System.out.println(c + " " + room.getName());
 					roomMap.put(Character.valueOf(c), room);
 				} else {
 					throw new BadConfigFormatException("invalid room type");
@@ -117,7 +116,6 @@ public class Board {
 			e.printStackTrace();
 		}
 		grid = new BoardCell[numRows][numColumns];
-		System.out.printf("%d, %d\n",numRows, numColumns);
 		
 		// Read file again to go over each cell and get the proper settings
 		rowCount = 0;
@@ -128,9 +126,7 @@ public class Board {
 			
 				String data = r.nextLine();
 				String[] dataList = data.split(",");
-				
-
-				System.out.println(colCount);
+			
 				for (int col = 0; col < numColumns; col++) {
 					grid[rowCount][col] = new BoardCell(rowCount, col);
 					
@@ -327,19 +323,10 @@ public class Board {
 	//getTargets - return the board's targetList
 		public Set<BoardCell> getTargets() {
 			// TODO Auto-generated method stub
-			
-			System.out.printf("Targets\n");
-			for (BoardCell cell : targetList) {
-				System.out.printf("(%d, %d)\n", cell.row, cell.col);
-			}
 			return targetList;
 		}
 	
 	public Set<BoardCell> getAdjList(int row, int col) {
-		System.out.printf("AdjList: (%d, %d)\n", row, col);
-		for (BoardCell cell : this.grid[row][col].getAdjList()) {
-			System.out.printf("(%d, %d)\n", cell.row, cell.col);
-		}
 		return this.grid[row][col].getAdjList();
 	}
 
