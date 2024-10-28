@@ -226,12 +226,12 @@ public class Board {
 		visitedList.clear();
 		
 		visitedList.add(startCell);
-		findAllTargets(startCell, pathlength);
+		breadthFirstSearch(startCell, pathlength);
 		
 	}
 	
 	//findAllTargets - recursive method to find all targets for the given number of steps on a given starting cell
-	public void findAllTargets(BoardCell startcell, int numSteps) {
+	public void breadthFirstSearch(BoardCell startcell, int numSteps) {
 		Set<BoardCell> adjCells = startcell.getAdjList();
 		for (BoardCell cell : adjCells) {
 			if (visitedList.contains(cell)) {
@@ -259,7 +259,7 @@ public class Board {
 			if (numSteps == 1) {
 				targetList.add(cell);
 			} else {
-				findAllTargets(cell, numSteps - 1);
+				breadthFirstSearch(cell, numSteps - 1);
 			}
 
 			visitedList.remove(cell);
