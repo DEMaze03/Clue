@@ -133,7 +133,6 @@ public class Board {
 				System.out.println(colCount);
 				for (int col = 0; col < numColumns; col++) {
 					grid[rowCount][col] = new BoardCell(rowCount, col);
-//					System.out.printf("(%d, %d) %s \n",rowCount, idx, l[idx]);
 					
 				
 					try {
@@ -353,21 +352,6 @@ public class Board {
 			theInstance.setupConfigFile = "data/" + txt;
 
 		}
-//	public static void main(String[] args) {
-//		Board board;
-//		board = Board.getInstance();
-//		// set the file names to use my config files
-//		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
-//		// Initialize will load BOTH config files
-//		board.initialize();
-//		
-//		System.out.println(board.getRoom('C').getName());
-//		System.out.println("ROWS: " + board.getNumRows());
-//		System.out.println("COLS: " + board.getNumColumns());
-//		
-//		BoardCell cell = board.getCell(3, 3);
-//		
-//		
-//	}
+
 
 }
