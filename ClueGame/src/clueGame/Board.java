@@ -191,34 +191,6 @@ public class Board {
 		
 	}
 
-	//setConfigFiles - set the config .csv and .txt files
-	public void setConfigFiles(String csv, String txt) {
-		// TODO Auto-generated method stub
-		theInstance.layoutConfigFile = "data/" + csv;
-		theInstance.setupConfigFile = "data/" + txt;
-
-	}
-
-	public Room getRoom(char c) {
-		return roomMap.get(c);
-	}
-
-	public Room getRoom(BoardCell cell) {
-		return roomMap.get(cell.getChar());
-	}
-
-	public int getNumRows() {
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		return numColumns;
-	}
-
-	public BoardCell getCell(int row, int col) {
-		return this.grid[row][col];
-	}
-
 	//calcTargets - method to clear tagetList and VisitedList before calling findAllTargets
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		// TODO Auto-generated method stub
@@ -264,17 +236,6 @@ public class Board {
 
 			visitedList.remove(cell);
 		}
-	}
-
-	//getTargets - return the board's targetList
-	public Set<BoardCell> getTargets() {
-		// TODO Auto-generated method stub
-		
-		System.out.printf("Targets\n");
-		for (BoardCell cell : targetList) {
-			System.out.printf("(%d, %d)\n", cell.row, cell.col);
-		}
-		return targetList;
 	}
 	
 	//calcAdjList - method to calculate all cell adjacencies during board setup
@@ -341,7 +302,40 @@ public class Board {
 			}
 		}
 	}
+	
+	//GETTERS
+	
+	public Room getRoom(char c) {
+		return roomMap.get(c);
+	}
 
+	public Room getRoom(BoardCell cell) {
+		return roomMap.get(cell.getChar());
+	}
+
+	public int getNumRows() {
+		return numRows;
+	}
+
+	public int getNumColumns() {
+		return numColumns;
+	}
+
+	public BoardCell getCell(int row, int col) {
+		return this.grid[row][col];
+	}
+	
+	//getTargets - return the board's targetList
+		public Set<BoardCell> getTargets() {
+			// TODO Auto-generated method stub
+			
+			System.out.printf("Targets\n");
+			for (BoardCell cell : targetList) {
+				System.out.printf("(%d, %d)\n", cell.row, cell.col);
+			}
+			return targetList;
+		}
+	
 	public Set<BoardCell> getAdjList(int row, int col) {
 		System.out.printf("AdjList: (%d, %d)\n", row, col);
 		for (BoardCell cell : this.grid[row][col].getAdjList()) {
@@ -350,6 +344,15 @@ public class Board {
 		return this.grid[row][col].getAdjList();
 	}
 
+	//SETTERS
+	
+	//setConfigFiles - set the config .csv and .txt files
+		public void setConfigFiles(String csv, String txt) {
+			// TODO Auto-generated method stub
+			theInstance.layoutConfigFile = "data/" + csv;
+			theInstance.setupConfigFile = "data/" + txt;
+
+		}
 //	public static void main(String[] args) {
 //		Board board;
 //		board = Board.getInstance();

@@ -32,20 +32,14 @@ public class BoardCell {
 		System.out.println("added " + cell);
 	}
 	
+	//GETTERS
+	
 	public Set<BoardCell> getAdjList(){
 		return adjList;
 	}
 	
-	public void setRoom(boolean isRoom) {
-		this.isRoom = isRoom;
-	}
 	public boolean isARoom() {
 		return isRoom;
-	}
-	
-	
-	public void setOccupied(boolean isOccupied) {
-		occupied = isOccupied;
 	}
 	
 	public boolean isOccupied() {
@@ -56,48 +50,58 @@ public class BoardCell {
 		return isDoorway;
 	}
 	
-	public void setDoorway(boolean d) {
-		this.isDoorway = d;
-	}
-	
-	public DoorDirection getDoorDirection() {
-		return doorDirection;
-	}
-	public void setDoorDirection(DoorDirection dir) {
-		this.doorDirection = dir;
-	}
-	
-	public char getChar() {
-		return character;
-	}
-	
-	public void setChar(char character) {
-		this.character = character;
-	}
-
 	public boolean isRoomCenter() {
 		return isCenter;
-	}
-	
-	public void setRoomCenter(boolean center) {
-		this.isCenter = center;
 	}
 	
 	public boolean isLabel() {
 		return isLabel;
 	}
 	
-	public void setLabel(boolean label) {
-		this.isLabel = label;
-	}
-	
-	
 	public boolean isSecretPassage() {
 		return secretPassage;
 	}
 	
+	public DoorDirection getDoorDirection() {
+		return doorDirection;
+	}
+	
+	public char getChar() {
+		return character;
+	}
+	
 	public char getSecretPassage() {
 		return passageChar;
+	}
+	
+	//SETTERS
+	
+	public void setRoom(boolean isRoom) {
+		this.isRoom = isRoom;
+	}
+	
+	public void setOccupied(boolean isOccupied) {
+		occupied = isOccupied;
+	}
+	
+	public void setDoorway(boolean d) {
+		this.isDoorway = d;
+	}
+	
+	public void setDoorDirection(DoorDirection dir) {
+		this.doorDirection = dir;
+	}
+	
+	public void setChar(char character) {
+		this.character = character;
+	}
+	
+	public void setRoomCenter(boolean center) {
+		this.isCenter = center;
+	}
+	
+	public void setLabel(boolean label) {
+		this.isLabel = label;
 	}
 	
 	public void setSecretPassage(char c) {
