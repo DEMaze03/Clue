@@ -127,50 +127,50 @@ public class Board {
 				String data = r.nextLine();
 				String[] dataList = data.split(",");
 			
-				for (int col = 0; col < numColumns; col++) {
-					grid[rowCount][col] = new BoardCell(rowCount, col);
+				for (colCount = 0; colCount < numColumns; colCount++) {
+					grid[rowCount][colCount] = new BoardCell(rowCount, colCount);
 					
 				
 					try {
-						grid[rowCount][col].setChar(dataList[col].charAt(0)); // if the cell is empty, this will throw something that will need to be handled
+						grid[rowCount][colCount].setChar(dataList[colCount].charAt(0)); // if the cell is empty, this will throw something that will need to be handled
 					} catch (ArrayIndexOutOfBoundsException e) {
 						throw new BadConfigFormatException("Bad config file");
 					}
 					
-					if (roomMap.containsKey(dataList[col].charAt(0)) != true) {
+					if (roomMap.containsKey(dataList[colCount].charAt(0)) != true) {
 						throw new BadConfigFormatException("unknown map character");
 					}
 						
 					
 					
-					if (dataList[col].length() == 2) {
-						if (dataList[col].charAt(1) == '#') { // if cell is label
-							grid[rowCount][col].setLabel(true);
-							Room room = roomMap.get(dataList[col].charAt(0));
-							room.setLabelCell(grid[rowCount][col]);
+					if (dataList[colCount].length() == 2) {
+						if (dataList[colCount].charAt(1) == '#') { // if cell is label
+							grid[rowCount][colCount].setLabel(true);
+							Room room = roomMap.get(dataList[colCount].charAt(0));
+							room.setLabelCell(grid[rowCount][colCount]);
 							
-						} else if (dataList[col].charAt(1) == '*') {
-							grid[rowCount][col].setRoomCenter(true);
-							Room room = roomMap.get(dataList[col].charAt(0));
-							room.setCenterCell(grid[rowCount][col]);
+						} else if (dataList[colCount].charAt(1) == '*') {
+							grid[rowCount][colCount].setRoomCenter(true);
+							Room room = roomMap.get(dataList[colCount].charAt(0));
+							room.setCenterCell(grid[rowCount][colCount]);
 						
-						} else if (dataList[col].charAt(1) == '^') {
-							grid[rowCount][col].setDoorway(true);
-							grid[rowCount][col].setDoorDirection(DoorDirection.UP);
+						} else if (dataList[colCount].charAt(1) == '^') {
+							grid[rowCount][colCount].setDoorway(true);
+							grid[rowCount][colCount].setDoorDirection(DoorDirection.UP);
 							
-						} else if (dataList[col].charAt(1) == 'v') {
-							grid[rowCount][col].setDoorway(true);
-							grid[rowCount][col].setDoorDirection(DoorDirection.DOWN);
-						} else if (dataList[col].charAt(1) == '<') {
-							grid[rowCount][col].setDoorway(true);
-							grid[rowCount][col].setDoorDirection(DoorDirection.LEFT);
+						} else if (dataList[colCount].charAt(1) == 'v') {
+							grid[rowCount][colCount].setDoorway(true);
+							grid[rowCount][colCount].setDoorDirection(DoorDirection.DOWN);
+						} else if (dataList[colCount].charAt(1) == '<') {
+							grid[rowCount][colCount].setDoorway(true);
+							grid[rowCount][colCount].setDoorDirection(DoorDirection.LEFT);
 				
-						} else if (dataList[col].charAt(1) == '>') {
-							grid[rowCount][col].setDoorway(true);
-							grid[rowCount][col].setDoorDirection(DoorDirection.RIGHT);
+						} else if (dataList[colCount].charAt(1) == '>') {
+							grid[rowCount][colCount].setDoorway(true);
+							grid[rowCount][colCount].setDoorDirection(DoorDirection.RIGHT);
 				
-						} else if (dataList[col].charAt(1) != '^' && dataList[col].charAt(1) != 'v' && dataList[col].charAt(1) != '<' && dataList[col].charAt(1) != '>'){
-							grid[rowCount][col].setSecretPassage(dataList[col].charAt(1));
+						} else if (dataList[colCount].charAt(1) != '^' && dataList[colCount].charAt(1) != 'v' && dataList[colCount].charAt(1) != '<' && dataList[colCount].charAt(1) != '>'){
+							grid[rowCount][colCount].setSecretPassage(dataList[colCount].charAt(1));
 						}
 						
 					
