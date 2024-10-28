@@ -188,7 +188,6 @@ public class Board {
 
 	//calcTargets - method to clear tagetList and VisitedList before calling findAllTargets
 	public void calcTargets(BoardCell startCell, int pathlength) {
-		// TODO Auto-generated method stub
 		targetList.clear();
 		visitedList.clear();
 		
@@ -301,7 +300,6 @@ public class Board {
 	
 	//getTargets - return the board's targetList
 		public Set<BoardCell> getTargets() {
-			// TODO Auto-generated method stub
 			return targetList;
 		}
 	
@@ -312,7 +310,6 @@ public class Board {
 	
 	//setConfigFiles - set the config .csv and .txt files
 		public void setConfigFiles(String csv, String txt) {
-			// TODO Auto-generated method stub
 			theInstance.layoutConfigFile = "data/" + csv;
 			theInstance.setupConfigFile = "data/" + txt;
 

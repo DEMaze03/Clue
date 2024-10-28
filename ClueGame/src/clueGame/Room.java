@@ -9,25 +9,27 @@ public class Room {
 		this.name = name;
 	}
 	
+	// getters
+	public BoardCell getLabelCell() {
+		return labelCell;
+	}
+	
 	public BoardCell getCenterCell() {
 		return centerCell;
 	}
 	
-	public void setCenterCell(BoardCell cell) {
-		this.centerCell = cell;
+	public String getName() {
+		return name;
 	}
 	
-	public BoardCell getLabelCell() {
-		return labelCell;
+	// setters
+	public void setCenterCell(BoardCell cell) {
+		this.centerCell = cell;
 	}
 	
 	public void setLabelCell(BoardCell cell) {
 		this.labelCell = cell;
 	}
 	
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
 
 }
