@@ -12,3 +12,19 @@ Room, Elm, E
 // Other spaces on the board
 Space, Unused, X
 Space, Walkway, W
+
+//Players
+Player, PCJ, Red
+Player, Blaster, Blue
+Player, Marvin, Green
+Player, Wario, Yellow
+Player, Waluigi, Purple
+Player, Mines Parking, Orange
+
+//Weapons
+Weapon, Barrel of Rum, X
+Weapon, College Bell, X
+Weapon, Clear Whiskey, X
+Weapon, Parking Ticket, X
+Weapon, Tennis Racket, X
+Weapon, Garlic, X
