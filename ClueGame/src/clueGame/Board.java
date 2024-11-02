@@ -346,7 +346,7 @@ public class Board {
 			return deck;
 		}
 		
-		public Set<Player> getPlayers() {
+		public Map<String, Player> getPlayers() {
 			return players;
 		}
 		public Player returnPlayer(String name) {
