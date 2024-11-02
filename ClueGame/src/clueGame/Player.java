@@ -3,7 +3,7 @@ package clueGame;
 import java.util.ArrayList;
 
 public abstract class Player {
-	private String name;
+	public String name;
 	private String color;
 	private int row, col;
 	private ArrayList<Card> cards;

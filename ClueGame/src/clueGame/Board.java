@@ -7,6 +7,7 @@ package clueGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -14,16 +15,19 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Board {
+	static Board theInstance = new Board();
+	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
+	public Set<BoardCell> adjList = new HashSet<BoardCell>();
 	private int numRows;
 	private int numColumns;
 	private BoardCell[][] grid;
 	private String layoutConfigFile;
 	private String setupConfigFile;
-	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
 	private Set<BoardCell> targetList = new HashSet<>();
 	private Set<BoardCell> visitedList = new HashSet<BoardCell>();
-	public Set<BoardCell> adjList = new HashSet<BoardCell>();
-	static Board theInstance = new Board();
+	private Set<Card> deck = new HashSet<Card>();
+	private Map<String, Player> players = new HashMap<String, Player>();
+	
 
 	private Board() {
 		super();
@@ -336,5 +340,16 @@ public class Board {
 		
 		public BoardCell getCell(int row, int col) {
 			return this.grid[row][col];
+		}
+		
+		public Set<Card> getDeck() {
+			return deck;
+		}
+		
+		public Set<Player> getPlayers() {
+			return players;
+		}
+		public Player returnPlayer(String name) {
+			return players.get(name);
 		}
 }
