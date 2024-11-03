@@ -71,67 +71,67 @@ public class Board {
 
 		File setupFile = new File(setupConfigFile);
 		try {
-			Scanner r = new Scanner(setupFile);
-			while (r.hasNextLine()) {
-				String data = r.nextLine();
-				String[] l = data.split(", ");
+			Scanner reader = new Scanner(setupFile);
+			while (reader.hasNextLine()) {
+				String data = reader.nextLine();
+				String[] word = data.split(", ");
 				
-				if (l.length == 1 ) { // continue over empty lines
+				if (word.length == 1 ) { // continue over empty lines
 					continue;
 				}
 				
-				if (l[0].charAt(0) == '/') { // continue over comments in file
+				if (word[0].charAt(0) == '/') { // continue over comments in file
 					continue;
 				}
 				
 				
-				if (l[0].equals("Room")) {
+				if (word[0].equals("Room")) {
 					
-					char c = l[2].charAt(0);
-					String rn = l[1];
+					char character = word[2].charAt(0);
+					String roomName = word[1];
 
-					Room room = new Room(rn);
-					roomMap.put(Character.valueOf(c), room);
-					Card roomCard = new Card(rn, CardType.ROOM);
-					deck.put(rn, roomCard);
-					roomsToPick.add(rn);
+					Room room = new Room(roomName);
+					roomMap.put(Character.valueOf(character), room);
+					Card roomCard = new Card(roomName, CardType.ROOM);
+					deck.put(roomName, roomCard);
+					roomsToPick.add(roomName);
 				} 
 				
-				else if (l[0].equals("Space")) {
-					char c = l[2].charAt(0);
-					String rn = l[1];
+				else if (word[0].equals("Space")) {
+					char character = word[2].charAt(0);
+					String roomName = word[1];
 
-					Room room = new Room(rn);
-					roomMap.put(Character.valueOf(c), room);
+					Room room = new Room(roomName);
+					roomMap.put(Character.valueOf(character), room);
 				}
 				
-				else if (l[0].equals("Player")) {
-					String pn = l[1];
-					String pc = l[2];
-					int pr = Integer.parseInt(l[3]);
-					int pcol = Integer.parseInt(l[4]);
-					if(l[5].equals("true")) {
-						Player player = new HumanPlayer(pn,pc,pr,pcol,true);
-						players.put(pn, player);
+				else if (word[0].equals("Player")) {
+					String playerName = word[1];
+					String playerColor = word[2];
+					int playerRow = Integer.parseInt(word[3]);
+					int playerColumn = Integer.parseInt(word[4]);
+					if(word[5].equals("true")) {
+						Player player = new HumanPlayer(playerName,playerColor,playerRow,playerColumn,true);
+						players.put(playerName, player);
 					}else {
-						Player player = new ComputerPlayer(pn,pc,pr,pcol,false);
-						players.put(pn, player);
+						Player player = new ComputerPlayer(playerName,playerColor,playerRow,playerColumn,false);
+						players.put(playerName, player);
 					}
 					
-					Card playerCard = new Card(pn, CardType.PERSON);
-					deck.put(pn, playerCard);
-					peopleToPick.add(pn);
+					Card playerCard = new Card(playerName, CardType.PERSON);
+					deck.put(playerName, playerCard);
+					peopleToPick.add(playerName);
 					
-				}else if (l[0].equals("Weapon")) {
-					String wn = l[1];
-					Card weaponCard = new Card(wn, CardType.WEAPON);
-					deck.put(wn, weaponCard);
-					weaponsToPick.add(wn);
+				}else if (word[0].equals("Weapon")) {
+					String weaponName = word[1];
+					Card weaponCard = new Card(weaponName, CardType.WEAPON);
+					deck.put(weaponName, weaponCard);
+					weaponsToPick.add(weaponName);
 				}else{
 					throw new BadConfigFormatException("invalid room type");
 				}
 			}
-			r.close();
+			reader.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,10 +169,10 @@ public class Board {
 		rowCount = 0;
 		
 		try {
-			Scanner r = new Scanner(layoutFile);
-			while (r.hasNextLine()) {
+			Scanner reader = new Scanner(layoutFile);
+			while (reader.hasNextLine()) {
 			
-				String data = r.nextLine();
+				String data = reader.nextLine();
 				String[] dataList = data.split(",");
 			
 				for (colCount = 0; colCount < numColumns; colCount++) {
@@ -227,7 +227,7 @@ public class Board {
 				rowCount++;
 				
 			}
-			r.close();
+			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -349,12 +349,12 @@ public class Board {
 	//deal- Deal all the cards into each player's hand
 	public void deal() {
 		//Calculate a random room, person, and weapon for the solution class
-		int solutionIndx = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
-		String solutionRoom = roomsToPick.get(solutionIndx);
-		solutionIndx = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
-		String solutionPerson = peopleToPick.get(solutionIndx);
-		solutionIndx = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
-		String solutionWeapon = weaponsToPick.get(solutionIndx);
+		int solutionIndex = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
+		String solutionRoom = roomsToPick.get(solutionIndex);
+		solutionIndex = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
+		String solutionPerson = peopleToPick.get(solutionIndex);
+		solutionIndex = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
+		String solutionWeapon = weaponsToPick.get(solutionIndex);
 		//use the calculated room, person, and weapon for the constructor of the solution class
 		solution = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
 		
@@ -368,11 +368,11 @@ public class Board {
 				}
 				//deal out all cards evenly to all players (for each player, give them a random card from the arrayList, then remove the card, continue until all
 				//cards are gone.
-				for(int i = 0; i < cards.size(); i++){
+				for(int card = 0; card < cards.size(); card++){
 					 for(Map.Entry<String,Player> entry : players.entrySet()){
-						int indx = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
-						players.get(entry.getKey()).updateHand(cards.get(indx));
-						cards.remove(indx);		
+						int index = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
+						players.get(entry.getKey()).updateHand(cards.get(index));
+						cards.remove(index);		
 					}
 				}
 	}
