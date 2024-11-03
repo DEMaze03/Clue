@@ -25,7 +25,7 @@ public class Board {
 	private String setupConfigFile;
 	private Set<BoardCell> targetList = new HashSet<>();
 	private Set<BoardCell> visitedList = new HashSet<BoardCell>();
-	private Set<Card> deck = new HashSet<Card>();
+	private Map<String, Card> deck = new HashMap<String, Card>();
 	private Map<String, Player> players = new HashMap<String, Player>();
 	
 
@@ -85,7 +85,7 @@ public class Board {
 					Room room = new Room(rn);
 					roomMap.put(Character.valueOf(c), room);
 					Card roomCard = new Card(rn, CardType.ROOM);
-					deck.add(roomCard);
+					deck.put(rn, roomCard);
 				} 
 				
 				else if (l[0].equals("Space")) {
@@ -110,12 +110,12 @@ public class Board {
 					}
 					
 					Card playerCard = new Card(pn, CardType.PERSON);
-					deck.add(playerCard);
+					deck.put(pn, playerCard);
 					
 				}else if (l[0].equals("Weapon")) {
 					String wn = l[1];
 					Card weaponCard = new Card(wn, CardType.WEAPON);
-					deck.add(weaponCard);
+					deck.put(wn, weaponCard);
 				}else{
 					throw new BadConfigFormatException("invalid room type");
 				}
@@ -375,7 +375,7 @@ public class Board {
 			return this.grid[row][col];
 		}
 		
-		public Set<Card> getDeck() {
+		public Map<String, Card> getDeck() {
 			return deck;
 		}
 		
