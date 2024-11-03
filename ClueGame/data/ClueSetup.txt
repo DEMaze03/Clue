@@ -14,12 +14,12 @@ Space, Unused, X
 Space, Walkway, W
 
 //Players
-Player, PCJ, Red
-Player, Blaster, Blue
-Player, Marvin, Green
-Player, Wario, Yellow
-Player, Waluigi, Purple
-Player, Mines Parking, Orange
+Player, PCJ, Red, 5, 0, true
+Player, Blaster, Blue, 16, 0, false
+Player, Marvin, Green, 27, 8, false
+Player, Wario, Yellow, 27, 23, false
+Player, Waluigi, Purple, 20, 33, false
+Player, Mines Parking, Orange, 11, 33, false
 
 //Weapons
 Weapon, Barrel of Rum, X

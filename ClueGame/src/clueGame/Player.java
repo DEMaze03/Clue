@@ -10,6 +10,14 @@ public abstract class Player {
 	private ArrayList<Card> cards;
 
 	
+	public Player(String name, String color, int row, int col, boolean isHuman) {
+		this.name = name;
+		this.color = color;
+		this.row = row;
+		this.col = col;
+		this.isHuman = isHuman;
+	}
+	
 	public void updateHand(Card card) {
 		
 	}

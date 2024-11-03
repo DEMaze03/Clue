@@ -77,13 +77,46 @@ public class Board {
 				}
 				
 				
-				if (l[0].equals("Room") || l[0].equals("Space")) {
+				if (l[0].equals("Room")) {
+					
 					char c = l[2].charAt(0);
 					String rn = l[1];
 
 					Room room = new Room(rn);
 					roomMap.put(Character.valueOf(c), room);
-				} else {
+					Card roomCard = new Card(rn, CardType.ROOM);
+					deck.add(roomCard);
+				} 
+				
+				else if (l[0].equals("Space")) {
+					char c = l[2].charAt(0);
+					String rn = l[1];
+
+					Room room = new Room(rn);
+					roomMap.put(Character.valueOf(c), room);
+				}
+				
+				else if (l[0].equals("Player")) {
+					String pn = l[1];
+					String pc = l[2];
+					int pr = Integer.parseInt(l[3]);
+					int pcol = Integer.parseInt(l[4]);
+					if(l[5] == "true") {
+						Player player = new HumanPlayer(pn,pc,pr,pcol,true);
+						players.put(pn, player);
+					}else {
+						Player player = new ComputerPlayer(pn,pc,pr,pcol,false);
+						players.put(pn, player);
+					}
+					
+					Card playerCard = new Card(pn, CardType.PERSON);
+					deck.add(playerCard);
+					
+				}else if (l[0].equals("Weapon")) {
+					String wn = l[1];
+					Card weaponCard = new Card(wn, CardType.WEAPON);
+					deck.add(weaponCard);
+				}else{
 					throw new BadConfigFormatException("invalid room type");
 				}
 			}
