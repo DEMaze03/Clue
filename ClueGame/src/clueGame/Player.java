@@ -16,10 +16,11 @@ public abstract class Player {
 		this.row = row;
 		this.col = col;
 		this.isHuman = isHuman;
+		cards = new ArrayList<Card>();
 	}
 	
 	public void updateHand(Card card) {
-		
+		cards.add(card);
 	}
 	
 	public boolean getIsHuman() {

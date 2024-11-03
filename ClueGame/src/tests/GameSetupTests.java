@@ -50,11 +50,11 @@ public class GameSetupTests {
 		
 		assertEquals(21, board.getDeck().size());
 		
-		Card testCard = new Card("Barrel of Rum", CardType.WEAPON);
+		
 		assertEquals(CardType.WEAPON, board.getDeck().get("Barrel of Rum").getCardType());
-		testCard = new Card("Blaster", CardType.PERSON);
+
 		assertEquals(CardType.PERSON, board.getDeck().get("Blaster").getCardType());
-		testCard = new Card("McNeil", CardType.ROOM);
+
 		assertEquals(CardType.ROOM, board.getDeck().get("McNeil").getCardType());
 		
 		

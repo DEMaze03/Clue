@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -55,6 +56,8 @@ public class Board {
 			e.getStackTrace();
 		}
 		calcAdjList();
+		
+		deal();
 
 	}
 
@@ -101,7 +104,7 @@ public class Board {
 					String pc = l[2];
 					int pr = Integer.parseInt(l[3]);
 					int pcol = Integer.parseInt(l[4]);
-					if(l[5] == "true") {
+					if(l[5].equals("true")) {
 						Player player = new HumanPlayer(pn,pc,pr,pcol,true);
 						players.put(pn, player);
 					}else {
@@ -332,6 +335,22 @@ public class Board {
 				}
 			}
 		}
+	}
+	
+	
+	//deal- Deal all the cards into each player's hand
+	public void deal() {
+		ArrayList<Card> cards = new ArrayList<Card>();
+				for (Map.Entry<String,Card> entry : deck.entrySet()) {
+				    cards.add(deck.get(entry.getKey()));
+				}
+				for(int i = 0; i < cards.size(); i++){
+					 for(Map.Entry<String,Player> entry : players.entrySet()){
+						int indx = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
+						players.get(entry.getKey()).updateHand(cards.get(indx));
+						cards.remove(indx);
+					}
+				}
 	}
 	
 	
