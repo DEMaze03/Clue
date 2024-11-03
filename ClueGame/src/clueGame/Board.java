@@ -28,6 +28,10 @@ public class Board {
 	private Set<BoardCell> visitedList = new HashSet<BoardCell>();
 	private Map<String, Card> deck = new HashMap<String, Card>();
 	private Map<String, Player> players = new HashMap<String, Player>();
+	private ArrayList<String> roomsToPick = new ArrayList<String>();
+	private ArrayList<String> peopleToPick = new ArrayList<String>();
+	private ArrayList<String> weaponsToPick = new ArrayList<String>();
+	
 	
 
 	private Board() {
@@ -89,6 +93,7 @@ public class Board {
 					roomMap.put(Character.valueOf(c), room);
 					Card roomCard = new Card(rn, CardType.ROOM);
 					deck.put(rn, roomCard);
+					roomsToPick.add(rn);
 				} 
 				
 				else if (l[0].equals("Space")) {
@@ -114,11 +119,13 @@ public class Board {
 					
 					Card playerCard = new Card(pn, CardType.PERSON);
 					deck.put(pn, playerCard);
+					peopleToPick.add(pn);
 					
 				}else if (l[0].equals("Weapon")) {
 					String wn = l[1];
 					Card weaponCard = new Card(wn, CardType.WEAPON);
 					deck.put(wn, weaponCard);
+					weaponsToPick.add(wn);
 				}else{
 					throw new BadConfigFormatException("invalid room type");
 				}
@@ -340,15 +347,28 @@ public class Board {
 	
 	//deal- Deal all the cards into each player's hand
 	public void deal() {
+		int solutionIndx = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
+		String solutionRoom = roomsToPick.get(solutionIndx);
+		solutionIndx = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
+		String solutionPerson = peopleToPick.get(solutionIndx);
+		solutionIndx = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
+		String solutionWeapon = weaponsToPick.get(solutionIndx);
+		Solution solution = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
+		//deck.remove(solutionWeapon);
+		//deck.remove(solutionRoom);
+		//deck.remove(solutionPerson);
+		
 		ArrayList<Card> cards = new ArrayList<Card>();
 				for (Map.Entry<String,Card> entry : deck.entrySet()) {
-				    cards.add(deck.get(entry.getKey()));
+					if ((entry.getKey().equals(solutionRoom) == false) && (entry.getKey().equals(solutionPerson) == false) && (entry.getKey().equals(solutionWeapon) == false)) {
+				    	cards.add(deck.get(entry.getKey()));
+					}
 				}
 				for(int i = 0; i < cards.size(); i++){
 					 for(Map.Entry<String,Player> entry : players.entrySet()){
 						int indx = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
 						players.get(entry.getKey()).updateHand(cards.get(indx));
-						cards.remove(indx);
+						cards.remove(indx);		
 					}
 				}
 	}
