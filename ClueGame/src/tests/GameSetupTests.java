@@ -1,3 +1,10 @@
+/*
+ * GameSetupTests
+ * Tests to verify player and card behavior
+ * 
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package tests;
 
 import java.util.Map;
@@ -33,7 +40,7 @@ public class GameSetupTests {
 	
 	@Test
 	public void TestPlayers() {
-		// Test 1 human player and 5 computer
+		// Test 1 human player (always PCJ) and 5 computer (all others)
 		// Test 6 players total
 		assertEquals("PCJ", board.returnPlayer("PCJ").getName());
 		assertEquals(true, board.returnPlayer("PCJ").getIsHuman());
@@ -45,16 +52,15 @@ public class GameSetupTests {
 	@Test
 	public void TestDeck() {
 		// Test Deck size
-		// Test Weapons, people and rooms
-		// Test All Cards are Dealt
-		
 		assertEquals(21, board.getDeck().size());
 		
-		
+		//Test that a weapon is in the deck
 		assertEquals(CardType.WEAPON, board.getDeck().get("Barrel of Rum").getCardType());
 
+		//Test that a person is in the deck
 		assertEquals(CardType.PERSON, board.getDeck().get("Blaster").getCardType());
 
+		//Test that a room is in the deck
 		assertEquals(CardType.ROOM, board.getDeck().get("McNeil").getCardType());
 		
 		
@@ -62,7 +68,7 @@ public class GameSetupTests {
 	}
 	@Test
 	public void TestBoard() {
-		// Test Players having cards dealt to them properly
+		// Test Players having cards dealt to them properly (3 each in our case)
 		Map<String, Player> players = board.getPlayers();
 		assertEquals(3, players.get("PCJ").getCards().size());
 		assertEquals(3, players.get("Blaster").getCards().size());

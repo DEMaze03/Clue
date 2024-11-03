@@ -31,6 +31,7 @@ public class Board {
 	private ArrayList<String> roomsToPick = new ArrayList<String>();
 	private ArrayList<String> peopleToPick = new ArrayList<String>();
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
+	private static Solution solution;
 	
 	
 
@@ -347,23 +348,26 @@ public class Board {
 	
 	//deal- Deal all the cards into each player's hand
 	public void deal() {
+		//Calculate a random room, person, and weapon for the solution class
 		int solutionIndx = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
 		String solutionRoom = roomsToPick.get(solutionIndx);
 		solutionIndx = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
 		String solutionPerson = peopleToPick.get(solutionIndx);
 		solutionIndx = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
 		String solutionWeapon = weaponsToPick.get(solutionIndx);
-		Solution solution = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
-		//deck.remove(solutionWeapon);
-		//deck.remove(solutionRoom);
-		//deck.remove(solutionPerson);
+		//use the calculated room, person, and weapon for the constructor of the solution class
+		solution = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
 		
+		//Add all the cards from the map into an arrayList to help deal out the cards
 		ArrayList<Card> cards = new ArrayList<Card>();
 				for (Map.Entry<String,Card> entry : deck.entrySet()) {
+					//add all cards to the arrayList except for those in the solution.
 					if ((entry.getKey().equals(solutionRoom) == false) && (entry.getKey().equals(solutionPerson) == false) && (entry.getKey().equals(solutionWeapon) == false)) {
 				    	cards.add(deck.get(entry.getKey()));
 					}
 				}
+				//deal out all cards evenly to all players (for each player, give them a random card from the arrayList, then remove the card, continue until all
+				//cards are gone.
 				for(int i = 0; i < cards.size(); i++){
 					 for(Map.Entry<String,Player> entry : players.entrySet()){
 						int indx = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);

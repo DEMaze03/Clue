@@ -1,5 +1,11 @@
 package clueGame;
 
+/*
+ * Player - Parent class used for all players in the game
+ * 
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 import java.util.ArrayList;
 
 public abstract class Player {
@@ -19,6 +25,7 @@ public abstract class Player {
 		cards = new ArrayList<Card>();
 	}
 	
+	//updateHand() - adds the provided card to the cards arrayList
 	public void updateHand(Card card) {
 		cards.add(card);
 	}

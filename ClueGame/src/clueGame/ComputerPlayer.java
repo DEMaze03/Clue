@@ -1,3 +1,9 @@
+/*
+ * computerPlayer - child class of Player that is used for all CPU controlled players
+ * 
+ * Author: Elijas Sliva
+ */
+
 package clueGame;
 
 public class ComputerPlayer extends Player {

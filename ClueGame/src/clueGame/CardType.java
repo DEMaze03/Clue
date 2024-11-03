@@ -1,3 +1,9 @@
+/*
+ * CardType - an enum for the different types of cards
+ * 
+ * Author: Elijas Sliva
+ */
+
 package clueGame;
 
 public enum CardType {

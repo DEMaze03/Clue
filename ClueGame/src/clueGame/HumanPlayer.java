@@ -1,3 +1,9 @@
+/*
+ * HumanPlayer - child class of Player that is used for the human controlled players
+ * 
+ * Author: Elijas Sliva
+ */
+
 package clueGame;
 
 public class HumanPlayer extends Player {

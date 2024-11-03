@@ -1,3 +1,9 @@
+/*
+ * Solution - class used to store the answer to the mystery. Stores 3 cards, one room, one person, and one weapon
+ * 
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 public class Solution {
