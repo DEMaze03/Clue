@@ -7,7 +7,9 @@
 
 package tests;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -62,6 +64,29 @@ public class GameSetupTests {
 
 		//Test that a room is in the deck
 		assertEquals(CardType.ROOM, board.getDeck().get("McNeil").getCardType());
+		
+		//Test that no card is dealt twice
+		Map<String, Player> players = board.getPlayers();
+		String[] playerNames = new String[6];
+		playerNames[0] = "PCJ";
+		playerNames[1] = "Blaster";
+		playerNames[2] = "Marvin";
+		playerNames[3] = "Mines Parking";
+		playerNames[4] = "Wario";
+		playerNames[5] = "Waluigi";
+		Set<Card> cardList = new HashSet<Card>();
+		
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < players.get(playerNames[i]).getCards().size(); j++) {
+				if (cardList.contains(players.get(playerNames[i]).getCards().get(j))) {
+					assert false;
+				}else {
+					cardList.add(players.get(playerNames[i]).getCards().get(j));
+				}
+			}
+		}
+		assert true;
+		
 		
 		
 		

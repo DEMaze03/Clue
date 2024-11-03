@@ -1,3 +1,430 @@
+commit 18b4b1e83d0a420e8e241be087f5fe733e680594
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Nov 3 00:03:29 2024 -0600
+
+    Refactored code
+
+commit 8d9e427f8b98b638962e577e05ec9549c3589e6a
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 23:56:44 2024 -0600
+
+    Added comments to help readability
+
+commit 67b3045798924891f814406055d11c0af66bdf09
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 22:16:57 2024 -0600
+
+    Fixed some oversights in original implementation. All tests pass now
+
+commit 4b7e8fe246cb8ba7f9c54340391614b5ceb11b08
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 21:25:41 2024 -0600
+
+    Got board and player tests to pass
+
+commit 073d3d7ad4d2d62d835146c541a97145e3cae6d7
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 19:28:05 2024 -0600
+
+    Got TestDeck to pass
+
+commit d6c72d01363b3bd059b06d8d81215aa33b8ed1d4
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 19:13:27 2024 -0600
+
+    Got the board to read in players and cards and add to the deck
+
+commit d8a9e858e337e6c4b6d988cfc586612bd663ce4c
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sat Nov 2 17:23:36 2024 -0600
+
+    Implemented tests for Players and cards
+
+commit 2a431660fe9bf94a9ad36c29630a6df141b47b88
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sat Nov 2 01:00:16 2024 -0600
+
+    added cards and players into board
+
+commit ab00d3b25490833e3b9c4332ce12b5bf04f34d14
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sat Nov 2 01:00:02 2024 -0600
+
+    added basic tests
+
+commit 5ff5215fc6ede488b1cc45a29aefa54f47a1beb5
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Nov 1 12:48:39 2024 -0600
+
+    Modified ClueSetup.txt
+
+commit 43bb2985f5e513f2a9256fb9d34b724c18d44e4b
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Nov 1 10:38:13 2024 -0600
+
+    Wrote outline for player tests
+
+commit b544c6b4b5885cf00ce31d89d95ef0803ff4457f
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Oct 29 16:29:48 2024 -0600
+
+    added 'skeleton' to classes to implement with tests
+
+commit b16554b85a2bdf746ea5dbe983206fe8718d1fe3
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Oct 29 16:06:53 2024 -0600
+
+    init for new class files
+
+commit bac69b43f5531fc797faae7909d4e81a4b8cfc28
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 28 10:29:17 2024 -0600
+
+    removed print line from debugging
+
+commit cb89ac156c354d4a627439468ee9901adcc73ff2
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 28 10:26:32 2024 -0600
+
+    changed col to colCount to be more consistent with other local variables
+
+commit 5ec2b43c8d1aad186a0acba580a1c7779bb1d2e3
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 28 10:23:41 2024 -0600
+
+    removed auto-generated comments and sorted getters / setter
+
+commit b2750a91c01968fd7882bcbca8ca7cee7f7d0a78
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 28 10:18:22 2024 -0600
+
+    moved getters / setters to bottom
+
+commit 308fb8a2bfb526b9073414538395f48c85a905c3
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 27 22:28:11 2024 -0600
+
+    removed print statements in Board.Java that were used for debugging
+
+commit ae4511ea9eb26a9d6b5b858a7e71a62fdf2277f3
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 27 22:19:46 2024 -0600
+
+    Removed commented out code in Board.java
+
+commit 9f2d26ac32b799789264efb5756292a0f512af35
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 27 22:09:18 2024 -0600
+
+    Organized location of getter and setter methods in Board.java and BoardCell.java
+
+commit 780fda09b37ebf47973b1ab49c6fed630853874d
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 27 19:54:35 2024 -0600
+
+    Refactored findAllTargets method name to breadthFirstSearch for code clarity.
+
+commit 0f122bd3e58da634f449fe09998363a84d15348b
+Author: Daylon Maze <84214480+DEMaze03@users.noreply.github.com>
+Date:   Mon Oct 21 12:59:55 2024 -0600
+
+    Update readme.txt
+
+commit cf49566222db322bb459671a6704f7cdaa4f2461
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Oct 21 12:54:49 2024 -0600
+
+    Refactored code and fixed faulty tests
+
+commit 75ae7f0db512718c1426921a2f5d97f3c089e779
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Oct 21 12:21:56 2024 -0600
+
+    fixed getAllTarget() function
+
+commit f54b5e112ea509d44d0440af94ac5c630dd556bc
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 23:46:04 2024 -0600
+
+    Fixed errors in some tests
+
+commit 495694ebffdecf0bc508e62f2b8c5fe777fd6724
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 22:37:06 2024 -0600
+
+    Got all adjacency tests to pass
+
+commit 1ca70384830685e91595426bc06d5f57d699b6d8
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Oct 20 21:40:30 2024 -0600
+
+    implemented calcTargets()
+
+commit 594e52368bbf9e7203e99d9888f824c78b228628
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Oct 20 20:44:37 2024 -0600
+
+    added calcTarget() function
+
+commit 2584687872cc891829caa5fb34fefe010d6db9ef
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 20:42:21 2024 -0600
+
+    Got some Doorway Adjacency Tests to pass
+
+commit b826d64590789abb5ce36e00e6af493217e9977e
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 20:12:34 2024 -0600
+
+    Got Doorway Adjacency Tests to pass
+
+commit d046241f67e936b0cef508bb87937d2941c4e156
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 19:36:51 2024 -0600
+
+    Got Walkway Adjacency Tests to pass
+
+commit af989202ae4013649005eb2e2a6aa91374b37672
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Oct 20 18:03:49 2024 -0600
+
+    Began implementing adjacency list calculation for Board.java
+
+commit 2f63a5b671970d065aec7515062c12bd1a1a1c1a
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Wed Oct 16 23:41:07 2024 -0600
+
+    Implemented BoardAdjTargetTest.java
+
+commit f3413aa70381636d386e215261b71c4304e7d7c8
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Wed Oct 16 22:23:41 2024 -0600
+
+    Added comments to code
+
+commit 4fdedd2fd7d6a040e24009bd3d37307697ccb653
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:36:56 2024 -0600
+
+    added empty methods for adj tests
+
+commit 5ee2ea281bad154c643b55d6c358312bcc741915
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:26:12 2024 -0600
+
+    board adj test file init
+
+commit b38e694c38237bd5965f2d431189d78a29affd1c
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:18:30 2024 -0600
+
+    added exceptions for file formatting
+
+commit 7cfa775f9aa60a09732d857b15afb25bc66e540c
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:18:00 2024 -0600
+
+    adjusted boards for validity
+
+commit dedb3f724489ac75e65bb8e338594584ec3abe91
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:17:28 2024 -0600
+
+    tweaked tests
+
+commit e78226bfa849f27f942a6367b188927d133607e2
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 16:15:54 2024 -0600
+
+    updated readme with unit changes
+
+commit fc95c59e9c70fd0f84e52174f0fcb172751b6a91
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 11:31:58 2024 -0600
+
+    added doorway direction setters and direction
+
+commit a46ac78fee36103befbb18fa35d432be86667c1f
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 11:26:44 2024 -0600
+
+    added and implemented all functions to pass testRoom JUnit test
+
+commit c627876f4935e68045f8f3b53bd9e82332b4c8cb
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 16 10:00:12 2024 -0600
+
+    updated git ignore:
+
+commit 10b78f82bd24127a9e5f631bdbbd607375662be9
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 11 21:55:29 2024 -0600
+
+    Finished tests
+
+commit 6b1b4b4887d560b10ed29ea8ed9c963d47276992
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 11 17:00:30 2024 -0600
+
+    BoardTestsExp updated
+
+commit f9cc1eb20237fbb4d0812d3fabe1d6b117b17ac5
+Merge: e271794 f129522
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 11 16:52:37 2024 -0600
+
+    Merge branch 'main' of github.com:DEMaze03/Clue
+
+commit e271794116a424d7c8e227b7691096a8bdb50eba
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 11 16:52:11 2024 -0600
+
+    Made DoorDirection public
+
+commit f12952269d5a2da9deceb71a58d98437fa181656
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:44:59 2024 -0600
+
+    added reasoning for test change
+
+commit 1a14055175cef8da035e9678baaa10e3690774aa
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:41:21 2024 -0600
+
+    added comments
+
+commit 233d0e3be03aae47a63b2da336e16a3413ed9d54
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:36:16 2024 -0600
+
+    explained why test case changed
+
+commit c3077bd90525dd61de261f954bf72f466ce38ced
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:28:30 2024 -0600
+
+    added door count test
+
+commit d694a403ae3de045d779f3acac67f0b57abdd5e4
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:23:29 2024 -0600
+
+    added door direction test
+
+commit a0cc776ad33f898b433eb84bb52cb398e0555b33
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:16:06 2024 -0600
+
+    added name check test
+
+commit 693e29f54b46e8e260d9abdbcec4f60324fb5c70
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 16:15:37 2024 -0600
+
+    added exception test starter
+
+commit bd6d2b9f356e602b8070083a3e5223a0307e15b1
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 15:26:03 2024 -0600
+
+    added failing csv and txt file
+
+commit cfad9ff6a849aff23a0d252cde9059186f6a6e41
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 14:02:02 2024 -0600
+
+    inital file add
+
+commit 92e08dabb66743cfc6850a74b4addff1646c0e50
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:56:03 2024 -0600
+
+    added meths for 306 tests
+
+commit b55c551b4228b65fcccf01e26bf19fd3ef53d41b
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:55:39 2024 -0600
+
+    made emun public
+
+commit 25e63804edfd73935074a28578590b9219c8bd3c
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:55:02 2024 -0600
+
+    removed unused exports
+
+commit d03db84cad6c069519746d592228535a69fbf83d
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:35:11 2024 -0600
+
+    added helper functions for tests
+
+commit e12edd31c8d472e95bdcc7642ac405d21e1bc173
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:34:24 2024 -0600
+
+    changed types
+
+commit 6561ac581caf71a0d60dbff799dd8623460fdb1d
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:28:19 2024 -0600
+
+    slight change to tests
+
+commit 234af712a3d474e10fb03b5fb65f40d7e9e20ae1
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Oct 11 13:27:56 2024 -0600
+
+    implemented search functions
+
+commit 2feb4e86107c8d9dfe8a74841e4cd8427199c4f6
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Oct 11 10:00:22 2024 -0600
+
+    Began BadCOnfigFormatException
+
+commit 7116e29cf9d3767871005ec98a7a6ff52f625091
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 19:07:46 2024 -0600
+
+    got num of rows / cols from layout file
+
+commit 4e3ffb364322cddd5cbac8bbf0f788d310420bce
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 18:47:43 2024 -0600
+
+    implemented loadSetupConfig()
+
+commit db292be883aabdaa69167fa2cd6243173e09b9ea
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 18:19:41 2024 -0600
+
+    started board
+
+commit 463c219b71ecd337912e6bb619c8013406b16573
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 12:42:42 2024 -0600
+
+    added function signatures and delcared variables
+
+commit d0b92c84a6378aca0724dcc281b26380531580f3
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 12:37:35 2024 -0600
+
+    init clueGame package and files
+
+commit 2909bdc2eed02c4bb3848a34936098d210511c07
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 12:29:51 2024 -0600
+
+    moved game files to data directory
+
+commit cb18251260ae152c4aa521565861e39e272fd9ea
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Oct 9 12:26:49 2024 -0600
+
+    added init files from canvas
+
 commit 2b6f2ade55b7a7d00f965064337fc468c15bebe6
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Mon Oct 7 23:24:06 2024 -0600
