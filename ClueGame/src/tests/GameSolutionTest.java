@@ -23,9 +23,14 @@ class GameSolutionTest {
 	
 	@Test
 	void testAccusation() {
-		Solution solution = new Solution(new Card("Venture Center", CardType.ROOM), new Card("Mines Parking", CardType.PERSON), new Card("Barrel of Rum", CardType.WEAPON));
+		Solution solution = board.getSolution();
 		assertTrue(board.checkAccusation(solution.getRoom(), solution.getPerson(), solution.getWeapon()));
+		
+		assertFalse(board.checkAccusation(solution.getRoom(), new Card("Blaster", CardType.PERSON), solution.getWeapon()));
+		assertFalse(board.checkAccusation(new Card("Venture Center", CardType.ROOM), solution.getPerson(), new Card("Parking Ticket", CardType.WEAPON)));
+		assertFalse(board.checkAccusation(solution.getRoom(), new Card("Blaster", CardType.PERSON), solution.getWeapon()));
 	}
+	
 	
 	
 

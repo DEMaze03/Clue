@@ -31,7 +31,8 @@ public class Board {
 	private ArrayList<String> roomsToPick = new ArrayList<String>();
 	private ArrayList<String> peopleToPick = new ArrayList<String>();
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
-	private static Solution solution;
+	private Solution theAnswer = new Solution(new Card("Venture Center", CardType.ROOM), new Card("Mines Parking", CardType.PERSON), new Card("Barrel of Rum", CardType.WEAPON));
+	
 	
 	
 
@@ -356,7 +357,7 @@ public class Board {
 		solutionIndex = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
 		String solutionWeapon = weaponsToPick.get(solutionIndex);
 		//use the calculated room, person, and weapon for the constructor of the solution class
-		solution = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
+		theAnswer = new Solution(deck.get(solutionRoom), deck.get(solutionPerson), deck.get(solutionWeapon));
 		
 		//Add all the cards from the map into an arrayList to help deal out the cards
 		ArrayList<Card> cards = new ArrayList<Card>();
@@ -375,6 +376,22 @@ public class Board {
 						cards.remove(index);		
 					}
 				}
+	}
+	
+	public boolean checkAccusation(Card room, Card person, Card weapon) {
+		if (!room.equals(theAnswer.getRoom())) {
+			return false;
+		}
+		
+		if (!person.equals(theAnswer.getPerson())) {
+			return false;
+		}
+		
+		if (!weapon.equals(theAnswer.getWeapon())) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	
@@ -427,5 +444,8 @@ public class Board {
 		}
 		public Player returnPlayer(String name) {
 			return players.get(name);
+		}
+		public Solution getSolution() {
+			return theAnswer;
 		}
 }
