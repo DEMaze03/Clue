@@ -30,6 +30,14 @@ public abstract class Player {
 		cards.add(card);
 	}
 	
+	public Card disproveSuggestion(Card card) {
+		if (this.cards.contains(card)) {
+			return card;
+		} else {
+			return null;
+		}
+	}
+	
 	public boolean getIsHuman() {
 		return isHuman;
 	}
