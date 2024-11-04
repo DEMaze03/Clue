@@ -31,6 +31,23 @@ class GameSolutionTest {
 		assertFalse(board.checkAccusation(solution.getRoom(), new Card("Blaster", CardType.PERSON), solution.getWeapon()));
 	}
 	
+	@Test
+	void testDisprove() {
+		// test one matching card
+		Card exCard = new Card("Venture Center", CardType.ROOM);
+		assertTrue(exCard.equals(board.returnPlayer("PCJ").disproveSuggestion(exCard)));
+		
+		// test no matching card
+		Card nullCard = new Card("Marquez", CardType.ROOM);
+		assertEquals(null, (board.returnPlayer("PCJ").disproveSuggestion(nullCard)));
+		
+		// add multiple test card
+	}
+	
+	@Test
+	void testsuggestion() {
+		
+	}
 	
 	
 
