@@ -22,7 +22,7 @@ public abstract class Player {
 		this.row = row;
 		this.col = col;
 		this.isHuman = isHuman;
-		cards = new ArrayList<Card>();
+		this.cards = new ArrayList<Card>();
 	}
 	
 	//updateHand() - adds the provided card to the cards arrayList
