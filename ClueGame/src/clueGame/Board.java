@@ -395,9 +395,25 @@ public class Board {
 		return true;
 	}
 	
-	public Card handleSuggestion(Player suggester, Card suggestion) {
-		
-		
+	public Card handleSuggestion(Player suggester, Solution suggestion) {
+		for (var player : players.entrySet()) {
+			
+			if (player.getValue().getName().equals(suggester.getName())) {
+				continue;
+			}
+			
+			if (player.getValue().disproveSuggestion(suggestion.getRoom()) != (null)) {
+				return suggestion.getRoom();
+			}
+			
+			if (player.getValue().disproveSuggestion(suggestion.getPerson()) != (null)) {
+				return suggestion.getPerson();
+			}
+			
+			if (player.getValue().disproveSuggestion(suggestion.getWeapon()) != (null)) {
+				return suggestion.getWeapon();
+			}
+		}
 		
 		return null;
 	}

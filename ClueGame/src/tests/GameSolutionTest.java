@@ -15,6 +15,7 @@ class GameSolutionTest {
 	private static Card parkingTicketCard;
 	private static Card minesParkingCard;
 	private static Card tennisRacketCard;
+	private static Card ventureCard;
 	@BeforeAll
 	static void setUp() {
 		board = Board.getInstance();
@@ -26,6 +27,7 @@ class GameSolutionTest {
 		parkingTicketCard = new Card("Parking Ticket", CardType.WEAPON);
 		minesParkingCard = new Card("Mines Parking", CardType.PERSON);
 		tennisRacketCard = new Card("Tennis Racket", CardType.WEAPON);
+		ventureCard = new Card("Venture Center", CardType.ROOM);
 		
 	}
 	
@@ -64,17 +66,19 @@ class GameSolutionTest {
 	@Test
 	void testSuggestion() {
 		
-		Solution suggestion = new Solution();
+		Solution suggestion = new Solution(ventureCard, new Card("Blaster", CardType.PERSON), new Card("Clear Whiskey", CardType.WEAPON));
 		
 		board.returnPlayer("PCJ").updateHand(parkingTicketCard);
 		board.returnPlayer("Marvin").updateHand(tennisRacketCard);
 		board.returnPlayer("Wario").updateHand(minesParkingCard);
 
-		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), parkingTicketCard));
-		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), minesParkingCard));
-//		assertEquals(answer, board.handleSuggestion(null, null));
-//		assertEquals(answer, board.handleSuggestion(null, null));
-		
+		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), suggestion));
+		board.returnPlayer("PCJ").updateHand(ventureCard);
+		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), suggestion));
+		board.returnPlayer("PCJ").updateHand(ventureCard);
+		board.returnPlayer("PCJ").updateHand(parkingTicketCard);
+		assertEquals(ventureCard, board.handleSuggestion(board.returnPlayer("Marvin"), suggestion));
+		assertEquals(ventureCard, board.handleSuggestion(board.returnPlayer("Wario"), suggestion));
 		
 	}
 	
