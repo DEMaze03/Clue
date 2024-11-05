@@ -31,45 +31,47 @@ class ComputerAITest {
 	
 	@Test
 	public void SuggestionTests() {
+
 		Player testPlayer = new ComputerPlayer("Test Player", "Yellow", 2, 2, true);
 		
 		
 		//Make sure room matches current location
-		Solution AISolution = testPlayer.createSuggestion();
+		Solution AISolution = testPlayer.createSuggestion(board);
 		Room boardRoom = board.getRoom(board.getCell(2, 2));
 		assertEquals(AISolution.getRoom().getCardName(),boardRoom.getName());
 		
 		
 		//if only one weapon/person not seen, select only that one
 			//Add all but one weapon to seen list
-		Card seenWhisk = new Card("Clear Whiskey", CardType.WEAPON);
-		Card seenBell = new Card("College Bell", CardType.WEAPON);
-		Card seenTicket = new Card("Parking Ticket", CardType.WEAPON);
-		Card seenGarlic = new Card("Garlic", CardType.WEAPON);
-		Card seenRacket = new Card("Tennis Racket", CardType.WEAPON);
+		testPlayer = new ComputerPlayer("Test Player", "Yellow", 2, 2, true);
+		Card seenWhisk = board.getDeck().get("Clear Whiskey");
+		Card seenBell = board.getDeck().get("College Bell");
+		Card seenTicket = board.getDeck().get("Parking Ticket");
+		Card seenGarlic = board.getDeck().get("Garlic");
+		Card seenRacket = board.getDeck().get("Tennis Racket");
 		testPlayer.updateSeenCard(seenRacket);
 		testPlayer.updateSeenCard(seenWhisk);
 		testPlayer.updateSeenCard(seenBell);
 		testPlayer.updateSeenCard(seenGarlic);
 		testPlayer.updateSeenCard(seenTicket);
 			//Add all but one person to the seen list
-		Card seenWario = new Card("Wario", CardType.WEAPON);
-		Card seenWaluigi = new Card("Waluigi", CardType.WEAPON);
-		Card seenBlaster = new Card("Blaster", CardType.WEAPON);
-		Card seenMarvin = new Card("Marvin", CardType.WEAPON);
-		Card seenParking = new Card("Mines Parking", CardType.WEAPON);
+		Card seenWario = board.getDeck().get("Wario");
+		Card seenWaluigi = board.getDeck().get("Waluigi");
+		Card seenBlaster = board.getDeck().get("Blaster");
+		Card seenMarvin = board.getDeck().get("Marvin");
+		Card seenParking = board.getDeck().get("Mines Parking");
 		testPlayer.updateSeenCard(seenWario);
 		testPlayer.updateSeenCard(seenWaluigi);
 		testPlayer.updateSeenCard(seenBlaster);
 		testPlayer.updateSeenCard(seenMarvin);
 		testPlayer.updateSeenCard(seenParking);
 		
-		AISolution = testPlayer.createSuggestion();
+		AISolution = testPlayer.createSuggestion(board);
 		Card ExpectedSolutionPerson = new Card("PCJ", CardType.PERSON);
 		Card ExpectedSolutionWeapon = new Card("Barrel of Rum", CardType.WEAPON);
 			//assert equals the expected cards and the suggestion cards
-		assertEquals(ExpectedSolutionPerson, AISolution.getPerson());
-		assertEquals(ExpectedSolutionWeapon, AISolution.getWeapon());
+		assertEquals(ExpectedSolutionPerson.getCardName(), AISolution.getPerson().getCardName());
+		assertEquals(ExpectedSolutionWeapon.getCardName(), AISolution.getWeapon().getCardName());
 		
 		
 		testPlayer = new ComputerPlayer("Test Player", "Yellow", 2, 2, true);
@@ -80,10 +82,10 @@ class ComputerAITest {
 			//Add some people to the seen list
 		testPlayer.updateSeenCard(seenMarvin);
 		testPlayer.updateSeenCard(seenParking);
-		AISolution = testPlayer.createSuggestion();
+		AISolution = testPlayer.createSuggestion(board);
 		Card FirstPerson = AISolution.getPerson();
 		Card FirstWeapon = AISolution.getWeapon();
-		AISolution = testPlayer.createSuggestion();
+		AISolution = testPlayer.createSuggestion(board);
 		
 		//assert false that FirstPerson and FirstWeapon equal the new suggestion
 		assertEquals(false, FirstPerson.equals(AISolution.getPerson()));

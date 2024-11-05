@@ -1,13 +1,14 @@
 /*
  * computerPlayer - child class of Player that is used for all CPU controlled players
  * 
- * Author: Elijas Sliva
+ * Author: Elijas Sliva & Daylon Maze
  */
 
 package clueGame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class ComputerPlayer extends Player {
@@ -16,9 +17,42 @@ public class ComputerPlayer extends Player {
 		super(name, color, row, col, isHuman);
 	}
 	
-	public Solution createSuggestion(Card room, Card person, Card weapon) {
-		Solution sol = new Solution(room, person, weapon);
-		return sol;
+	//createSuggestion - method to create a random suggestion based on which cards the AI has/has not seen
+	public Solution createSuggestion(Board board) {
+		Card room = new Card(board.getRoom(board.getCell(this.getRow(),this.getCol())).getName(), CardType.ROOM);
+		
+		//Since the room in the suggestion will always be in the room the AI is in, we only need to separate and store weapons and people to suggest
+		ArrayList<Card> WeaponCardsNotSeen = new ArrayList<Card>();
+		ArrayList<Card> PersonCardsNotSeen = new ArrayList<Card>();
+		for (Map.Entry<String,Card> entry : board.getDeck().entrySet()) {
+			if(entry.getValue().getCardType() == CardType.ROOM){
+				continue;
+			}
+			if (this.getSeenCards().size() == 0){
+				if (entry.getValue().getCardType() == CardType.PERSON){
+					PersonCardsNotSeen.add(entry.getValue());
+				}
+				if (entry.getValue().getCardType() == CardType.WEAPON){
+					WeaponCardsNotSeen.add(entry.getValue());
+				}
+			}
+			
+				if (this.getSeenCards().contains(entry.getValue())){
+					continue;
+				}else {
+					if (entry.getValue().getCardType() == CardType.PERSON){
+						PersonCardsNotSeen.add(entry.getValue());
+					}
+					if (entry.getValue().getCardType() == CardType.WEAPON){
+						WeaponCardsNotSeen.add(entry.getValue());
+					}
+				}
+				
+		}
+		int personIndex = (int) ((Math.random() * ((PersonCardsNotSeen.size()-1) - 0)) + 0);
+		int weaponIndex = (int) ((Math.random() * ((WeaponCardsNotSeen.size()-1) - 0)) + 0);
+		Solution solution = new Solution(room, PersonCardsNotSeen.get(weaponIndex), WeaponCardsNotSeen.get(personIndex));
+		return solution;
 	}
 	
 	public BoardCell selectTarget(Board board, int roll) {

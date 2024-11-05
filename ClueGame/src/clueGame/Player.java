@@ -47,7 +47,7 @@ public abstract class Player {
 		}
 	}
 	
-	public Solution createSuggestion() {
+	public Solution createSuggestion(Board board) {
 		Card room = new Card("FIX THIS", CardType.ROOM);
 		Card person = new Card("FIX THIS", CardType.PERSON);
 		Card weapon = new Card("FIX THIS", CardType.WEAPON);
