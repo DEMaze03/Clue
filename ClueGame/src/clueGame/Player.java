@@ -14,6 +14,7 @@ public abstract class Player {
 	private int row, col;
 	private boolean isHuman;
 	private ArrayList<Card> cards;
+	private ArrayList<Card> seenCards;
 
 	
 	public Player(String name, String color, int row, int col, boolean isHuman) {
@@ -28,6 +29,11 @@ public abstract class Player {
 	//updateHand() - adds the provided card to the cards arrayList
 	public void updateHand(Card card) {
 		cards.add(card);
+		updateSeenCard(card);
+	}
+	
+	public void updateSeenCard(Card card) {
+		seenCards.add(card);
 	}
 	
 	public Card disproveSuggestion(Card card) {
@@ -36,6 +42,18 @@ public abstract class Player {
 		} else {
 			return null;
 		}
+	}
+	
+	public Solution createSuggestion() {
+		Card room = new Card("FIX THIS", CardType.ROOM);
+		Card person = new Card("FIX THIS", CardType.PERSON);
+		Card weapon = new Card("FIX THIS", CardType.WEAPON);
+		Solution solution = new Solution(room, person, weapon);
+		return solution;
+	}
+	
+	public BoardCell selectTarget(Board board, int roll) {
+		return board.getCell(this.getRow(), this.getCol());
 	}
 	
 	public boolean getIsHuman() {
@@ -48,6 +66,18 @@ public abstract class Player {
 	
 	public ArrayList<Card> getCards(){
 		return cards;
+	}
+	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getCol() {
+		return col;
+	}
+	
+	public String getColor() {
+		return color;
 	}
 
 }

@@ -1,3 +1,9 @@
+commit 9b40cb006fb64b7c784e00dcb97e9945a361db54
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Sun Nov 3 00:24:50 2024 -0600
+
+    Added more parameters to deck tests to ensure no card is dealt twice
+
 commit 18b4b1e83d0a420e8e241be087f5fe733e680594
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Sun Nov 3 00:03:29 2024 -0600

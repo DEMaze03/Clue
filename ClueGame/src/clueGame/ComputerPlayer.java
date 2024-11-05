@@ -11,4 +11,13 @@ public class ComputerPlayer extends Player {
 	public ComputerPlayer(String name, String color, int row, int col, boolean isHuman) {
 		super(name, color, row, col, isHuman);
 	}
+	
+	public Solution createSuggestion(Card room, Card person, Card weapon) {
+		Solution sol = new Solution(room, person, weapon);
+		return sol;
+	}
+	
+	public BoardCell selectTarget(Board board, int roll) {
+		return board.getCell(this.getRow(), this.getCol());
+	}
 }
