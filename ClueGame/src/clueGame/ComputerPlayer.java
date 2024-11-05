@@ -22,39 +22,46 @@ public class ComputerPlayer extends Player {
 		Card room = new Card(board.getRoom(board.getCell(this.getRow(),this.getCol())).getName(), CardType.ROOM);
 		
 		//Since the room in the suggestion will always be in the room the AI is in, we only need to separate and store weapons and people to suggest
-		ArrayList<Card> WeaponCardsNotSeen = new ArrayList<Card>();
-		ArrayList<Card> PersonCardsNotSeen = new ArrayList<Card>();
-		for (Map.Entry<String,Card> entry : board.getDeck().entrySet()) {
-			if(entry.getValue().getCardType() == CardType.ROOM){
+		ArrayList<Card> weaponCardsNotSeen = new ArrayList<Card>();
+		ArrayList<Card> personCardsNotSeen = new ArrayList<Card>();
+		
+		//loop over the deck in the board, ignoring room cards, and add all weapons/people not in seen list to separate ArrayLists
+		for (Map.Entry<String,Card> deckCard : board.getDeck().entrySet()) {
+			if(deckCard.getValue().getCardType() == CardType.ROOM){
 				continue;
 			}
+			//if seen list is empty, just add every non-room card
 			if (this.getSeenCards().size() == 0){
-				if (entry.getValue().getCardType() == CardType.PERSON){
-					PersonCardsNotSeen.add(entry.getValue());
+				if (deckCard.getValue().getCardType() == CardType.PERSON){
+					personCardsNotSeen.add(deckCard.getValue());
 				}
-				if (entry.getValue().getCardType() == CardType.WEAPON){
-					WeaponCardsNotSeen.add(entry.getValue());
+				if (deckCard.getValue().getCardType() == CardType.WEAPON){
+					weaponCardsNotSeen.add(deckCard.getValue());
 				}
 			}
 			
-				if (this.getSeenCards().contains(entry.getValue())){
+			//if current deck card is in seen list, continue, otherwise, add the deck card to the correct list
+				if (this.getSeenCards().contains(deckCard.getValue())){
 					continue;
 				}else {
-					if (entry.getValue().getCardType() == CardType.PERSON){
-						PersonCardsNotSeen.add(entry.getValue());
+					if (deckCard.getValue().getCardType() == CardType.PERSON){
+						personCardsNotSeen.add(deckCard.getValue());
 					}
-					if (entry.getValue().getCardType() == CardType.WEAPON){
-						WeaponCardsNotSeen.add(entry.getValue());
+					if (deckCard.getValue().getCardType() == CardType.WEAPON){
+						weaponCardsNotSeen.add(deckCard.getValue());
 					}
 				}
 				
 		}
-		int personIndex = (int) ((Math.random() * ((PersonCardsNotSeen.size()-1) - 0)) + 0);
-		int weaponIndex = (int) ((Math.random() * ((WeaponCardsNotSeen.size()-1) - 0)) + 0);
-		Solution solution = new Solution(room, PersonCardsNotSeen.get(weaponIndex), WeaponCardsNotSeen.get(personIndex));
+		//generate a random index to pick from the ArrayLists (if only one item, it will always be picked)
+		int personIndex = (int) ((Math.random() * ((personCardsNotSeen.size()-1) - 0)) + 0);
+		int weaponIndex = (int) ((Math.random() * ((weaponCardsNotSeen.size()-1) - 0)) + 0);
+		//create a new solution object and return it
+		Solution solution = new Solution(room, personCardsNotSeen.get(weaponIndex), weaponCardsNotSeen.get(personIndex));
 		return solution;
 	}
 	
+	//selectTargets - method to select a target using the board.getTargets() and board.calcTargets() methods
 	public BoardCell selectTarget(Board board, int roll) {
 		board.calcTargets(board.getCell(this.getRow(),this.getCol()), roll);
 		Set<BoardCell> targetList = board.getTargets();
@@ -67,16 +74,15 @@ public class ComputerPlayer extends Player {
 	        targetArrayList.add(f);
 	    }
 		
-		//check if cell is a room and if so, check if it's in the seen list. If it's not, add it to the return list
+		//check if cell is a room center and if so, check if it's in the seen list. If it's not, add it to the return list
 		for(BoardCell cell : targetArrayList) {
 			if (cell.isRoomCenter()) {
-				for(Card card : getSeenCards()) {
-					String cellName = board.getRoom(cell).getName();
-					String cardName = card.getCardName();
-					if (cardName.equals(cellName) == false) {
-						returnList.add(cell);
-					}
+				
+				if(this.getSeenCards().contains(board.getDeck().get(board.getRoom(cell).getName())) == false) {
+					returnList.add(cell);
 				}
+				
+				
 			}
 		}
 		if(returnList.size() > 0) {

@@ -103,7 +103,7 @@ class ComputerAITest {
 		
 		//if unseen room in list, select it
 			//Add all nearby rooms but one into seen list
-			Card seenRoom = new Card("McNeil", CardType.ROOM);
+			Card seenRoom = board.getDeck().get("McNeil");
 		testPlayer = new ComputerPlayer("Test Player", "Yellow", 11, 7, true);
 		testPlayer.updateSeenCard(seenRoom);
 		BoardCell cell1 = board.getCell(17, 9);
@@ -115,8 +115,8 @@ class ComputerAITest {
 		
 		//if seen room in list, randomly select
 			//same as above test, but just mark nearby room as seen and make sure other spaces are target
-		seenRoom = new Card("McNiel", CardType.ROOM);
-		Card seenRoom2 = new Card("Guggenheim", CardType.ROOM);
+		seenRoom = board.getDeck().get("McNeil");
+		Card seenRoom2 = board.getDeck().get("Guggenheim");
 		testPlayer = new ComputerPlayer("Test Player", "Yellow", 11, 7, true);
 		testPlayer.updateSeenCard(seenRoom);
 		testPlayer.updateSeenCard(seenRoom2);
