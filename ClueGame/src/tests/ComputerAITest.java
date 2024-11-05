@@ -101,11 +101,14 @@ class ComputerAITest {
 		
 		//if unseen room in list, select it
 			//Add all nearby rooms but one into seen list
-			Card seenRoom = new Card("McNiel", CardType.ROOM);
+			Card seenRoom = new Card("McNeil", CardType.ROOM);
 		testPlayer = new ComputerPlayer("Test Player", "Yellow", 11, 7, true);
 		testPlayer.updateSeenCard(seenRoom);
+		BoardCell cell1 = board.getCell(17, 9);
+		BoardCell cell2 = testPlayer.selectTarget(board, 4);
 			//assert that the unseen room is chosen as the target
-		assertEquals(board.getCell(17, 9),testPlayer.selectTarget(board, 3));
+		assertEquals(cell1.getRow(),cell2.getRow());
+		assertEquals(cell1.getCol(),cell2.getCol());
 		
 		
 		//if seen room in list, randomly select

@@ -26,6 +26,7 @@ public abstract class Player {
 		this.col = col;
 		this.isHuman = isHuman;
 		this.cards = new ArrayList<Card>();
+		this.seenCards = new ArrayList<Card>();
 	}
 	
 	//updateHand() - adds the provided card to the cards arrayList

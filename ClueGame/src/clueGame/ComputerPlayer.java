@@ -35,21 +35,24 @@ public class ComputerPlayer extends Player {
 		
 		//check if cell is a room and if so, check if it's in the seen list. If it's not, add it to the return list
 		for(BoardCell cell : targetArrayList) {
-			if (cell.isARoom()) {
+			if (cell.isRoomCenter()) {
 				for(Card card : getSeenCards()) {
-					if (card.getCardName().equals(board.getRoom(cell).getName()) == false) {
+					String cellName = board.getRoom(cell).getName();
+					String cardName = card.getCardName();
+					if (cardName.equals(cellName) == false) {
 						returnList.add(cell);
 					}
 				}
 			}
-			
-			if(returnList.size() > 0) {
-				//return random element from returnList
-			}else {
-				//return random element from targetArrayList
-			}
-			
-			
+		}
+		if(returnList.size() > 0) {
+			//return random element from returnList
+			int solutionIndex = (int) ((Math.random() * ((returnList.size()-1) - 0)) + 0);
+			return returnList.get(solutionIndex);
+		}else {
+			//return random element from targetArrayList
+			int solutionIndex = (int) ((Math.random() * ((targetArrayList.size()-1) - 0)) + 0);
+			return targetArrayList.get(solutionIndex);
 		}
 	}
 }

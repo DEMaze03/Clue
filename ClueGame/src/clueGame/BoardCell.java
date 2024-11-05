@@ -73,6 +73,14 @@ public class BoardCell {
 		return passageChar;
 	}
 	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getCol() {
+		return col;
+	}
+	
 	//SETTERS
 	
 	public void setRoom(boolean isRoom) {
