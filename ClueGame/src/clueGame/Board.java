@@ -63,7 +63,8 @@ public class Board {
 		}
 		calcAdjList();
 		
-		deal();
+		// commented out for tests
+//		deal();
 
 	}
 
@@ -394,9 +395,16 @@ public class Board {
 		return true;
 	}
 	
+	public Card handleSuggestion(Player suggester, Card suggestion) {
+		
+		
+		
+		return null;
+	}
+	
 	
 	//getTargets - return the board's targetList
-		public Set<BoardCell> getTargets() {
+	public Set<BoardCell> getTargets() {
 			return targetList;
 		}
 	
@@ -406,46 +414,46 @@ public class Board {
 
 	
 	//setConfigFiles - set the config .csv and .txt files
-		public void setConfigFiles(String csv, String txt) {
+	public void setConfigFiles(String csv, String txt) {
 			theInstance.layoutConfigFile = "data/" + csv;
 			theInstance.setupConfigFile = "data/" + txt;
 
-		}
+	}
 
-		// SETTERS
+	// SETTERS
 
-		// GETTERS
-		public Room getRoom(char c) {
-			return roomMap.get(c);
-		}
-		
-		public Room getRoom(BoardCell cell) {
-			return roomMap.get(cell.getChar());
-		}
-		
-		public int getNumRows() {
-			return numRows;
-		}
-		
-		public int getNumColumns() {
-			return numColumns;
-		}
-		
-		public BoardCell getCell(int row, int col) {
-			return this.grid[row][col];
-		}
-		
-		public Map<String, Card> getDeck() {
-			return deck;
-		}
-		
-		public Map<String, Player> getPlayers() {
-			return players;
-		}
-		public Player returnPlayer(String name) {
-			return players.get(name);
-		}
-		public Solution getSolution() {
-			return theAnswer;
-		}
+	// GETTERS
+	public Room getRoom(char c) {
+		return roomMap.get(c);
+	}
+	
+	public Room getRoom(BoardCell cell) {
+		return roomMap.get(cell.getChar());
+	}
+	
+	public int getNumRows() {
+		return numRows;
+	}
+	
+	public int getNumColumns() {
+		return numColumns;
+	}
+	
+	public BoardCell getCell(int row, int col) {
+		return this.grid[row][col];
+	}
+	
+	public Map<String, Card> getDeck() {
+		return deck;
+	}
+	
+	public Map<String, Player> getPlayers() {
+		return players;
+	}
+	public Player returnPlayer(String name) {
+		return players.get(name);
+	}
+	public Solution getSolution() {
+		return theAnswer;
+	}
 }

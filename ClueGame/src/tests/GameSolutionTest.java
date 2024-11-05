@@ -6,17 +6,15 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.*;
 
-import clueGame.Board;
-import clueGame.Card;
-import clueGame.CardType;
-import clueGame.HumanPlayer;
-import clueGame.Player;
-import clueGame.Solution;
+import clueGame.*;
 
 class GameSolutionTest {
 
 	private static Board board;
-	
+		
+	private static Card parkingTicketCard;
+	private static Card minesParkingCard;
+	private static Card tennisRacketCard;
 	@BeforeAll
 	static void setUp() {
 		board = Board.getInstance();
@@ -24,6 +22,11 @@ class GameSolutionTest {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
+	
+		parkingTicketCard = new Card("Parking Ticket", CardType.WEAPON);
+		minesParkingCard = new Card("Mines Parking", CardType.PERSON);
+		tennisRacketCard = new Card("Tennis Racket", CardType.WEAPON);
+		
 	}
 	
 	@Test
@@ -52,11 +55,26 @@ class GameSolutionTest {
 		assertEquals(null, (board.returnPlayer("PCJ").disproveSuggestion(nullCard)));
 		
 		// add multiple test card
-		
+		testPlayer.updateHand(new Card("Parking Ticket", CardType.WEAPON));
+		testPlayer.updateHand(new Card("Mines Parking", CardType.PERSON));
+		assertTrue(exCard.equals(testPlayer.disproveSuggestion(exCard)));
+
 	}
 	
 	@Test
 	void testSuggestion() {
+		
+		Solution suggestion = new Solution();
+		
+		board.returnPlayer("PCJ").updateHand(parkingTicketCard);
+		board.returnPlayer("Marvin").updateHand(tennisRacketCard);
+		board.returnPlayer("Wario").updateHand(minesParkingCard);
+
+		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), parkingTicketCard));
+		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), minesParkingCard));
+//		assertEquals(answer, board.handleSuggestion(null, null));
+//		assertEquals(answer, board.handleSuggestion(null, null));
+		
 		
 	}
 	
