@@ -1,3 +1,8 @@
+/*
+ * GameSolutionTests - tests to ensure suggestion and accusation handling works well.
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -33,12 +38,32 @@ class GameSolutionTest {
 	
 	@Test
 	void testAccusation() {
+		//make sure the correct accusation returns true
 		Solution solution = board.getSolution();
 		assertTrue(board.checkAccusation(solution.getRoom(), solution.getPerson(), solution.getWeapon()));
 		
-		assertFalse(board.checkAccusation(new Card("Venture Center", CardType.ROOM), solution.getPerson(), new Card("Parking Ticket", CardType.WEAPON)));
-		assertFalse(board.checkAccusation(solution.getRoom(), new Card("Blaster", CardType.PERSON), solution.getWeapon()));
-		assertFalse(board.checkAccusation(solution.getRoom(), solution.getPerson(), new Card("Parking Ticket", CardType.WEAPON)));
+		//create a new person, if it happens to be the same person in the solution, pick something else
+		Card newPerson = board.getDeck().get("PCJ");
+		if(newPerson.equals(solution.getPerson())) {
+			newPerson = board.getDeck().get("Blaster");
+		}
+		
+		//create a new room, if it happens to be the same person in the solution, pick something else
+		Card newRoom = board.getDeck().get("McNeil");
+		if(newPerson.equals(solution.getRoom())) {
+			newRoom = board.getDeck().get("Venture Center");
+		}
+		
+		//create a new weapon, if it happens to be the same person in the solution, pick something else
+		Card newWeapon = board.getDeck().get("Garlic");
+		if(newPerson.equals(solution.getWeapon())) {
+			newWeapon = board.getDeck().get("Parking Ticket");
+		}
+		
+		//make sure if the wrong accusation is made, it returns false
+		assertFalse(board.checkAccusation(newRoom, solution.getPerson(), newWeapon));
+		assertFalse(board.checkAccusation(solution.getRoom(), newPerson, solution.getWeapon()));
+		assertFalse(board.checkAccusation(solution.getRoom(), solution.getPerson(), newWeapon));
 	}
 	
 	@Test
@@ -71,7 +96,8 @@ class GameSolutionTest {
 		board.returnPlayer("PCJ").updateHand(parkingTicketCard);
 		board.returnPlayer("Marvin").updateHand(tennisRacketCard);
 		board.returnPlayer("Wario").updateHand(minesParkingCard);
-
+		
+		
 		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), suggestion));
 		board.returnPlayer("PCJ").updateHand(ventureCard);
 		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), suggestion));

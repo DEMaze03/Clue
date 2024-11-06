@@ -1,3 +1,8 @@
+/*
+ * ComputerAITest - tests to ensure the ComputerPlayer class selects targets and makes suggestions based on Clue rules.
+ * Authors: Daylon Maze
+ */
+
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +36,6 @@ class ComputerAITest {
 	
 	@Test
 	public void SuggestionTests() {
-
 		Player testPlayer = new ComputerPlayer("Test Player", "Yellow", 2, 2, true);
 		
 		
@@ -83,13 +87,31 @@ class ComputerAITest {
 		testPlayer.updateSeenCard(seenMarvin);
 		testPlayer.updateSeenCard(seenParking);
 		AISolution = testPlayer.createSuggestion(board);
-		Card FirstPerson = AISolution.getPerson();
-		Card FirstWeapon = AISolution.getWeapon();
-		AISolution = testPlayer.createSuggestion(board);
 		
 		//assert false that FirstPerson and FirstWeapon equal the new suggestion
-		assertEquals(false, FirstPerson.equals(AISolution.getPerson()));
-		assertEquals(false, FirstWeapon.equals(AISolution.getWeapon()));
+		Card previousWeapon = AISolution.getWeapon();
+		Card previousPerson = AISolution.getPerson();
+		int timesPersonDeviated = 0;
+		int timesWeaponDeviated = 0;
+		for(int i = 0; i < 1000; i++) {
+			Solution newSolution =testPlayer.createSuggestion(board);
+			if (newSolution.getPerson().equals(previousPerson) == false){
+				timesPersonDeviated ++;
+				previousPerson = newSolution.getPerson();
+			}
+			if (newSolution.getWeapon().equals(previousWeapon) == false){
+				timesWeaponDeviated ++;
+				previousWeapon = newSolution.getWeapon();
+			}
+			
+		}
+		
+		if((timesPersonDeviated >0) && (timesWeaponDeviated > 0)){
+			assert true;
+		}else {
+			assert false;
+		}
+		
 		
 	}
 	
@@ -97,9 +119,20 @@ class ComputerAITest {
 	public void TargetTests() {
 		Player testPlayer = new ComputerPlayer("Test Player", "Yellow", 6, 24, true);
 		//If no rooms in list, select randomly
-		BoardCell FirstTarget = testPlayer.selectTarget(board , 3);
-		BoardCell SecondTarget = testPlayer.selectTarget(board , 3);
-		assertEquals(false, FirstTarget.equals(SecondTarget));
+		BoardCell previousTarget = testPlayer.selectTarget(board, 3);
+		int timesDeviated = 0;
+		for(int i = 0; i < 1000; i ++) {
+			BoardCell newTarget = testPlayer.selectTarget(board, 3);
+			if(newTarget.equals(previousTarget) == false) {
+				previousTarget = newTarget;
+				timesDeviated ++;
+			}
+		}
+		if(timesDeviated > 0) {
+			assert true;
+		}else {
+			assert false;
+		}
 		
 		//if unseen room in list, select it
 			//Add all nearby rooms but one into seen list
@@ -121,10 +154,20 @@ class ComputerAITest {
 		testPlayer.updateSeenCard(seenRoom);
 		testPlayer.updateSeenCard(seenRoom2);
 			//assert that the unseen room is chosen as the target
-		FirstTarget = testPlayer.selectTarget(board , 3);
-		SecondTarget = testPlayer.selectTarget(board , 3);
-		assertEquals(false, FirstTarget.equals(SecondTarget));
-		
+		previousTarget = testPlayer.selectTarget(board, 3);
+		timesDeviated = 0;
+		for(int i = 0; i < 1000; i ++) {
+			BoardCell newTarget = testPlayer.selectTarget(board, 3);
+			if(newTarget.equals(previousTarget) == false) {
+				previousTarget = newTarget;
+				timesDeviated ++;
+			}
+		}
+		if(timesDeviated > 0) {
+			assert true;
+		}else {
+			assert false;
+		}
 	}
 	
 	

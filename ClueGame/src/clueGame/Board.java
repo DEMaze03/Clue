@@ -47,6 +47,7 @@ public class Board {
 
 	//initialize - method to initialize the game board by calling loadSetupConfig and loadLayoutConfig
 	public void initialize() {
+		deck = new HashMap<String, Card>(); 
 		
 		try {
 			loadSetupConfig();
@@ -63,8 +64,7 @@ public class Board {
 		}
 		calcAdjList();
 		
-		// commented out for tests
-//		deal();
+		deal();
 
 	}
 

@@ -82,7 +82,7 @@ public class ComputerPlayer extends Player {
 					returnList.add(cell);
 				}
 				
-				
+			
 			}
 		}
 		if(returnList.size() > 0) {
