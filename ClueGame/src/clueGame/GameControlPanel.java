@@ -54,12 +54,22 @@ public class GameControlPanel extends JPanel {
 		
 		////
 		JTextField guess = new JTextField();
+		JLabel guessLabel = new JLabel("Make a guess");
+		JPanel guessPanel = new JPanel(new GridLayout(1,0));
+		guessPanel.add(guessLabel, BorderLayout.NORTH);
+		guessPanel.add(guess, BorderLayout.CENTER);
+		
 		JTextField guessResult = new JTextField();
+		JLabel guessResultLabel = new JLabel("Guess Result: ");
+		JPanel guessResultPanel = new JPanel(new GridLayout(1,0));
+		guessResultPanel.add(guessResultLabel, BorderLayout.NORTH);
+		guessResultPanel.add(guessResult, BorderLayout.CENTER);
+		
 		
 		JPanel lowerGuessResult = new JPanel();
 		lowerGuessResult.setLayout(new GridLayout(1,2));
-		lowerGuessResult.add(guess);
-		lowerGuessResult.add(guessResult);
+		lowerGuessResult.add(guessPanel);
+		lowerGuessResult.add(guessResultPanel);
 		
 		frame.add(twinPane, BorderLayout.NORTH);
 		frame.add(lowerGuessResult, BorderLayout.EAST);
