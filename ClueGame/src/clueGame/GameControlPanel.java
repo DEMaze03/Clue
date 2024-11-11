@@ -1,3 +1,8 @@
+/*
+ * GameControlPanel - class to create a JPanel that houses the control panel for the game. Includes setters for game clarity
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.BorderLayout;
@@ -26,12 +31,7 @@ public class GameControlPanel extends JPanel {
 	
 	
 	public GameControlPanel() {
-//		JButton button1 = new JButton();
-//		button1.setText("button1");
-//		button1.setSize(200,  200);
-//		button1.setVisible(true);
-		
-		
+
 		turnLabel = new JLabel("Who's Turn?");
 		turnLabel.setVisible(true);
 		turnTextField = new JTextField();
@@ -41,12 +41,6 @@ public class GameControlPanel extends JPanel {
 		turnPanel.setLayout(new GridLayout(2, 2));
 		turnPanel.add(turnLabel, BorderLayout.NORTH);
 		turnPanel.add(turnTextField, BorderLayout.CENTER);
-		
-		
-//		JButton button2 = new JButton();
-//		button2.setText("button2");
-//		button2.setSize(200,  200);
-//		button2.setVisible(true);
 		
 		rollLabel = new JLabel("Roll: ");
 		rollLabel.setVisible(true);
@@ -77,7 +71,6 @@ public class GameControlPanel extends JPanel {
 		twinPane.add(button3);
 		twinPane.add(button4);
 		
-		////
 		guess = new JTextField();
 		guess.setEditable(false);
 		guessLabel = new JLabel("Make a guess");
@@ -114,7 +107,7 @@ public class GameControlPanel extends JPanel {
 	public void setTurn(Player player, int roll) {
 		this.rollTextField.setText(Integer.toString(roll));
 		this.turnTextField.setText(player.getName());
-		this.turnTextField.setBackground(player.getColor());
+		this.turnTextField.setBackground(player.getColorObject());
 	}
 	
 	
@@ -125,12 +118,10 @@ public class GameControlPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setContentPane(gamePanel);
 		frame.setSize(750, 180);  // size the frame
-		
-		
 		frame.setVisible(true); // make it visible
 		
 		// test filling in the data
-				gamePanel.setTurn(new ComputerPlayer( "Mario", "Purple", 0, 0, false), 5);
+				gamePanel.setTurn(new ComputerPlayer( "Waluigi", "Purple", 0, 0, false), 5);
 				gamePanel.setGuess( "I have no guess!");
 				gamePanel.setGuessResult( "So you have nothing?");
 	}

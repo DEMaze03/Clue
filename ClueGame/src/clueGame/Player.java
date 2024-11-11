@@ -83,7 +83,11 @@ public abstract class Player {
 		return col;
 	}
 	
-	public Color getColor() {
+	public String getColor() {
+		return color;
+	}
+	
+	public Color getColorObject() {
 		if(color.equals("Red")) {
 			return Color.red;
 		}else if(color.equals("Orange")) {
@@ -95,7 +99,7 @@ public abstract class Player {
 		}else if(color.equals("Green")) {
 			return Color.green;
 		}else if(color.equals("Purple")) {
-			return new Color(195,0,255);
+			return new Color(175,0,255);
 		}else {
 			return Color.black;
 		}
