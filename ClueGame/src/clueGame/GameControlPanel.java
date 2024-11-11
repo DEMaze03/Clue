@@ -20,17 +20,35 @@ public class GameControlPanel extends JPanel {
 		GameControlPanel gamePanel = new GameControlPanel();
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
+		frame.setContentPane(gamePanel);
+		
+//		JButton button1 = new JButton();
+//		button1.setText("button1");
+//		button1.setSize(200,  200);
+//		button1.setVisible(true);
+		
+		JLabel turnLabel = new JLabel("Who's Turn?");
+		turnLabel.setVisible(true);
+		JTextField turnTextField = new JTextField();
+		
+		JPanel turnPanel = new JPanel();
+		turnPanel.setLayout(new GridLayout(2, 2));
+		turnPanel.add(turnLabel, BorderLayout.NORTH);
+		turnPanel.add(turnTextField, BorderLayout.CENTER);
 		
 		
-		JButton button1 = new JButton();
-		button1.setText("button1");
-		button1.setSize(200,  200);
-		button1.setVisible(true);
+//		JButton button2 = new JButton();
+//		button2.setText("button2");
+//		button2.setSize(200,  200);
+//		button2.setVisible(true);
 		
-		JButton button2 = new JButton();
-		button2.setText("button2");
-		button2.setSize(200,  200);
-		button2.setVisible(true);
+		JLabel rollLabel = new JLabel("Roll: ");
+		rollLabel.setVisible(true);
+		JTextField rollTextField = new JTextField();
+		JPanel rollPanel = new JPanel();
+		rollPanel.setLayout(new GridLayout(1, 2));
+		rollPanel.add(rollLabel, BorderLayout.NORTH);
+		rollPanel.add(rollTextField, BorderLayout.CENTER);
 		
 		JButton button3 = new JButton();
 		button3.setText("make  accusation");
@@ -42,13 +60,13 @@ public class GameControlPanel extends JPanel {
 		button4.setSize(200,  200);
 		button4.setVisible(true);
 	
-		frame.setContentPane(gamePanel);
-		frame.setLayout(new GridLayout(2, 0));
+
+		frame.setLayout(new GridLayout(2, 1));
 		JPanel twinPane = new JPanel();
 		twinPane.setLayout(new GridLayout(1,4));
 		
-		twinPane.add(button1);
-		twinPane.add(button2);
+		twinPane.add(turnPanel);
+		twinPane.add(rollPanel);
 		twinPane.add(button3);
 		twinPane.add(button4);
 		
@@ -74,7 +92,7 @@ public class GameControlPanel extends JPanel {
 		frame.add(twinPane, BorderLayout.NORTH);
 		frame.add(lowerGuessResult, BorderLayout.EAST);
 		
-		
+
 
 //		twinPane.setLayout(new GridLayout(1, 2));
 		
