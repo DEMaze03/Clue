@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.awt.Color;
+
 /*
  * Player - Parent class used for all players in the game
  * 
@@ -81,8 +83,22 @@ public abstract class Player {
 		return col;
 	}
 	
-	public String getColor() {
-		return color;
+	public Color getColor() {
+		if(color.equals("Red")) {
+			return Color.red;
+		}else if(color.equals("Orange")) {
+			return Color.orange;
+		}else if(color.equals("Blue")) {
+			return Color.blue;
+		}else if(color.equals("Yellow")) {
+			return Color.yellow;
+		}else if(color.equals("Green")) {
+			return Color.green;
+		}else if(color.equals("Purple")) {
+			return new Color(195,0,255);
+		}else {
+			return Color.black;
+		}
 	}
 	
 	public ArrayList<Card> getSeenCards(){

@@ -1,3 +1,93 @@
+commit bcb7f651fd0522248a9dad709634dc2237ab8c38
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 5 17:39:56 2024 -0700
+
+    Rewrote AI tests and Suggestion tests to more accurately test random behavior
+
+commit fd13fd6e6448bf0fc21eb315987716bce457635a
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 5 15:34:39 2024 -0700
+
+    Refactored code
+
+commit 3925a23759dcff80f7159e556c213724ca9c2f9e
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 5 15:21:37 2024 -0700
+
+    Got Suggestion tests to pass
+
+commit 75cf743538d32d3fc432d7517699bd172ea0c11b
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 5 12:47:52 2024 -0700
+
+    Got AI target tests to pass
+
+commit 1c7de1281ef09fa68abc93768b250935b303debc
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 4 23:46:23 2024 -0700
+
+    Moved selectTargets() to ComputerPlayer since the method is specialized for that class
+
+commit 40d393fe7b7f1b3c8568ee350ebf541f609d2ea5
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 4 23:42:16 2024 -0700
+
+    began implementing Player.selectTarget()
+
+commit 26899d360d1cea6962253207fb4da49cb9a6f57a
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 4 23:06:47 2024 -0700
+
+    Wrote tests for computer player AI
+
+commit a0e723602198f37fa2eefe3084fdfd78e0633e7e
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 4 18:42:53 2024 -0700
+
+    added testSuggestion tests
+
+commit 924e3a01b2b0cb8daaedb097ec06d7bd233c47ab
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 4 18:06:18 2024 -0700
+
+    added testDisprove and started testSuggestion
+
+commit 270a0c242f4077963c8621fa380709a8f5199f47
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 4 13:26:47 2024 -0700
+
+    fixed test
+
+commit c1d9f3a6498213645d3733b5d2734c72316f0f76
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 3 20:50:49 2024 -0700
+
+    added disproveSuggestion function
+
+commit a2eb0c4afb1ec00ae3ef204589dcadf7521e1733
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 3 20:50:18 2024 -0700
+
+    added disprove test
+
+commit b96ef2b962f0b87a344bedf4a8baa5ab1e4148dd
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 3 19:51:31 2024 -0700
+
+    got accusation test passing
+
+commit a8f0a68101fd31cc483b210f70508d0c34f9e7a6
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 3 19:35:08 2024 -0700
+
+    added init AI test
+
+commit 06ea9a1918f8806ef1566003c6cb81f22750ee4b
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 3 19:34:50 2024 -0700
+
+    added init accusation test
+
 commit 9b40cb006fb64b7c784e00dcb97e9945a361db54
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Sun Nov 3 00:24:50 2024 -0600
