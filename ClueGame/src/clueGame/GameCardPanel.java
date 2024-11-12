@@ -48,6 +48,8 @@ public class GameCardPanel extends JPanel{
 		cardPanel.add(weaponPanel);
 		cardPanel.setBorder(BorderFactory.createTitledBorder("Known Cards"));
 		cardPanel.setVisible(true);
+		
+		this.setLayout(new BorderLayout());
 		this.add(cardPanel);
 		
 		
