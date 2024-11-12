@@ -1,15 +1,12 @@
 package clueGame;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -26,7 +23,10 @@ public class GameCardPanel extends JPanel {
 	private JPanel weaponSeen;
 	private JPanel twinPane;
 	
+	
+	// default constructor 
 	public GameCardPanel(HumanPlayer player) {
+		// create known card panel
 		this.player = player;
 		this.setLayout(new GridLayout(1,0));
 		twinPane = new JPanel();
@@ -34,6 +34,7 @@ public class GameCardPanel extends JPanel {
 		twinPane.setLayout(new GridLayout(3,0));
 		
 		
+		// create known people category
 		peoplePanel = new JPanel();
 		peoplePanel.setLayout(new GridLayout(4,0));
 		peoplePanel.setBorder(new TitledBorder(new LineBorder(Color.BLACK), "Known People:"));
@@ -47,7 +48,7 @@ public class GameCardPanel extends JPanel {
 		peopleSeen = new JPanel();
 		peoplePanel.add(peopleSeen);
 		
-		
+		// create known room category
 		roomPanel = new JPanel();
 		roomPanel.setLayout(new GridLayout(4,0));
 		roomPanel.setBorder(new TitledBorder(new LineBorder(Color.BLACK), "Known Rooms:"));
@@ -61,6 +62,7 @@ public class GameCardPanel extends JPanel {
 		roomSeen = new JPanel();
 		roomPanel.add(roomSeen);
 		
+		// create known weapon category
 		weaponPanel = new JPanel();
 		weaponPanel.setLayout(new GridLayout(4,0));
 		weaponPanel.setBorder(new TitledBorder(new LineBorder(Color.BLACK), "Known Weapons:"));
@@ -74,6 +76,7 @@ public class GameCardPanel extends JPanel {
 		weaponSeen = new JPanel();
 		weaponPanel.add(weaponSeen);
 		
+		// for every card in the player hand, add it to the correct category.
 		for(Card card : player.getCards()) {
 				switch(card.getCardType()) {
 				case CardType.ROOM:
@@ -99,7 +102,9 @@ public class GameCardPanel extends JPanel {
 		}
 	}
 	
+	// refresh panel function
 	public void updatePanels() {
+		// remove all cards and then add them back
 		roomSeen.removeAll();
 		roomHand.removeAll();
 		peopleSeen.removeAll();
@@ -158,7 +163,7 @@ public class GameCardPanel extends JPanel {
 		twinPane.add(peoplePanel);
 		twinPane.add(roomPanel);
 		twinPane.add(weaponPanel);	
-		this.add( twinPane ) ;   // causes swing to either add or readd the entire panel and recalculate it
+		this.add( twinPane ) ;   // causes swing to either add or read the entire panel and recalculate it
 		
 	}
 	
