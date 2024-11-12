@@ -9,6 +9,7 @@ package clueGame;
 public class Card {
 	private String cardName;
 	private CardType cardType;
+	private Player owner;
 	
 	public Card(String cardName, CardType cardType) {
 		this.cardName = cardName;
@@ -33,12 +34,22 @@ public class Card {
 		return true;
 	}
 	
+	//setters
+	public void setOwner(Player p) {
+		this.owner = p;
+	}
+	
+	//getters
 	public CardType getCardType() {
 		return cardType;
 	}
 	
 	public String getCardName() {
 		return cardName;
+	}
+	
+	public Player getOwner() {
+		return owner;
 	}
 
 }

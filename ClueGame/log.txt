@@ -1,3 +1,39 @@
+commit f66a295e45f2e8e417eb21037e3480fbc6732f71
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 11 02:58:00 2024 -0700
+
+    Added a getter to Player class that returns a Color object and added comments to GameControlPanel
+
+commit 81261edb62ba442d2776b57352acfd6923efe63c
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 11 02:54:16 2024 -0700
+
+    Added panel into class constructor and added setters
+
+commit 4db01f7f0793f5f13abc6746c7a42f25b12d2cac
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 10 23:26:14 2024 -0700
+
+    added roll and turn panels
+
+commit b82a118b02b280b29a5029546e6c863fd306f321
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 10 23:13:41 2024 -0700
+
+    added guess status fields
+
+commit 7da512139b99a8c3eef3970924ed9683203e1bce
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Sun Nov 10 23:03:41 2024 -0700
+
+    updated frame to have basic control layout
+
+commit 8b76904d7fa0164e68aaf0f06abd66b26f6b2ee4
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 6 12:35:26 2024 -0700
+
+    GameControlPanel init
+
 commit bcb7f651fd0522248a9dad709634dc2237ab8c38
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Tue Nov 5 17:39:56 2024 -0700

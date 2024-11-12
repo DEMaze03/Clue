@@ -35,6 +35,7 @@ public abstract class Player {
 	public void updateHand(Card card) {
 		cards.add(card);
 		updateSeenCard(card);
+		card.setOwner(this);
 	}
 	
 	public void updateSeenCard(Card card) {
