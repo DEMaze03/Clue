@@ -1,3 +1,8 @@
+/*
+ * GameCardPanel - class to create a JPanel that displays the current card information about the game. Includes setters for game clarity
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.Color;
@@ -192,7 +197,7 @@ public class GameCardPanel extends JPanel {
 		player.updateSeenCard(seenCard3);
 		cardPanel.updatePanels();
 		frame.setContentPane(cardPanel);
-		frame.setSize(180, 800);  // size the frame
+		frame.setSize(180, 750);  // size the frame
 		frame.setVisible(true); // make it visible
 		
 		

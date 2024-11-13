@@ -31,8 +31,11 @@ public class BoardCell {
 		adjList.add(cell);
 	}
 	
-	//GETTERS
+	public void draw() {
+		
+	}
 	
+	//GETTERS
 	public Set<BoardCell> getAdjList(){
 		return adjList;
 	}

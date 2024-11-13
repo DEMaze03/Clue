@@ -5,6 +5,8 @@
 
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,7 +17,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel{
 	static Board theInstance = new Board();
 	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
 	public Set<BoardCell> adjList = new HashSet<BoardCell>();
@@ -416,6 +420,14 @@ public class Board {
 		}
 		
 		return null;
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		g.setColor(Color.BLUE);
+		g.drawRect(20, 20, 20, 20);
+		
 	}
 	
 	
