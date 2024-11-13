@@ -5,6 +5,7 @@
 
 package clueGame;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -165,10 +166,10 @@ public class GameCardPanel extends JPanel {
 			break;
 			}
 	}
-		twinPane.add(peoplePanel);
-		twinPane.add(roomPanel);
-		twinPane.add(weaponPanel);	
-		this.add( twinPane ) ;   // causes swing to either add or read the entire panel and recalculate it
+		twinPane.add(peoplePanel, BorderLayout.EAST);
+		twinPane.add(roomPanel, BorderLayout.EAST);
+		twinPane.add(weaponPanel, BorderLayout.EAST);	
+		this.add( twinPane, BorderLayout.EAST ) ;   // causes swing to either add or read the entire panel and recalculate it
 		
 	}
 	
