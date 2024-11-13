@@ -424,10 +424,24 @@ public class Board extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		this.setBackground(Color.BLACK);
 		
+		int width = this.getWidth()-160;
+		int height = this.getHeight()+40;
+		int cellWidth = (width/numRows);
+		int cellHeight = (height/numColumns);
+		if (cellWidth > cellHeight) {
+			cellWidth = cellHeight;
+		}
+		if (cellHeight > cellWidth) {
+			cellHeight = cellWidth;
+		}
 		
-		g.setColor(Color.BLUE);
-		g.drawRect(20, 20, 20, 20);
+		for(int col = 0; col < numColumns-1; col++) {
+			for(int row = 0; row < numRows-1; row++) {
+				grid[row][col].draw(g, 20+(cellWidth*col), 20+(cellHeight*row), cellHeight, cellWidth);
+			}
+		}
 		
 	}
 	

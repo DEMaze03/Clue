@@ -33,47 +33,66 @@ public class BoardCell {
 		adjList.add(cell);
 	}
 	
-	public void draw(Graphics g, int offsetx, int offsety, int size) {
+	public void draw(Graphics g, int offsetx, int offsety, int sizex, int sizey) {
 		
 		if (!isDoorway) {
-			g.drawRect(offsetx, offsety, size, size);
+			if(!isRoom) {
+				switch(character) {
+				case 'W':
+					g.setColor(Color.YELLOW);
+					g.fillRect(offsetx, offsety, sizex, sizey);
+					g.setColor(Color.BLACK);
+					g.drawRect(offsetx, offsety, sizex, sizey);
+					
+				break;
+				case 'X':
+					g.setColor(Color.BLACK);
+					g.fillRect(offsetx, offsety, sizex, sizey);
+					g.setColor(Color.BLACK);
+					g.drawRect(offsetx, offsety, sizex, sizey);
+				break;
+				default:
+					g.setColor(Color.GRAY);
+					g.fillRect(offsetx, offsety, sizex, sizey);
+				break;
+				}
+			}
+			
 		}
 		
 		if (isDoorway) {
 			
 			switch (doorDirection) {
 			case DoorDirection.UP:
-				g.drawRect(offsetx, offsety, size, size);
+				g.drawRect(offsetx, offsety, sizex, sizey);
 				
 				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety, size, size/2);
+				g.drawRect(offsetx, offsety, sizex, sizey/2);
 			case DoorDirection.DOWN:
-				g.drawRect(offsetx, offsety, size, size);
+				g.drawRect(offsetx, offsety, sizex, sizey);
 				
 				g.setColor(Color.BLACK);
-				g.drawRect(offsetx + size /2, offsety, size, size/2);
+				g.drawRect(offsetx + sizex /2, offsety, sizex, sizey/2);
 				
 			case DoorDirection.RIGHT:
-				g.drawRect(offsetx, offsety, size, size);
+				g.drawRect(offsetx, offsety, sizex, sizey);
 				
 				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety + size/2, size/2, size);
+				g.drawRect(offsetx, offsety + sizey/2, sizex/2, sizey);
 				
 			case DoorDirection.LEFT:
-				g.drawRect(offsetx, offsety, size, size);
+				g.drawRect(offsetx, offsety, sizex, sizey);
 				
 				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety, size/2, size);
+				g.drawRect(offsetx, offsety, sizex/2, sizey);
 				
 			default:
-				g.drawRect(offsetx, offsety, size, size);
+				g.drawRect(offsetx, offsety, sizex, sizey);
 				
 				
 			}
 			
 		}
-
-		
 	}
 	
 	//GETTERS

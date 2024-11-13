@@ -10,18 +10,23 @@ import javax.swing.border.TitledBorder;
 public class ClueGame extends JFrame {
 	HumanPlayer player = new HumanPlayer("Waluigi", "Purple", 0, 0, true);
 	Card card = new Card("McDonalds Bathroom", CardType.ROOM);
+	Board board;
 	
 	public ClueGame() {
 		player.updateHand(card);
 		
-		setSize(800, 800);
+		setSize(1200, 800);
 		setTitle("Clue Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel control = new GameControlPanel();
 		JPanel cards = new GameCardPanel(player);
-		JPanel board = new JPanel();
-		board.setBorder(new TitledBorder(new LineBorder(Color.BLACK), "Board Panel:"));
+		// Board is singleton, get the only instance
+				board = Board.getInstance();
+				// set the file names to use my config files
+				board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+				// Initialize will load BOTH config files
+				board.initialize();
 		((GameCardPanel) cards).updatePanels();
 		cards.setVisible(true);
 		setLayout(new BorderLayout());
