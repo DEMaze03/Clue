@@ -443,6 +443,16 @@ public class Board extends JPanel{
 			}
 		}
 		
+		for(int col = 0; col < numColumns-1; col++) {
+			for(int row = 0; row < numRows-1; row++) {
+				if (grid[row][col].isLabel()) {
+					Room room = theInstance.getRoom(grid[row][col]);
+					room.draw(g, 20+(cellWidth*col), 20+(cellHeight*row), cellHeight, cellWidth);
+				}
+			}
+		}
+		
+		
 	}
 	
 	
