@@ -426,8 +426,8 @@ public class Board extends JPanel{
 		super.paintComponent(g);
 		this.setBackground(Color.BLACK);
 		
-		int width = this.getWidth()-160;
-		int height = this.getHeight()+40;
+		int width = this.getWidth();
+		int height = this.getHeight();
 		int cellWidth = (width/numRows);
 		int cellHeight = (height/numColumns);
 		if (cellWidth > cellHeight) {
@@ -438,9 +438,9 @@ public class Board extends JPanel{
 		}
 		
 		// draw all cells
-		for(int col = 0; col < numColumns-1; col++) {
-			for(int row = 0; row < numRows-1; row++) {
-				grid[row][col].draw(g, 20+(cellWidth*col), 20+(cellHeight*row), cellHeight, cellWidth);
+		for(int col = 0; col < numColumns; col++) {
+			for(int row = 0; row < numRows; row++) {
+				grid[row][col].draw(g, (cellWidth*col), (cellHeight*row), cellHeight, cellWidth);
 			}
 		}
 		
@@ -449,7 +449,7 @@ public class Board extends JPanel{
 			for(int row = 0; row < numRows-1; row++) {
 				if (grid[row][col].isLabel()) {
 					Room room = theInstance.getRoom(grid[row][col]);
-					room.draw(g, 20+(cellWidth*col), 20+(cellHeight*row), cellHeight, cellWidth);
+					room.draw(g, (cellWidth*col), (cellHeight*row), cellHeight, cellWidth);
 				}
 			}
 		}
@@ -459,7 +459,6 @@ public class Board extends JPanel{
 			Player currPlayer = players.get(player.getKey());
 			
 			currPlayer.draw(g, (cellWidth*currPlayer.getCol()), (cellHeight*currPlayer.getRow()), cellHeight, cellWidth);
-			
 		}
 		
 		
