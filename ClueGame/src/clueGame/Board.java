@@ -437,12 +437,14 @@ public class Board extends JPanel{
 			cellHeight = cellWidth;
 		}
 		
+		// draw all cells
 		for(int col = 0; col < numColumns-1; col++) {
 			for(int row = 0; row < numRows-1; row++) {
 				grid[row][col].draw(g, 20+(cellWidth*col), 20+(cellHeight*row), cellHeight, cellWidth);
 			}
 		}
 		
+		// draw all room labels
 		for(int col = 0; col < numColumns-1; col++) {
 			for(int row = 0; row < numRows-1; row++) {
 				if (grid[row][col].isLabel()) {
@@ -451,6 +453,9 @@ public class Board extends JPanel{
 				}
 			}
 		}
+		
+		// draw players
+		
 		
 		
 	}

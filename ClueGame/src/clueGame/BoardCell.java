@@ -35,7 +35,6 @@ public class BoardCell {
 	
 	public void draw(Graphics g, int offsetx, int offsety, int sizex, int sizey) {
 		
-		if (!isDoorway) {
 			if(!isRoom) {
 				switch(character) {
 				case 'W':
@@ -57,39 +56,32 @@ public class BoardCell {
 				break;
 				}
 			}
-			
-		}
+		
+		
 		
 		if (isDoorway) {
-			
 			switch (doorDirection) {
 			case DoorDirection.UP:
-				g.drawRect(offsetx, offsety, sizex, sizey);
+				g.setColor(Color.GREEN);
+				g.fillRect(offsetx, offsety, sizex, sizey/2);
+				break;
 				
-				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety, sizex, sizey/2);
 			case DoorDirection.DOWN:
-				g.drawRect(offsetx, offsety, sizex, sizey);
-				
-				g.setColor(Color.BLACK);
-				g.drawRect(offsetx + sizex /2, offsety, sizex, sizey/2);
+				g.setColor(Color.GREEN);
+				g.fillRect(offsetx, offsety +(sizey/2), sizex, sizey/2);
+				break;
 				
 			case DoorDirection.RIGHT:
-				g.drawRect(offsetx, offsety, sizex, sizey);
-				
-				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety + sizey/2, sizex/2, sizey);
+				g.setColor(Color.GREEN);
+				g.fillRect(offsetx + (sizex/2), offsety, sizex/2, sizey);
+				break;
 				
 			case DoorDirection.LEFT:
-				g.drawRect(offsetx, offsety, sizex, sizey);
-				
-				g.setColor(Color.BLACK);
-				g.drawRect(offsetx, offsety, sizex/2, sizey);
+				g.setColor(Color.GREEN);
+				g.fillRect(offsetx, offsety, sizex/2, sizey);
+				break;
 				
 			default:
-				g.drawRect(offsetx, offsety, sizex, sizey);
-				
-				
 			}
 			
 		}
