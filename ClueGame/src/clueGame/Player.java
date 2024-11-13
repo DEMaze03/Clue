@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 /*
  * Player - Parent class used for all players in the game
@@ -48,6 +49,12 @@ public abstract class Player {
 		} else {
 			return null;
 		}
+	}
+	
+	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {
+		g.setColor(Color.BLUE);
+		g.fillOval(xCoord, yCoord, width, height);
+		
 	}
 	
 	public Solution createSuggestion(Board board) {
