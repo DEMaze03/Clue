@@ -5,6 +5,8 @@
 
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,7 +33,46 @@ public class BoardCell {
 		adjList.add(cell);
 	}
 	
-	public void draw() {
+	public void draw(Graphics g, int offsetx, int offsety, int size) {
+		
+		if (!isDoorway) {
+			g.drawRect(offsetx, offsety, size, size);
+		}
+		
+		if (isDoorway) {
+			
+			switch (doorDirection) {
+			case DoorDirection.UP:
+				g.drawRect(offsetx, offsety, size, size);
+				
+				g.setColor(Color.BLACK);
+				g.drawRect(offsetx, offsety, size, size/2);
+			case DoorDirection.DOWN:
+				g.drawRect(offsetx, offsety, size, size);
+				
+				g.setColor(Color.BLACK);
+				g.drawRect(offsetx + size /2, offsety, size, size/2);
+				
+			case DoorDirection.RIGHT:
+				g.drawRect(offsetx, offsety, size, size);
+				
+				g.setColor(Color.BLACK);
+				g.drawRect(offsetx, offsety + size/2, size/2, size);
+				
+			case DoorDirection.LEFT:
+				g.drawRect(offsetx, offsety, size, size);
+				
+				g.setColor(Color.BLACK);
+				g.drawRect(offsetx, offsety, size/2, size);
+				
+			default:
+				g.drawRect(offsetx, offsety, size, size);
+				
+				
+			}
+			
+		}
+
 		
 	}
 	
