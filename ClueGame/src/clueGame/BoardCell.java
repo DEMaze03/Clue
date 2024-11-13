@@ -56,9 +56,7 @@ public class BoardCell {
 				break;
 				}
 			}
-		
-		
-		
+
 		if (isDoorway) {
 			switch (doorDirection) {
 			case DoorDirection.UP:

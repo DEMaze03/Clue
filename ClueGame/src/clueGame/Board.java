@@ -455,10 +455,10 @@ public class Board extends JPanel{
 		}
 		
 		// draw players
-		// (Map.Entry<String,Card> entry : deck.entrySet()) {
 		for (Map.Entry<String, Player> player : players.entrySet()) {
 			Player currPlayer = players.get(player.getKey());
-			currPlayer.draw(g, 20+(cellWidth*currPlayer.getCol()), 20+(cellHeight*currPlayer.getRow()), cellHeight, cellWidth);
+			
+			currPlayer.draw(g, (cellWidth*currPlayer.getCol()), (cellHeight*currPlayer.getRow()), cellHeight, cellWidth);
 			
 		}
 		

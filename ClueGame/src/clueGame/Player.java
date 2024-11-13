@@ -52,7 +52,33 @@ public abstract class Player {
 	}
 	
 	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {
-		g.setColor(Color.BLUE);
+		Color cirColor = Color.WHITE;
+		
+		switch (color) {
+		case "Red":
+			cirColor = Color.RED;
+			break;
+		case "Blue":
+			cirColor = Color.BLUE;
+			break;
+		case "Orange":
+			cirColor = Color.ORANGE;
+			break;
+		case "Green":
+			cirColor = Color.GREEN;
+			break;
+		case "Yellow":
+			cirColor = Color.YELLOW;
+			break;
+		case "Purple":
+			cirColor = Color.BLACK;
+			break;
+		default:
+			cirColor = Color.WHITE;
+		
+		}
+		
+		g.setColor(cirColor);
 		g.fillOval(xCoord, yCoord, width, height);
 		
 	}
