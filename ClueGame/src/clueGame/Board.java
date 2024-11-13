@@ -425,6 +425,7 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		
 		g.setColor(Color.BLUE);
 		g.drawRect(20, 20, 20, 20);
 		
