@@ -426,10 +426,12 @@ public class Board extends JPanel{
 		super.paintComponent(g);
 		this.setBackground(Color.BLACK);
 		
+		//calculate the height and width of each board cell
 		int width = this.getWidth();
 		int height = this.getHeight();
-		int cellWidth = (width/numRows);
-		int cellHeight = (height/numColumns);
+		int cellWidth = (width/numColumns);
+		int cellHeight = (height/numRows);
+		//check to ensure cell width and height are equal
 		if (cellWidth > cellHeight) {
 			cellWidth = cellHeight;
 		}
@@ -437,7 +439,8 @@ public class Board extends JPanel{
 			cellHeight = cellWidth;
 		}
 		
-		// draw all cells
+		
+		// draw all cells by looping through grid
 		for(int col = 0; col < numColumns; col++) {
 			for(int row = 0; row < numRows; row++) {
 				grid[row][col].draw(g, (cellWidth*col), (cellHeight*row), cellHeight, cellWidth);

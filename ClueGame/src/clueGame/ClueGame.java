@@ -15,7 +15,7 @@ public class ClueGame extends JFrame {
 	public ClueGame() {
 		player.updateHand(card);
 		
-		setSize(1200, 800);
+		setSize(1000, 800);
 		setTitle("Clue Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

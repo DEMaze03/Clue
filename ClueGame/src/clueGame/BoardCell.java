@@ -1,6 +1,6 @@
 /*
  * BoardCell - class for an individual cell on the Clue game board.
- * Author: Daylon Maze
+ * Authors: Daylon Maze & Elijas Sliva
  */
 
 package clueGame;
@@ -33,11 +33,13 @@ public class BoardCell {
 		adjList.add(cell);
 	}
 	
+	//draw- method to draw each board cell using a graphics object, an x and y offset, and a size
 	public void draw(Graphics g, int offsetx, int offsety, int sizex, int sizey) {
 		
 			if(!isRoom) {
 				switch(character) {
 				case 'W':
+					//draw walkways as yellow with black outlines
 					g.setColor(Color.YELLOW);
 					g.fillRect(offsetx, offsety, sizex, sizey);
 					g.setColor(Color.BLACK);
@@ -45,18 +47,21 @@ public class BoardCell {
 					
 				break;
 				case 'X':
+					//if an X cell, draw as black void
 					g.setColor(Color.BLACK);
 					g.fillRect(offsetx, offsety, sizex, sizey);
 					g.setColor(Color.BLACK);
 					g.drawRect(offsetx, offsety, sizex, sizey);
 				break;
 				default:
+					//otherwise draw the cell as grey (room)
 					g.setColor(Color.GRAY);
 					g.fillRect(offsetx, offsety, sizex, sizey);
 				break;
 				}
 			}
 
+			//draw door based on doorDirection
 		if (isDoorway) {
 			switch (doorDirection) {
 			case DoorDirection.UP:
