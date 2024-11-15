@@ -51,34 +51,8 @@ public abstract class Player {
 		}
 	}
 	
-	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {
-		Color cirColor = Color.WHITE;
-		
-		switch (color) {
-		case "Red":
-			cirColor = Color.RED;
-			break;
-		case "Blue":
-			cirColor = Color.BLUE;
-			break;
-		case "Orange":
-			cirColor = Color.ORANGE;
-			break;
-		case "Green":
-			cirColor = Color.GREEN;
-			break;
-		case "Yellow":
-			cirColor = Color.YELLOW;
-			break;
-		case "Purple":
-			cirColor = Color.BLACK;
-			break;
-		default:
-			cirColor = Color.WHITE;
-		
-		}
-		
-		g.setColor(cirColor);
+	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {		
+		g.setColor(this.getColorObject());
 		g.fillOval(xCoord, yCoord, width, height);
 		
 	}
@@ -128,8 +102,8 @@ public abstract class Player {
 			return Color.orange;
 		}else if(color.equals("Blue")) {
 			return Color.blue;
-		}else if(color.equals("Yellow")) {
-			return Color.yellow;
+		}else if(color.equals("White")) {
+			return Color.white;
 		}else if(color.equals("Green")) {
 			return Color.green;
 		}else if(color.equals("Purple")) {
