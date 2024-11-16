@@ -1,3 +1,112 @@
+commit bec488c51e202ca4e420299fabbaf7328ac4ce84
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Thu Nov 14 00:33:01 2024 -0700
+
+    Debugged graphics and got board to stay within window
+
+commit 8667407d4195ec9832f57175d5b000c2893054a5
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 13 12:13:12 2024 -0700
+
+    fixed board and player positions
+
+commit c067a65305c687c248de6bf9bec48924fe465a8f
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 13 11:49:48 2024 -0700
+
+    added player colors to board
+
+commit d820c05ed301d513dd4e9399ba656b3d526eec46
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 13 11:30:20 2024 -0700
+
+    added players to board - locations are off
+
+commit d895bbf3b83fdb39fb56e4a9903f59d117f55d11
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 13 11:06:53 2024 -0700
+
+    added door direction labels on board
+
+commit 7a0bd9a782befd5cff6305dc1201e5309f916dd3
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Wed Nov 13 10:54:50 2024 -0700
+
+    added labels for rooms
+
+commit bf5f71667ed6656ca630350bc7a8d246a300c0eb
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Wed Nov 13 00:46:28 2024 -0700
+
+    Got cells to draw. Still need to draw room labels, players, and door cells.
+
+commit 0ae820b9eba8c30bd54f09ca9cd24bd4fd211d2a
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Nov 12 21:38:04 2024 -0700
+
+    implemented draw funtion
+
+commit 36560bcebf41fa8a6b461f55218fc3b2544627f3
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 12 18:53:24 2024 -0700
+
+    Got cards panel to display properly
+
+commit c0c1e3b215a7312d0b9208a4a7b261f7384a8f73
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Nov 12 17:14:16 2024 -0700
+
+    added control gui to main board
+
+commit 53d2e05289b16c85d334a8c51f74f1b9b27f1190
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Nov 12 17:00:37 2024 -0700
+
+    started board drawing functions
+
+commit b8012633d50f5b2ac5aa6b69d703048df6188d09
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Tue Nov 12 09:36:54 2024 -0700
+
+    refactored and added comments
+
+commit 9085e694d8731c43d3db1dced512c45716817325
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 11 22:31:37 2024 -0700
+
+    Fixed seen cards being drawn multiple times when updatePanels() is called more than once
+
+commit 73f5ce646cf42cd52ae4bdd50e41b86d66488dc2
+Merge: 03e1602 8f86538
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 11 18:22:15 2024 -0700
+
+    Implemented card GUI and update method
+
+commit 03e1602a49c30b3a8702ca28021a69b1f8a0b4b8
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 11 18:19:22 2024 -0700
+
+    Got basic card GUI implemented with update method
+
+commit 8f86538647c919c311bcd70b97d247d92f1528d8
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 11 17:49:42 2024 -0700
+
+    refactored init of variables outside of constructor
+
+commit 97594f1d96086dc749b650f5b53c9a69d6e1661c
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 11 17:15:44 2024 -0700
+
+    fixed scaling issue with fields
+
+commit 94aed86d5a49b1c46e229524525dbff036c487cc
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 11 17:08:52 2024 -0700
+
+    got card fields added to gui
+
 commit f66a295e45f2e8e417eb21037e3480fbc6732f71
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Mon Nov 11 02:58:00 2024 -0700

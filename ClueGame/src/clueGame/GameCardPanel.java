@@ -125,20 +125,20 @@ public class GameCardPanel extends JPanel {
 					JTextField roomField = new JTextField(card.getCardName());
 					roomField.setEditable(false);
 					roomField.setBackground(card.getOwner().getColorObject());
-					roomSeen.add(roomField);
+					roomSeen.add(roomField, BorderLayout.NORTH);;
 					
 				break;
 				case CardType.PERSON:
 					JTextField personField = new JTextField(card.getCardName());
 					personField.setEditable(false);
 					personField.setBackground(card.getOwner().getColorObject());
-					peopleSeen.add(personField);
+					peopleSeen.add(personField, BorderLayout.NORTH);
 				break;
 				case CardType.WEAPON:
 					JTextField weaponField = new JTextField(card.getCardName());
 					weaponField.setEditable(false);
 					weaponField.setBackground(card.getOwner().getColorObject());
-					weaponSeen.add(weaponField);
+					weaponSeen.add(weaponField, BorderLayout.NORTH);
 				break;
 				}
 			}
@@ -149,27 +149,27 @@ public class GameCardPanel extends JPanel {
 				JTextField roomField = new JTextField(card.getCardName());
 				roomField.setEditable(false);
 				roomField.setBackground(card.getOwner().getColorObject());
-				roomHand.add(roomField);
+				roomHand.add(roomField, BorderLayout.NORTH);
 				
 			break;
 			case CardType.PERSON:
 				JTextField personField = new JTextField(card.getCardName());
 				personField.setEditable(false);
 				personField.setBackground(card.getOwner().getColorObject());
-				peopleHand.add(personField);
+				peopleHand.add(personField, BorderLayout.NORTH);
 			break;
 			case CardType.WEAPON:
 				JTextField weaponField = new JTextField(card.getCardName());
 				weaponField.setEditable(false);
 				weaponField.setBackground(card.getOwner().getColorObject());
-				weaponHand.add(weaponField);
+				weaponHand.add(weaponField, BorderLayout.NORTH);
 			break;
 			}
 	}
-		twinPane.add(peoplePanel, BorderLayout.EAST);
-		twinPane.add(roomPanel, BorderLayout.EAST);
-		twinPane.add(weaponPanel, BorderLayout.EAST);	
-		this.add( twinPane, BorderLayout.EAST ) ;   // causes swing to either add or read the entire panel and recalculate it
+		twinPane.add(peoplePanel, BorderLayout.NORTH);
+		twinPane.add(roomPanel, BorderLayout.NORTH);
+		twinPane.add(weaponPanel, BorderLayout.NORTH);	
+		this.add( twinPane, BorderLayout.NORTH ) ;   // causes swing to either add or read the entire panel and recalculate it
 		
 	}
 	

@@ -36,7 +36,7 @@ public class Board extends JPanel{
 	private ArrayList<String> peopleToPick = new ArrayList<String>();
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
 	private Solution theAnswer = new Solution(new Card("Venture Center", CardType.ROOM), new Card("Mines Parking", CardType.PERSON), new Card("Barrel of Rum", CardType.WEAPON));
-	
+	private Player human;
 	
 	
 
@@ -118,6 +118,7 @@ public class Board extends JPanel{
 					int playerColumn = Integer.parseInt(word[4]);
 					if(word[5].equals("true")) {
 						Player player = new HumanPlayer(playerName,playerColor,playerRow,playerColumn,true);
+						this.human = player;
 						players.put(playerName, player);
 					}else {
 						Player player = new ComputerPlayer(playerName,playerColor,playerRow,playerColumn,false);
@@ -491,6 +492,11 @@ public class Board extends JPanel{
 	// SETTERS
 
 	// GETTERS
+	
+	public Player getHuman() {
+		return this.human;
+	}
+	
 	public Room getRoom(char c) {
 		return roomMap.get(c);
 	}
