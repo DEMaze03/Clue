@@ -17,7 +17,7 @@ Space, Walkway, W
 Player, PCJ, Red, 5, 0, true
 Player, Blaster, Blue, 16, 0, false
 Player, Marvin, Green, 27, 8, false
-Player, Wario, Yellow, 27, 23, false
+Player, Wario, White, 27, 23, false
 Player, Waluigi, Purple, 20, 33, false
 Player, Mines Parking, Orange, 11, 33, false
 
