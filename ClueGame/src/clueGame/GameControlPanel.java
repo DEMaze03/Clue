@@ -8,6 +8,8 @@ package clueGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -25,10 +27,6 @@ public class GameControlPanel extends JPanel {
 	JLabel guessResultLabel;
 	JPanel guessResultPanel;
 	JPanel lowerGuessResult;
-	
-	
-	
-	
 	
 	public GameControlPanel() {
 
@@ -55,11 +53,13 @@ public class GameControlPanel extends JPanel {
 		button3.setText("Make  Accusation");
 		button3.setSize(200,  200);
 		button3.setVisible(true);
+		button3.addActionListener(new ActionListenerAccusation());
 		
 		JButton button4 = new JButton();
 		button4.setText("NEXT");
 		button4.setSize(200,  200);
 		button4.setVisible(true);
+		button4.addActionListener(new ActionListenerNext());
 	
 
 		this.setLayout(new GridLayout(2, 1));
@@ -94,6 +94,7 @@ public class GameControlPanel extends JPanel {
 		this.add(twinPane, BorderLayout.NORTH);
 		this.add(lowerGuessResult, BorderLayout.EAST);
 	}
+
 	
 	//setters
 	public void setGuess(String guessText) {
