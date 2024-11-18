@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 public class ClueGame extends JFrame {
-	static Board board;
+	static public Board board;
 	
 	public ClueGame() {
 		
@@ -17,13 +17,15 @@ public class ClueGame extends JFrame {
 		setTitle("Clue Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel control = new GameControlPanel();
 		// Board is singleton, get the only instance
-				board = Board.getInstance();
-				// set the file names to use my config files
-				board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-				// Initialize will load BOTH config files
-				board.initialize();
+		board = Board.getInstance();
+		// set the file names to use my config files
+		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
+		// Initialize will load BOTH config files
+		board.initialize();
+		
+		GameControlPanel control = new GameControlPanel();
+		control.setTurn(board.getCurrentPlayer(), board.roll());
 		JPanel cards = new GameCardPanel((HumanPlayer) board.getHuman());
 		((GameCardPanel) cards).updatePanels();
 		cards.setVisible(true);

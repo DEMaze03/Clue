@@ -6,9 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ActionListenerNext implements ActionListener {
+	Board board = Board.getInstance();
 	
     public void actionPerformed(ActionEvent e) {
-		JOptionPane.showMessageDialog(null, "you clicked the button!", "NEXT BUTTON", JOptionPane.INFORMATION_MESSAGE);
+		Player player = board.getCurrentPlayer();
+		if (player.getIsHuman()) {
+			
+		}
+//		JOptionPane.showMessageDialog(null, "you clicked the button! " + player.getName(), "NEXT BUTTON", JOptionPane.INFORMATION_MESSAGE);
+		
+		
+		
+		Board.currentPlayerIdx++;
+		
 		
 		
     }

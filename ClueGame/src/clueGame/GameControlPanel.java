@@ -93,6 +93,7 @@ public class GameControlPanel extends JPanel {
 		
 		this.add(twinPane, BorderLayout.NORTH);
 		this.add(lowerGuessResult, BorderLayout.EAST);
+		
 	}
 
 	

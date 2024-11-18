@@ -13,14 +13,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.random.*;
 
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
 	static Board theInstance = new Board();
+	static int currentPlayerIdx = 0;
 	public Map<Character, Room> roomMap = new HashMap<Character, Room>();
 	public Set<BoardCell> adjList = new HashSet<BoardCell>();
 	private int numRows;
@@ -32,6 +36,7 @@ public class Board extends JPanel{
 	private Set<BoardCell> visitedList = new HashSet<BoardCell>();
 	private Map<String, Card> deck = new HashMap<String, Card>();
 	private Map<String, Player> players = new HashMap<String, Player>();
+	private ArrayList<String> playerStr = new ArrayList<String>();
 	private ArrayList<String> roomsToPick = new ArrayList<String>();
 	private ArrayList<String> peopleToPick = new ArrayList<String>();
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
@@ -124,6 +129,7 @@ public class Board extends JPanel{
 						Player player = new ComputerPlayer(playerName,playerColor,playerRow,playerColumn,false);
 						players.put(playerName, player);
 					}
+					playerStr.add(playerName);
 					
 					Card playerCard = new Card(playerName, CardType.PERSON);
 					deck.put(playerName, playerCard);
@@ -471,6 +477,10 @@ public class Board extends JPanel{
 		
 	}
 	
+	public int roll() {
+		return 1 + (int)(Math.random() * ((6 - 1) + 1));
+	}
+	
 	
 	//getTargets - return the board's targetList
 	public Set<BoardCell> getTargets() {
@@ -492,7 +502,6 @@ public class Board extends JPanel{
 	// SETTERS
 
 	// GETTERS
-	
 	public Player getHuman() {
 		return this.human;
 	}
@@ -530,4 +539,13 @@ public class Board extends JPanel{
 	public Solution getSolution() {
 		return theAnswer;
 	}
+	public Player getCurrentPlayer() {
+		Player currPlayer = human;
+		String playerName = playerStr.get(currentPlayerIdx % playerStr.size());
+		currPlayer = players.get(playerName);
+		return currPlayer;
+		
+	}
+	
+
 }
