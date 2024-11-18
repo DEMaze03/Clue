@@ -41,7 +41,8 @@ public class ClueGame extends JFrame {
 		JFrame game = new ClueGame();
 		game.setVisible(true);
 		String player = board.getHuman().getName();
-		JOptionPane.showMessageDialog(null, "You are " + player + ". Can you find the human players before the computers do?", "Welcome To Clue", JOptionPane.INFORMATION_MESSAGE);
+		String playerCol = board.getHuman().getColor();
+		JOptionPane.showMessageDialog(null, "You are " + player + " (" + playerCol + ").\nCan you find the solution before the computers do?", "Welcome To Clue", JOptionPane.INFORMATION_MESSAGE);
 
 		
 		
