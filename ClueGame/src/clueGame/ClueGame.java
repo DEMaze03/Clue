@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 public class ClueGame extends JFrame {
-	Board board;
+	private static Board board;
 	
 	public ClueGame() {
 		
@@ -39,7 +39,8 @@ public class ClueGame extends JFrame {
 		
 		JFrame game = new ClueGame();
 		game.setVisible(true);
-		JOptionPane.showMessageDialog(null, "Can you find the human players before the computers do?", "Welcome To Clue", JOptionPane.INFORMATION_MESSAGE);
+		String playerName = board.getHuman().getName();
+		JOptionPane.showMessageDialog(null, "You are " + playerName +".\nCan you find the solution before the computers do?", "Welcome To Clue", JOptionPane.INFORMATION_MESSAGE);
 		
 		
 		
