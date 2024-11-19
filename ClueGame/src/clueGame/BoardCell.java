@@ -21,6 +21,7 @@ public class BoardCell {
 	private boolean isDoorway;
 	private boolean isLabel;
 	private boolean secretPassage = false;
+	private boolean isTarget = false;
 	private DoorDirection doorDirection;
 	private Set<BoardCell> adjList = new HashSet<>();
 	
@@ -36,58 +37,63 @@ public class BoardCell {
 	//draw- method to draw each board cell using a graphics object, an x and y offset, and a size
 	public void draw(Graphics g, int offsetx, int offsety, int sizex, int sizey) {
 		
-			if(!isRoom) {
-				switch(character) {
-				case 'W':
-					//draw walkways as yellow with black outlines
-					g.setColor(Color.YELLOW);
-					g.fillRect(offsetx, offsety, sizex, sizey);
-					g.setColor(Color.BLACK);
-					g.drawRect(offsetx, offsety, sizex, sizey);
-					
-				break;
-				case 'X':
-					//if an X cell, draw as black void
-					g.setColor(Color.BLACK);
-					g.fillRect(offsetx, offsety, sizex, sizey);
-					g.setColor(Color.BLACK);
-					g.drawRect(offsetx, offsety, sizex, sizey);
-				break;
-				default:
-					//otherwise draw the cell as grey (room)
-					g.setColor(Color.GRAY);
-					g.fillRect(offsetx, offsety, sizex, sizey);
-				break;
+		if(!isTarget) {
+				if(!isRoom) {
+					switch(character) {
+					case 'W':
+						//draw walkways as yellow with black outlines
+						g.setColor(Color.YELLOW);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+						g.setColor(Color.BLACK);
+						g.drawRect(offsetx, offsety, sizex, sizey);
+						
+					break;
+					case 'X':
+						//if an X cell, draw as black void
+						g.setColor(Color.BLACK);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+						g.setColor(Color.BLACK);
+						g.drawRect(offsetx, offsety, sizex, sizey);
+					break;
+					default:
+						//otherwise draw the cell as grey (room)
+						g.setColor(Color.GRAY);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+					break;
+					}
 				}
+	
+				//draw door based on doorDirection
+			if (isDoorway) {
+				switch (doorDirection) {
+				case DoorDirection.UP:
+					g.setColor(Color.GREEN);
+					g.fillRect(offsetx, offsety, sizex, sizey/2);
+					break;
+					
+				case DoorDirection.DOWN:
+					g.setColor(Color.GREEN);
+					g.fillRect(offsetx, offsety +(sizey/2), sizex, sizey/2);
+					break;
+					
+				case DoorDirection.RIGHT:
+					g.setColor(Color.GREEN);
+					g.fillRect(offsetx + (sizex/2), offsety, sizex/2, sizey);
+					break;
+					
+				case DoorDirection.LEFT:
+					g.setColor(Color.GREEN);
+					g.fillRect(offsetx, offsety, sizex/2, sizey);
+					break;
+					
+				default:
+				}
+				
 			}
-
-			//draw door based on doorDirection
-		if (isDoorway) {
-			switch (doorDirection) {
-			case DoorDirection.UP:
-				g.setColor(Color.GREEN);
-				g.fillRect(offsetx, offsety, sizex, sizey/2);
-				break;
-				
-			case DoorDirection.DOWN:
-				g.setColor(Color.GREEN);
-				g.fillRect(offsetx, offsety +(sizey/2), sizex, sizey/2);
-				break;
-				
-			case DoorDirection.RIGHT:
-				g.setColor(Color.GREEN);
-				g.fillRect(offsetx + (sizex/2), offsety, sizex/2, sizey);
-				break;
-				
-			case DoorDirection.LEFT:
-				g.setColor(Color.GREEN);
-				g.fillRect(offsetx, offsety, sizex/2, sizey);
-				break;
-				
-			default:
-			}
-			
-		}
+	}else {
+		g.setColor(Color.CYAN);
+		g.fillRect(offsetx, offsety, sizex, sizey);
+	}
 	}
 	
 	//GETTERS
@@ -140,6 +146,9 @@ public class BoardCell {
 	}
 	
 	//SETTERS
+	public void setTargetFlag(boolean flag) {
+		this.isTarget = flag;
+	}
 	
 	public void setRoom(boolean isRoom) {
 		this.isRoom = isRoom;

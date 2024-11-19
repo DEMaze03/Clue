@@ -20,6 +20,7 @@ public abstract class Player {
 	private boolean isHuman;
 	private ArrayList<Card> cards;
 	private ArrayList<Card> seenCards;
+	private boolean turnStatus = false;
 
 	
 	public Player(String name, String color, int row, int col, boolean isHuman) {
@@ -78,6 +79,10 @@ public abstract class Player {
 	public void setCol(int col) {
 		this.col = col;
 	}
+	
+	public void setTurnStatus(boolean status) {
+		this.turnStatus = status;
+	}
 		
 	//GETTERS
 	public boolean getIsHuman() {
@@ -126,4 +131,8 @@ public abstract class Player {
 		return seenCards;
 	}
 
+	public boolean getTurnStatus() {
+		return this.turnStatus;
+	}
+	
 }

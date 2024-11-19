@@ -16,17 +16,22 @@ public class ActionListenerNext implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 		Player player = board.getCurrentPlayer();
 		if (player.getIsHuman()) {
-			
+			//if player turn isn't done, show error, otherwise have player move to that cell
+			if(player.getTurnStatus()) {
+				
+			}else {
+				JOptionPane.showMessageDialog(null, "Please finish your turn!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}else {
+			//if player is cpu, select target and move there.
 			player.selectTarget(board, board.getRoll());
+			
+			//increase the board's player index, reroll the dice, set the new turn for the control panel, and repaint
+			Board.currentPlayerIdx++;
+			board.roll();
+			mainClass.setTurn(board.getCurrentPlayer(), board.getRoll());
+			board.repaint();
 		}
-//		JOptionPane.showMessageDialog(null, "you clicked the button! " + player.getName(), "NEXT BUTTON", JOptionPane.INFORMATION_MESSAGE);
-		
-		
-		Board.currentPlayerIdx++;
-		board.roll();
-		mainClass.setTurn(board.getCurrentPlayer(), board.getRoll());
-		board.repaint();
 		
     }
 
