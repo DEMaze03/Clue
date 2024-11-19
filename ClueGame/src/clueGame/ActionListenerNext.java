@@ -17,13 +17,16 @@ public class ActionListenerNext implements ActionListener {
 		Player player = board.getCurrentPlayer();
 		if (player.getIsHuman()) {
 			
+		}else {
+			player.selectTarget(board, board.getRoll());
 		}
 //		JOptionPane.showMessageDialog(null, "you clicked the button! " + player.getName(), "NEXT BUTTON", JOptionPane.INFORMATION_MESSAGE);
 		
 		
 		Board.currentPlayerIdx++;
-		
-		mainClass.setTurn(board.getCurrentPlayer(), board.roll());
+		board.roll();
+		mainClass.setTurn(board.getCurrentPlayer(), board.getRoll());
+		board.repaint();
 		
     }
 

@@ -25,7 +25,8 @@ public class ClueGame extends JFrame {
 		board.initialize();
 		
 		GameControlPanel control = new GameControlPanel();
-		control.setTurn(board.getCurrentPlayer(), board.roll());
+		board.roll();
+		control.setTurn(board.getCurrentPlayer(), board.getRoll());
 		JPanel cards = new GameCardPanel((HumanPlayer) board.getHuman());
 		((GameCardPanel) cards).updatePanels();
 		cards.setVisible(true);

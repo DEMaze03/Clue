@@ -69,8 +69,17 @@ public abstract class Player {
 		return board.getCell(0, 0);
 		}
 		
-		
 	
+	//SETTERS
+	public void setRow(int row) {
+		this.row = row;
+	}
+	
+	public void setCol(int col) {
+		this.col = col;
+	}
+		
+	//GETTERS
 	public boolean getIsHuman() {
 		return isHuman;
 	}

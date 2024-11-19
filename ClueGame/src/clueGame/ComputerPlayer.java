@@ -85,13 +85,22 @@ public class ComputerPlayer extends Player {
 			
 			}
 		}
+		
+		board.getCell(this.getRow(),this.getCol()).setOccupied(false);
+		
 		if(returnList.size() > 0) {
 			//return random element from returnList
 			int solutionIndex = (int) ((Math.random() * ((returnList.size()-1) - 0)) + 0);
+			returnList.get(solutionIndex).setOccupied(true);
+			this.setRow(returnList.get(solutionIndex).getRow());
+			this.setCol(returnList.get(solutionIndex).getCol());
 			return returnList.get(solutionIndex);
 		}else {
 			//return random element from targetArrayList
 			int solutionIndex = (int) ((Math.random() * ((targetArrayList.size()-1) - 0)) + 0);
+			targetArrayList.get(solutionIndex).setOccupied(true);
+			this.setRow(targetArrayList.get(solutionIndex).getRow());
+			this.setCol(targetArrayList.get(solutionIndex).getCol());
 			return targetArrayList.get(solutionIndex);
 		}
 	}

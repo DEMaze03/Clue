@@ -42,6 +42,7 @@ public class Board extends JPanel{
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
 	private Solution theAnswer = new Solution(new Card("Venture Center", CardType.ROOM), new Card("Mines Parking", CardType.PERSON), new Card("Barrel of Rum", CardType.WEAPON));
 	private Player human;
+	private int roll;
 	
 	
 
@@ -477,8 +478,12 @@ public class Board extends JPanel{
 		
 	}
 	
-	public int roll() {
-		return 1 + (int)(Math.random() * ((6 - 1) + 1));
+	public void roll() {
+		roll = 1 + (int)(Math.random() * ((6 - 1) + 1));
+	}
+	
+	public int getRoll() {
+		return roll;
 	}
 	
 	
