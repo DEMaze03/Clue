@@ -59,7 +59,7 @@ public class GameControlPanel extends JPanel {
 		button4.setText("NEXT");
 		button4.setSize(200,  200);
 		button4.setVisible(true);
-		button4.addActionListener(new ActionListenerNext());
+		button4.addActionListener(new ActionListenerNext(this));
 	
 
 		this.setLayout(new GridLayout(2, 1));
