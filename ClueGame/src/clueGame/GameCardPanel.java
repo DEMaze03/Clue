@@ -166,7 +166,7 @@ public class GameCardPanel extends JPanel {
 				switch(card.getCardType()) {
 				case CardType.ROOM:
 					roomSeen.setLayout(new GridLayout(roomSeenCols,0));
-					JTextField roomField = new JTextField(card.getCardName());
+					JTextField roomField = new JTextField(card.getCardName(),15);
 					
 					roomField.setEditable(false);
 					roomField.setBackground(card.getOwner().getColorObject());
@@ -175,14 +175,14 @@ public class GameCardPanel extends JPanel {
 				break;
 				case CardType.PERSON:
 					peopleSeen.setLayout(new GridLayout(peopleSeenCols,0));
-					JTextField personField = new JTextField(card.getCardName());
+					JTextField personField = new JTextField(card.getCardName(),15);
 					personField.setEditable(false);
 					personField.setBackground(card.getOwner().getColorObject());
 					peopleSeen.add(personField, BorderLayout.NORTH);
 				break;
 				case CardType.WEAPON:
 					weaponSeen.setLayout(new GridLayout(weaponsSeenCols,0));
-					JTextField weaponField = new JTextField(card.getCardName());
+					JTextField weaponField = new JTextField(card.getCardName(),15);
 					weaponField.setEditable(false);
 					weaponField.setBackground(card.getOwner().getColorObject());
 					weaponSeen.add(weaponField, BorderLayout.NORTH);
@@ -194,8 +194,7 @@ public class GameCardPanel extends JPanel {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
 				roomHand.setLayout(new GridLayout(roomHandCols,0));
-				JTextField roomField = new JTextField(card.getCardName());
-				roomField.setSize(800, 20);
+				JTextField roomField = new JTextField(card.getCardName(),15);
 				roomField.setEditable(false);
 				roomField.setBackground(card.getOwner().getColorObject());
 				roomHand.add(roomField, BorderLayout.NORTH);
@@ -203,7 +202,7 @@ public class GameCardPanel extends JPanel {
 			break;
 			case CardType.PERSON:
 				peopleHand.setLayout(new GridLayout(peopleHandCols,0));
-				JTextField personField = new JTextField(card.getCardName());
+				JTextField personField = new JTextField(card.getCardName(),15);
 				personField.setSize(80, 20);
 				personField.setEditable(false);
 				personField.setBackground(card.getOwner().getColorObject());
@@ -211,7 +210,7 @@ public class GameCardPanel extends JPanel {
 			break;
 			case CardType.WEAPON:
 				weaponHand.setLayout(new GridLayout(weaponsHandCols,0));
-				JTextField weaponField = new JTextField(card.getCardName());
+				JTextField weaponField = new JTextField(card.getCardName(),15);
 				weaponField.setSize(80, 20);
 				weaponField.setEditable(false);
 				weaponField.setBackground(card.getOwner().getColorObject());
