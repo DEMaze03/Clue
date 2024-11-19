@@ -111,6 +111,9 @@ public class GameControlPanel extends JPanel {
 		this.turnTextField.setText(player.getName());
 		this.turnTextField.setBackground(player.getColorObject());
 		Board board = Board.getInstance();
+		if (board.getHuman() == player) {
+			player.setTurnStatus(false);
+		}
 		player.selectTarget(board, roll);
 	}
 	

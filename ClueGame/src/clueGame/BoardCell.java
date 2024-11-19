@@ -145,6 +145,10 @@ public class BoardCell {
 		return col;
 	}
 	
+	public boolean getTargetFlag() {
+		return isTarget;
+	}
+	
 	//SETTERS
 	public void setTargetFlag(boolean flag) {
 		this.isTarget = flag;

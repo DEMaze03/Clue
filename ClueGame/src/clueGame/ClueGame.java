@@ -30,6 +30,7 @@ public class ClueGame extends JFrame {
 		JPanel cards = new GameCardPanel((HumanPlayer) board.getHuman());
 		((GameCardPanel) cards).updatePanels();
 		cards.setVisible(true);
+		board.addMouseListener(new BoardClickListener());
 		setLayout(new BorderLayout());
 		add(board, BorderLayout.CENTER);
 		add(control, BorderLayout.SOUTH);
