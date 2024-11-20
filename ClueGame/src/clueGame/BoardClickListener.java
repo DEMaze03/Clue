@@ -26,7 +26,7 @@ public class BoardClickListener implements MouseListener {
 		        		board.repaint();
 		        	}
 		        }else {
-		        	JOptionPane.showMessageDialog(null, "Oops! That's not a valid cell!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+		        	JOptionPane.showMessageDialog(null, "Oops! That's not a valid cell!"+ row +","+col, "A Message From Within..."+ board.getCell(row, col).getTargetFlag(), JOptionPane.INFORMATION_MESSAGE);
 		        }
 	        }
 		}

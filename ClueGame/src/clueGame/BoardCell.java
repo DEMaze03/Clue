@@ -94,6 +94,10 @@ public class BoardCell {
 		g.setColor(Color.CYAN);
 		g.fillRect(offsetx, offsety, sizex, sizey);
 	}
+		if (isOccupied()) {
+			g.setColor(Color.RED);
+			g.fillRect(offsetx, offsety, sizex, sizey);
+		}
 	}
 	
 	//GETTERS
