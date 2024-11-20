@@ -1,3 +1,95 @@
+commit 49c06870fc9e91f83e344ea50e17210480a0feb2
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Tue Nov 19 00:12:09 2024 -0700
+
+    Got player to move based on mouse input
+
+commit 3801cf83a36e1f9f35000500c23dc9832fe4f470
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 22:56:19 2024 -0700
+
+    cells now highlight on human player's turn
+
+commit 808cfb06cbf233ffdd4c794d3f5b21b43480d324
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 22:28:14 2024 -0700
+
+    Got CPU players to move on their turn when next button is pressed
+
+commit 44019245f0975e3a2a738cddf4ab348b9888153b
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 21:11:41 2024 -0700
+
+    Made turn change on GameControlPanel when Next button is pressed
+
+commit e3964a06ed58dea876f6fea2a6677c47f3e2ffbd
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 20:42:52 2024 -0700
+
+    Made cards panel a consistent width
+
+commit 150b3ad38d5c2e46275e368b760cdf6080f0b943
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 13:08:31 2024 -0700
+
+    Fixed graphics issue with cards panel and added player color to opening dialog for clarity
+
+commit 989bb161294e07605920f8aef83b34490b3c59d7
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 18 12:48:21 2024 -0700
+
+    implented player turns and roll function
+
+commit 2e6c2022337193f60f57672dfd301f5c55400f87
+Merge: f37dda5 58c8ba2
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 11:49:56 2024 -0700
+
+    fixed merge conflict
+
+commit f37dda5e061406da6e0449fb05b7e70bd32ae7a1
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Mon Nov 18 11:48:03 2024 -0700
+
+    Made opening text display the human player
+
+commit 58c8ba2ec336c1aefb9a09e896d70c017ac7d052
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 18 11:38:37 2024 -0700
+
+    tweaked dialoug to show name
+
+commit bf894edf051dd330b07d670d74d6ce091007815c
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 18 11:09:05 2024 -0700
+
+    added action listeners for control panel buttons
+
+commit 7887dc545c6402246e2e988ebb210d4749b688ee
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Mon Nov 18 10:39:06 2024 -0700
+
+    added slash pop up
+
+commit 2f3a2f00e84f6b5319ce2ac3f2d56fe40b42e8a6
+Merge: adbc725 019eaf9
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Nov 15 19:36:09 2024 -0700
+
+    Merge branch 'main' of github.com:DEMaze03/Clue
+
+commit adbc72575321957282ddf4bfa0a294014e931aab
+Author: Daylon Maze <daylonmaze@gmail.com>
+Date:   Fri Nov 15 19:35:42 2024 -0700
+
+    Made board pull from human player card list during initialization
+
+commit 019eaf9e1c834533add3e59db63b698a7535950d
+Author: Lenix Not Linux <113266208+Limited-Lenix-Account@users.noreply.github.com>
+Date:   Fri Nov 15 12:17:02 2024 -0700
+
+    removed switch case and replaced with getter
+
 commit bec488c51e202ca4e420299fabbaf7328ac4ce84
 Author: Daylon Maze <daylonmaze@gmail.com>
 Date:   Thu Nov 14 00:33:01 2024 -0700
