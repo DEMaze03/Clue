@@ -15,6 +15,13 @@ public class BoardClickListener implements MouseListener {
 	        int y = e.getY();
 	        int cellWidth = (board.getWidth()/board.getNumColumns());
 			int cellHeight = (board.getHeight()/board.getNumRows());
+			//check to ensure cell width and height are equal
+			if (cellWidth > cellHeight) {
+				cellWidth = cellHeight;
+			}
+			if (cellHeight > cellWidth) {
+				cellHeight = cellWidth;
+			}
 	        int row = y / cellHeight;
 	        int col = x / cellWidth;
 	        if(row < board.getNumRows() && col < board.getNumColumns()) {
