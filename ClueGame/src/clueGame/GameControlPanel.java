@@ -49,17 +49,17 @@ public class GameControlPanel extends JPanel {
 		rollPanel.add(rollLabel, BorderLayout.NORTH);
 		rollPanel.add(rollTextField, BorderLayout.CENTER);
 		
-		JButton button3 = new JButton();
-		button3.setText("Make  Accusation");
-		button3.setSize(200,  200);
-		button3.setVisible(true);
-		button3.addActionListener(new ActionListenerAccusation());
+		JButton accusationButton = new JButton();
+		accusationButton.setText("Make  Accusation");
+		accusationButton.setSize(200,  200);
+		accusationButton.setVisible(true);
+		accusationButton.addActionListener(new ActionListenerAccusation());
 		
-		JButton button4 = new JButton();
-		button4.setText("NEXT");
-		button4.setSize(200,  200);
-		button4.setVisible(true);
-		button4.addActionListener(new ActionListenerNext(this));
+		JButton nextButton = new JButton();
+		nextButton.setText("NEXT");
+		nextButton.setSize(200,  200);
+		nextButton.setVisible(true);
+		nextButton.addActionListener(new ActionListenerNext(this));
 	
 
 		this.setLayout(new GridLayout(2, 1));
@@ -68,8 +68,8 @@ public class GameControlPanel extends JPanel {
 		
 		twinPane.add(turnPanel);
 		twinPane.add(rollPanel);
-		twinPane.add(button3);
-		twinPane.add(button4);
+		twinPane.add(accusationButton);
+		twinPane.add(nextButton);
 		
 		guess = new JTextField();
 		guess.setEditable(false);
