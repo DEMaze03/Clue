@@ -26,7 +26,7 @@ public class Board extends JPanel{
 	static Board theInstance = new Board();
 	static int currentPlayerIdx = 0;
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>();
-	//private Set<BoardCell> adjList = new HashSet<BoardCell>();
+	private Set<BoardCell> adjList = new HashSet<BoardCell>();
 	private int numRows;
 	private int numColumns;
 	private BoardCell[][] grid;
@@ -448,20 +448,15 @@ public class Board extends JPanel{
 		}
 		
 		
-		// draw all cells by looping through grid
+		// draw all cells and room labels by looping through grid
 		for(int col = 0; col < numColumns; col++) {
 			for(int row = 0; row < numRows; row++) {
 				grid[row][col].draw(g, (cellWidth*col), (cellHeight*row), cellHeight, cellWidth);
-			}
-		}
-		
-		// draw all room labels
-		for(int col = 0; col < numColumns-1; col++) {
-			for(int row = 0; row < numRows-1; row++) {
 				if (grid[row][col].isLabel()) {
 					Room room = theInstance.getRoom(grid[row][col]);
 					room.draw(g, (cellWidth*col), (cellHeight*row), cellHeight, cellWidth);
 				}
+				
 			}
 		}
 		
