@@ -12,18 +12,17 @@ public class ClueGame extends JFrame {
 	
 	public ClueGame() {
 		
-		
+		// if game board is too big, it should automatically resize to largest size possible
 		setSize(1000, 800);
 		setTitle("Clue Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// Board is singleton, get the only instance
+		// get the insane of the board and initialize it
 		board = Board.getInstance();
-		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		// Initialize will load BOTH config files
 		board.initialize();
 		
+		// build game window
 		GameControlPanel control = new GameControlPanel();
 		board.roll();
 		control.setTurn(board.getCurrentPlayer(), board.getRoll());

@@ -29,7 +29,8 @@ public class GameControlPanel extends JPanel {
 	JPanel lowerGuessResult;
 	
 	public GameControlPanel() {
-
+		
+		// create Label for the turn panel
 		turnLabel = new JLabel("Who's Turn?");
 		turnLabel.setVisible(true);
 		turnTextField = new JTextField();
@@ -40,6 +41,7 @@ public class GameControlPanel extends JPanel {
 		turnPanel.add(turnLabel, BorderLayout.NORTH);
 		turnPanel.add(turnTextField, BorderLayout.CENTER);
 		
+		// create panel for roll panel
 		rollLabel = new JLabel("Roll: ");
 		rollLabel.setVisible(true);
 		rollTextField = new JTextField();
@@ -49,23 +51,27 @@ public class GameControlPanel extends JPanel {
 		rollPanel.add(rollLabel, BorderLayout.NORTH);
 		rollPanel.add(rollTextField, BorderLayout.CENTER);
 		
+		
+		// create accusation button
 		JButton accusationButton = new JButton();
 		accusationButton.setText("Make  Accusation");
 		accusationButton.setSize(200,  200);
 		accusationButton.setVisible(true);
 		accusationButton.addActionListener(new ActionListenerAccusation());
 		
+		// create next button
 		JButton nextButton = new JButton();
 		nextButton.setText("NEXT");
 		nextButton.setSize(200,  200);
 		nextButton.setVisible(true);
 		nextButton.addActionListener(new ActionListenerNext(this));
 	
-
+		
 		this.setLayout(new GridLayout(2, 1));
 		JPanel twinPane = new JPanel();
 		twinPane.setLayout(new GridLayout(1,4));
 		
+		// add buttons and turn display elements to panel (upper half)
 		twinPane.add(turnPanel);
 		twinPane.add(rollPanel);
 		twinPane.add(accusationButton);
@@ -78,6 +84,7 @@ public class GameControlPanel extends JPanel {
 		guessPanel.add(guessLabel, BorderLayout.NORTH);
 		guessPanel.add(guess, BorderLayout.CENTER);
 		
+		// guess and guess result (lower half)
 		guessResult = new JTextField();
 		guessResult.setEditable(false);
 		guessResultLabel = new JLabel("Guess Result: ");
@@ -91,6 +98,7 @@ public class GameControlPanel extends JPanel {
 		lowerGuessResult.add(guessPanel);
 		lowerGuessResult.add(guessResultPanel);
 		
+		// combine two halves to entire control panel
 		this.add(twinPane, BorderLayout.NORTH);
 		this.add(lowerGuessResult, BorderLayout.EAST);
 		
