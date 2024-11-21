@@ -92,9 +92,9 @@ public class GameCardPanel extends JPanel {
 		addHand();
 	}
 	
-	// refresh panel function
+	// refresh panel function- removes every element, updates them with the current information, and re-adds them
 	public void updatePanels() {
-		// remove all cards and then add them back
+		// remove all cards
 		roomSeen.removeAll();
 		roomHand.removeAll();
 		peopleSeen.removeAll();
@@ -102,6 +102,7 @@ public class GameCardPanel extends JPanel {
 		weaponSeen.removeAll();
 		weaponHand.removeAll();
 		
+		//reset the rows-needed trackers
 		roomHandCols = 0;
 		peopleHandCols = 0;
 		weaponsHandCols = 0;
@@ -109,6 +110,7 @@ public class GameCardPanel extends JPanel {
 		peopleSeenCols = 0;
 		weaponsSeenCols = 0;
 		
+		//update the number of rows needed for the cards seen panels
 		for(Card card : player.getSeenCards()) {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
@@ -123,6 +125,7 @@ public class GameCardPanel extends JPanel {
 			}
 		}
 		
+		//update the number of rows needed for the cards in-hand panels
 		for(Card card : player.getCards()) {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
@@ -136,12 +139,16 @@ public class GameCardPanel extends JPanel {
 			break;
 			}
 		}
+		
+		//add the seen cards and the cards in-hand to their respective panels.
 		addSeen();
 		addHand();
+		
+		//re-add each panel to the twin panel, then add the twin panel to the card panel
 		twinPane.add(peoplePanel, BorderLayout.NORTH);
 		twinPane.add(roomPanel, BorderLayout.NORTH);
 		twinPane.add(weaponPanel, BorderLayout.NORTH);	
-		this.add( twinPane, BorderLayout.NORTH ) ;   // causes swing to either add or read the entire panel and recalculate it
+		this.add( twinPane, BorderLayout.NORTH );
 		
 	}
 	
