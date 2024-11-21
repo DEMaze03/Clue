@@ -26,7 +26,6 @@ public class Board extends JPanel{
 	static Board theInstance = new Board();
 	static int currentPlayerIdx = 0;
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>();
-	private Set<BoardCell> adjList = new HashSet<BoardCell>();
 	private int numRows;
 	private int numColumns;
 	private BoardCell[][] grid;
