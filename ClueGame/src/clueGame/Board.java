@@ -491,7 +491,6 @@ public class Board extends JPanel{
 		for(int row = 0; row < numRows; row++) {
 			for(int col = 0; col < numColumns; col++) {
 				if(grid[row][col].getChar() == cellChar || grid[row][col].getTargetFlag()) {
-					System.out.println(grid[row][col]);
 					grid[row][col].setTargetFlag(false);
 					grid[row][col].setTargetCell(null);
 				}
