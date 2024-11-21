@@ -28,12 +28,12 @@ public class GameCardPanel extends JPanel {
 	private JPanel weaponHand;
 	private JPanel weaponSeen;
 	private JPanel twinPane;
-	private int roomHandCols = 1;
-	private int peopleHandCols = 1;
-	private int weaponsHandCols = 1;
-	private int roomSeenCols = 1;
-	private int peopleSeenCols = 1;
-	private int weaponsSeenCols = 1;
+	private int roomHandRows = 1;
+	private int peopleHandRows = 1;
+	private int weaponsHandRows = 1;
+	private int roomSeenRows = 1;
+	private int peopleSeenRows = 1;
+	private int weaponsSeenRows = 1;
 	
 	
 	// default constructor 
@@ -103,24 +103,24 @@ public class GameCardPanel extends JPanel {
 		weaponHand.removeAll();
 		
 		//reset the rows-needed trackers
-		roomHandCols = 0;
-		peopleHandCols = 0;
-		weaponsHandCols = 0;
-		roomSeenCols = 0;
-		peopleSeenCols = 0;
-		weaponsSeenCols = 0;
+		roomHandRows = 0;
+		peopleHandRows = 0;
+		weaponsHandRows = 0;
+		roomSeenRows = 0;
+		peopleSeenRows = 0;
+		weaponsSeenRows = 0;
 		
 		//update the number of rows needed for the cards seen panels
 		for(Card card : player.getSeenCards()) {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
-				roomSeenCols++;
+				roomSeenRows++;
 			break;
 			case CardType.PERSON:
-				peopleSeenCols++;
+				peopleSeenRows++;
 			break;
 			case CardType.WEAPON:
-				weaponsSeenCols++;
+				weaponsSeenRows++;
 			break;
 			}
 		}
@@ -129,13 +129,13 @@ public class GameCardPanel extends JPanel {
 		for(Card card : player.getCards()) {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
-				roomHandCols++;
+				roomHandRows++;
 			break;
 			case CardType.PERSON:
-				peopleHandCols++;
+				peopleHandRows++;
 			break;
 			case CardType.WEAPON:
-				weaponsHandCols++;
+				weaponsHandRows++;
 			break;
 			}
 		}
@@ -156,7 +156,7 @@ public class GameCardPanel extends JPanel {
 		for(Card card : player.getCards()) {
 			switch(card.getCardType()) {
 			case CardType.ROOM:
-				roomHand.setLayout(new GridLayout(roomHandCols,0));
+				roomHand.setLayout(new GridLayout(roomHandRows,0));
 				JTextField roomField = new JTextField(card.getCardName());
 				roomField.setEditable(false);
 				roomField.setBackground(card.getOwner().getColorObject());
@@ -164,14 +164,14 @@ public class GameCardPanel extends JPanel {
 				
 			break;
 			case CardType.PERSON:
-				peopleHand.setLayout(new GridLayout(peopleHandCols,0));
+				peopleHand.setLayout(new GridLayout(peopleHandRows,0));
 				JTextField personField = new JTextField(card.getCardName());
 				personField.setEditable(false);
 				personField.setBackground(card.getOwner().getColorObject());
 				peopleHand.add(personField);
 			break;
 			case CardType.WEAPON:
-				weaponHand.setLayout(new GridLayout(weaponsHandCols,0));
+				weaponHand.setLayout(new GridLayout(weaponsHandRows,0));
 				JTextField weaponField = new JTextField(card.getCardName());
 				weaponField.setEditable(false);
 				weaponField.setBackground(card.getOwner().getColorObject());
@@ -186,7 +186,7 @@ public class GameCardPanel extends JPanel {
 			if((player.getCards().contains(card)) == false){
 				switch(card.getCardType()) {
 				case CardType.ROOM:
-					roomSeen.setLayout(new GridLayout(roomSeenCols,0));
+					roomSeen.setLayout(new GridLayout(roomSeenRows,0));
 					JTextField roomField = new JTextField(card.getCardName(),15);
 					
 					roomField.setEditable(false);
@@ -195,14 +195,14 @@ public class GameCardPanel extends JPanel {
 					
 				break;
 				case CardType.PERSON:
-					peopleSeen.setLayout(new GridLayout(peopleSeenCols,0));
+					peopleSeen.setLayout(new GridLayout(peopleSeenRows,0));
 					JTextField personField = new JTextField(card.getCardName(),15);
 					personField.setEditable(false);
 					personField.setBackground(card.getOwner().getColorObject());
 					peopleSeen.add(personField, BorderLayout.NORTH);
 				break;
 				case CardType.WEAPON:
-					weaponSeen.setLayout(new GridLayout(weaponsSeenCols,0));
+					weaponSeen.setLayout(new GridLayout(weaponsSeenRows,0));
 					JTextField weaponField = new JTextField(card.getCardName(),15);
 					weaponField.setEditable(false);
 					weaponField.setBackground(card.getOwner().getColorObject());
