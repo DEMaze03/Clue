@@ -22,6 +22,7 @@ public class BoardCell {
 	private boolean isLabel;
 	private boolean secretPassage = false;
 	private boolean isTarget = false;
+	private BoardCell targetCell = null;
 	private DoorDirection doorDirection;
 	private Set<BoardCell> adjList = new HashSet<>();
 	
@@ -61,6 +62,9 @@ public class BoardCell {
 						g.fillRect(offsetx, offsety, sizex, sizey);
 					break;
 					}
+				}else {
+					g.setColor(Color.GRAY);
+					g.fillRect(offsetx, offsety, sizex, sizey);
 				}
 	
 				//draw door based on doorDirection
@@ -91,12 +95,24 @@ public class BoardCell {
 				
 			}
 	}else {
+		if (targetCell == null && isRoom == false){
+			targetCell = this;
+		}
+		if(isCenter) {
+			Board board = Board.getInstance();
+			board.setRoomCellsTarget(this);
+			
+		}
 		g.setColor(Color.CYAN);
 		g.fillRect(offsetx, offsety, sizex, sizey);
 	}
 	}
 	
 	//GETTERS
+	public BoardCell getTargetCell() {
+		return this.targetCell;
+	}
+	
 	public Set<BoardCell> getAdjList(){
 		return adjList;
 	}
@@ -150,6 +166,10 @@ public class BoardCell {
 	}
 	
 	//SETTERS
+	public void setTargetCell(BoardCell cell) {
+		this.targetCell = cell;
+	}
+	
 	public void setTargetFlag(boolean flag) {
 		this.isTarget = flag;
 	}

@@ -26,15 +26,16 @@ public class BoardClickListener implements MouseListener {
 	        int col = x / cellWidth;
 	        if(row < board.getNumRows() && col < board.getNumColumns()) {
 		        if(board.getCell(row, col).getTargetFlag()) {
-		        	player.movePlayer(board, row, col);
+		        	player.movePlayer(board, board.getCell(row, col).getTargetCell().getRow(), board.getCell(row, col).getTargetCell().getCol());
 		        	player.setTurnStatus(true);
+		        	board.resetRoomTargets(board.getCell(row, col));
 		        	for(BoardCell cell : player.getTargetList()) {
 		        		cell.setTargetFlag(false);
 		        		board.repaint();
 		        	}
 		        }else {
-		        	JOptionPane.showMessageDialog(null, "Oops! That's not a valid cell!"+ row +","+col, "A Message From Within..."+ board.getCell(row, col).getTargetFlag(), JOptionPane.INFORMATION_MESSAGE);
-		        }
+		        	JOptionPane.showMessageDialog(null, "Oops! That's not a valid cell!", "A Message From Within..."+ board.getCell(row, col).getTargetFlag(), JOptionPane.INFORMATION_MESSAGE);
+		        }	
 	        }
 		}
 	}

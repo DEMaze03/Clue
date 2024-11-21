@@ -202,8 +202,7 @@ public class Board extends JPanel{
 					if (roomMap.containsKey(dataList[colCount].charAt(0)) != true) {
 						throw new BadConfigFormatException("unknown map character");
 					}
-						
-					
+			
 					
 					if (dataList[colCount].length() == 2) {
 						if (dataList[colCount].charAt(1) == '#') { // if cell is label
@@ -236,6 +235,11 @@ public class Board extends JPanel{
 						}
 						
 					
+					}
+					if (dataList[colCount].length() == 1) {
+						if(dataList[colCount].charAt(0) != 'W' && dataList[colCount].charAt(0) != 'X') {
+							grid[rowCount][colCount].setRoom(true);
+						}
 					}
 				}
 				rowCount++;
@@ -482,6 +486,20 @@ public class Board extends JPanel{
 		roll = 1 + (int)(Math.random() * ((6 - 1) + 1));
 	}
 	
+	public void resetRoomTargets(BoardCell cell) {
+		char cellChar = cell.getChar();
+		for(int row = 0; row < numRows; row++) {
+			for(int col = 0; col < numColumns; col++) {
+				if(grid[row][col].getChar() == cellChar || grid[row][col].getTargetFlag()) {
+					System.out.println(grid[row][col]);
+					grid[row][col].setTargetFlag(false);
+					grid[row][col].setTargetCell(null);
+				}
+			}
+		}
+		this.repaint();
+	}
+	
 	public int getRoll() {
 		return roll;
 	}
@@ -505,6 +523,18 @@ public class Board extends JPanel{
 	}
 
 	// SETTERS
+	public void setRoomCellsTarget(BoardCell cell) {
+		char cellChar = cell.getChar();
+		for(int row = 0; row < numRows; row++) {
+			for(int col = 0; col < numColumns; col++) {
+				if(grid[row][col].getChar() == cellChar) {
+					grid[row][col].setTargetFlag(true);
+					grid[row][col].setTargetCell(cell);
+				}
+			}
+		}
+		this.repaint();
+	}
 
 	// GETTERS
 	public Player getHuman() {
