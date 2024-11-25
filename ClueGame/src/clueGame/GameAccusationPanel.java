@@ -29,7 +29,7 @@ public class GameAccusationPanel extends JDialog {
 		JButton submit = new JButton("Submit");
 		submit.addActionListener(new ActionListenerAccusationSubmit());
 		JButton cancel = new JButton("cancel");
-		cancel.addActionListener(new ActionListenerCancel());
+		cancel.addActionListener(new ActionListenerCancel(this));
 
 		add(roomLabel);
 		add(roomText);
