@@ -21,7 +21,8 @@ public class GameSuggestionPanel extends JDialog {
 		
 		String[] choices = { "CHOICE 1","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 		
-		JComboBox<String> roomText = new JComboBox<String>(choices);
+		JTextField roomText = new JTextField("example Room");
+		roomText.setEditable(false);
 		JComboBox<String> personText = new JComboBox<String>(choices);
 		JComboBox<String> weaponText = new JComboBox<String>(choices);
 		

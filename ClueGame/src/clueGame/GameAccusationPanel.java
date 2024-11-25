@@ -22,8 +22,7 @@ public class GameAccusationPanel extends JDialog {
 		
 		String[] choices = { "CHOICE 1","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 		
-		JTextField roomText = new JTextField("example Room");
-		roomText.setEditable(false);
+		JComboBox<String> roomText = new JComboBox<String>(choices);
 		JComboBox<String> personText = new JComboBox<String>(choices);
 		JComboBox<String> weaponText = new JComboBox<String>(choices);
 		
