@@ -28,8 +28,9 @@ public class GameAccusationPanel extends JDialog {
 		JComboBox<String> weaponText = new JComboBox<String>(choices);
 		
 		JButton submit = new JButton("Submit");
-		submit.addActionListener(weaponText);
+		submit.addActionListener(new ActionListenerAccusationSubmit());
 		JButton cancel = new JButton("cancel");
+		cancel.addActionListener(new ActionListenerCancel());
 
 		add(roomLabel);
 		add(roomText);
@@ -39,8 +40,7 @@ public class GameAccusationPanel extends JDialog {
 		add(weaponText);
 		add(submit);
 		add(cancel);
-	
-		
+
 	}
 	
 	public static void main(String[] args) {
