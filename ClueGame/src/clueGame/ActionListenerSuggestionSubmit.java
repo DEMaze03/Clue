@@ -26,11 +26,13 @@ public class ActionListenerSuggestionSubmit implements ActionListener {
 				person = board.getDeck().get(suggestion.getPersonSelection());
 				weapon = board.getDeck().get(suggestion.getWeaponSelection());
 				Solution sug = new Solution(room,person,weapon);
+				((GameControlPanel) ClueGame.control).setGuess(person.getCardName(), room.getCardName(), weapon.getCardName(), board.getHuman().getColorObject());
 				if (board.handleSuggestion(board.getHuman(),sug) == null) {
 					JOptionPane.showMessageDialog(null, "You Win!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
 				}else {
 					System.out.println(board.handleSuggestion(board.getHuman(),sug).getCardName());
 					board.getCurrentPlayer().updateSeenCard(board.handleSuggestion(board.getHuman(),sug));
+					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", board.handleSuggestion(board.getHuman(),sug).getOwner().getColorObject());
 					((GameCardPanel) ClueGame.cards).updatePanels();
 					
 				}

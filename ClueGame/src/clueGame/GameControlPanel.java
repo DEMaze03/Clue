@@ -74,7 +74,7 @@ public class GameControlPanel extends JPanel {
 		
 		guess = new JTextField();
 		guess.setEditable(false);
-		guessLabel = new JLabel("Make a guess");
+		guessLabel = new JLabel("Guess: ");
 		guessPanel = new JPanel(new GridLayout(1,0));
 		guessPanel.add(guessLabel, BorderLayout.NORTH);
 		guessPanel.add(guess, BorderLayout.CENTER);
@@ -99,12 +99,14 @@ public class GameControlPanel extends JPanel {
 
 	
 	//setters
-	public void setGuess(String guessText) {
-		guess.setText(guessText);
+	public void setGuess(String person, String room, String weapon, Color color) {
+		guess.setText(person + ", " + room + ", " + weapon);
+		guess.setBackground(color);
 	}
 	
-	public void setGuessResult(String resultText) {
+	public void setGuessResult(String resultText, Color color) {
 		this.guessResult.setText(resultText);
+		this.guessResult.setBackground(color);
 	}
 	
 	public void setTurn(Player player, int roll) {
@@ -129,8 +131,8 @@ public class GameControlPanel extends JPanel {
 		frame.setVisible(true); // make it visible
 		
 		// test filling in the data
-				gamePanel.setTurn(new ComputerPlayer( "Waluigi", "Purple", 0, 0, false), 5);
-				gamePanel.setGuess( "I have no guess!");
-				gamePanel.setGuessResult( "So you have nothing?");
+				//gamePanel.setTurn(new ComputerPlayer( "Waluigi", "Purple", 0, 0, false), 5);
+				gamePanel.setGuess( "Luigi", "Ghost House", "Blue Shell", Color.GREEN);
+				gamePanel.setGuessResult( "So you have nothing?", Color.RED);
 	}
 }
