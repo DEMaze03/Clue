@@ -36,7 +36,7 @@ public class BoardClickListener implements MouseListener {
 		        	}
 		        	// have suggestion here if player is in a room;
 		        	if (board.getCell(player.getRow(), player.getCol()).isARoom()) {
-		        		JDialog suggestion = new GameSuggestionPanel();
+		        		JDialog suggestion = new GameSuggestionPanel(board);
 		        		suggestion.setVisible(true);
 		        	}
 		        }else {

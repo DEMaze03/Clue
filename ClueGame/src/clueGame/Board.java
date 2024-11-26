@@ -37,6 +37,7 @@ public class Board extends JPanel{
 	private Map<String, Card> deck = new HashMap<String, Card>();
 	private Map<String, Player> players = new HashMap<String, Player>();
 	private ArrayList<String> playerStr = new ArrayList<String>();
+	private ArrayList<String> weaponStr = new ArrayList<String>();
 	private ArrayList<String> roomsToPick = new ArrayList<String>();
 	private ArrayList<String> peopleToPick = new ArrayList<String>();
 	private ArrayList<String> weaponsToPick = new ArrayList<String>();
@@ -141,6 +142,7 @@ public class Board extends JPanel{
 					Card weaponCard = new Card(weaponName, CardType.WEAPON);
 					deck.put(weaponName, weaponCard);
 					weaponsToPick.add(weaponName);
+					weaponStr.add(weaponName);
 				}else{
 					throw new BadConfigFormatException("invalid room type");
 				}
@@ -514,7 +516,14 @@ public class Board extends JPanel{
 	public Set<BoardCell> getAdjList(int row, int col) {
 		return this.grid[row][col].getAdjList();
 	}
+	
+	public ArrayList<String> getPlayerNames(){
+		return playerStr;
+	}
 
+	public ArrayList<String> getWeaponNames(){
+		return weaponStr;
+	}
 	
 	//setConfigFiles - set the config .csv and .txt files
 	public void setConfigFiles(String csv, String txt) {

@@ -1,7 +1,9 @@
 package clueGame;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -10,7 +12,7 @@ import javax.swing.JTextField;
 
 public class GameSuggestionPanel extends JDialog {
 	
-	public GameSuggestionPanel() {
+	public GameSuggestionPanel(Board board) {
 		setTitle("Make a Suggestion");
 		setSize(350,150);
 		setLayout(new GridLayout(4,2));
@@ -19,12 +21,24 @@ public class GameSuggestionPanel extends JDialog {
 		JLabel personLabel = new JLabel("Person:");
 		JLabel weaponLabel = new JLabel("Weapon:");
 		
-		String[] choices = { "CHOICE 1","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
-		
+		ArrayList<String> peopleNames = board.getPlayerNames();
+		ArrayList<String> weaponNames = board.getWeaponNames();
+		String[] people = new String[peopleNames.size()];
+		int i = 0;
+		for(String person : peopleNames) {
+			people[i] = person;
+			i++;
+		}
+		String[] weapons = new String[weaponNames.size()];
+		i = 0;
+		for(String weapon : weaponNames) {
+			weapons[i] = weapon;
+			i++;
+		}
 		JTextField roomText = new JTextField("example Room");
 		roomText.setEditable(false);
-		JComboBox<String> personText = new JComboBox<String>(choices);
-		JComboBox<String> weaponText = new JComboBox<String>(choices);
+		JComboBox<String> personText = new JComboBox<String>(people);
+		JComboBox<String> weaponText = new JComboBox<String>(weapons);
 		
 		JButton submit = new JButton("Submit");
 		submit.addActionListener(new ActionListenerAccusationSubmit());
@@ -42,8 +56,8 @@ public class GameSuggestionPanel extends JDialog {
 	}
 	
 	public static void main(String[] args) {
-		JDialog box = new GameSuggestionPanel();
-		box.setVisible(true);
+		//JDialog box = new GameSuggestionPanel();
+		//box.setVisible(true);
 	}
 	
 	
