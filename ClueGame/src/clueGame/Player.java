@@ -21,6 +21,7 @@ public abstract class Player {
 	private ArrayList<Card> cards;
 	private ArrayList<Card> seenCards;
 	private boolean turnStatus = false;
+	private int roomOffset = (int)(Math.random() * (20 + 20 + 1)) - 20;
 
 	
 	public Player(String name, String color, int row, int col, boolean isHuman) {
@@ -54,7 +55,12 @@ public abstract class Player {
 	
 	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {		
 		g.setColor(this.getColorObject());
-		g.fillOval(xCoord, yCoord, width, height);
+		if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
+			
+			g.fillOval(xCoord+roomOffset, yCoord, width, height);
+		}else {
+			g.fillOval(xCoord, yCoord, width, height);
+		}
 		
 	}
 	
