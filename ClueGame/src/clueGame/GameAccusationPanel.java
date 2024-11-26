@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class GameAccusationPanel extends JDialog {
+	private JComboBox<String> roomText;
+	private JComboBox<String> personText;
+	private JComboBox<String> weaponText;
 	
 	public GameAccusationPanel(Board board) {
 		setTitle("Make an Accusation");
@@ -43,12 +46,12 @@ public class GameAccusationPanel extends JDialog {
 			i++;
 		}
 		
-		JComboBox<String> roomText = new JComboBox<String>(rooms);
-		JComboBox<String> personText = new JComboBox<String>(people);
-		JComboBox<String> weaponText = new JComboBox<String>(weapons);
+		roomText = new JComboBox<String>(rooms);
+		personText = new JComboBox<String>(people);
+		weaponText = new JComboBox<String>(weapons);
 		
 		JButton submit = new JButton("Submit");
-		submit.addActionListener(new ActionListenerAccusationSubmit());
+		submit.addActionListener(new ActionListenerAccusationSubmit(this));
 		JButton cancel = new JButton("cancel");
 		cancel.addActionListener(new ActionListenerCancel(this));
 
@@ -61,6 +64,18 @@ public class GameAccusationPanel extends JDialog {
 		add(submit);
 		add(cancel);
 
+	}
+	
+	public String getRoomSelection() {
+		return (String) roomText.getSelectedItem();
+	}
+	
+	public String getPersonSelection() {
+		return (String) personText.getSelectedItem();
+	}
+	
+	public String getWeaponSelection() {
+		return (String) weaponText.getSelectedItem();
 	}
 	
 	public static void main(String[] args) {

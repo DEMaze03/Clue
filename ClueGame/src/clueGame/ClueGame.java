@@ -9,6 +9,9 @@ import javax.swing.border.TitledBorder;
 
 public class ClueGame extends JFrame {
 	static public Board board;
+	static public JPanel cards;
+	static public GameControlPanel control;
+	
 	
 	public ClueGame() {
 		
@@ -24,10 +27,10 @@ public class ClueGame extends JFrame {
 		// Initialize will load BOTH config files
 		board.initialize();
 		
-		GameControlPanel control = new GameControlPanel();
+		control = new GameControlPanel();
 		board.roll();
 		control.setTurn(board.getCurrentPlayer(), board.getRoll());
-		JPanel cards = new GameCardPanel((HumanPlayer) board.getHuman());
+		cards = new GameCardPanel((HumanPlayer) board.getHuman());
 		((GameCardPanel) cards).updatePanels();
 		cards.setVisible(true);
 		board.addMouseListener(new BoardClickListener());
@@ -47,7 +50,7 @@ public class ClueGame extends JFrame {
 		String player = board.getHuman().getName();
 		String playerCol = board.getHuman().getColor();
 		JOptionPane.showMessageDialog(null, "You are " + player + " (" + playerCol + ").\nCan you find the solution before the computers do?", "Welcome To Clue", JOptionPane.INFORMATION_MESSAGE);
-
+		
 		
 		
 		

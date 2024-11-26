@@ -36,7 +36,6 @@ public class GameCardPanel extends JPanel {
 	private int peopleSeenRows = 1;
 	private int weaponsSeenRows = 1;
 	
-	
 	// default constructor 
 	public GameCardPanel(HumanPlayer player) {
 		
@@ -93,6 +92,7 @@ public class GameCardPanel extends JPanel {
 		
 		// for every card in the player hand, add it to the correct category.
 		addHand();
+		addSeen();
 	}
 	
 	// refresh panel function- removes every element, updates them with the current information, and re-adds them
@@ -106,14 +106,16 @@ public class GameCardPanel extends JPanel {
 		weaponHand.removeAll();
 		
 		//add the seen cards and the cards in-hand to their respective panels.
-		addSeen();
 		addHand();
+		addSeen();
 		
 		//re-add each panel to the twin panel, then add the twin panel to the card panel
 		twinPane.add(peoplePanel, BorderLayout.NORTH);
 		twinPane.add(roomPanel, BorderLayout.NORTH);
 		twinPane.add(weaponPanel, BorderLayout.NORTH);	
 		this.add( twinPane, BorderLayout.NORTH );
+		this.revalidate();
+		this.repaint();
 		
 	}
 	
@@ -199,7 +201,7 @@ public class GameCardPanel extends JPanel {
 					
 					roomField.setEditable(false);
 					roomField.setBackground(card.getOwner().getColorObject());
-					roomSeen.add(roomField, BorderLayout.NORTH);
+					roomSeen.add(roomField);
 					
 				break;
 				case CardType.PERSON:
@@ -207,14 +209,14 @@ public class GameCardPanel extends JPanel {
 					JTextField personField = new JTextField(card.getCardName(),15);
 					personField.setEditable(false);
 					personField.setBackground(card.getOwner().getColorObject());
-					peopleSeen.add(personField, BorderLayout.NORTH);
+					peopleSeen.add(personField);
 				break;
 				case CardType.WEAPON:
 					weaponSeen.setLayout(new GridLayout(weaponsSeenRows,0));
 					JTextField weaponField = new JTextField(card.getCardName(),15);
 					weaponField.setEditable(false);
 					weaponField.setBackground(card.getOwner().getColorObject());
-					weaponSeen.add(weaponField, BorderLayout.NORTH);
+					weaponSeen.add(weaponField);
 				break;
 				}
 			}
@@ -226,7 +228,7 @@ public class GameCardPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		
 		HumanPlayer player = new HumanPlayer("Waluigi", "Purple", 0, 0, true);
-		Player player2 = new ComputerPlayer("Wario", "Yellow", 1,1,false);
+		Player player2 = new ComputerPlayer("Wario", "White", 1,1,false);
 		
 		Player player3 = new ComputerPlayer("Craig","Red",2,2,false);
 		Card seenCard2 = new Card("Wendys Chili", CardType.WEAPON);
@@ -241,16 +243,16 @@ public class GameCardPanel extends JPanel {
 		player2.updateHand(seenCard);
 		player.updateSeenCard(seenCard);
 		
-		cardPanel.updatePanels();
+		//cardPanel.updatePanels();
 		player.updateSeenCard(seenCard2);
 		player.updateSeenCard(seenCard3);
-		cardPanel.updatePanels();
+		//cardPanel.updatePanels();
 		frame.setContentPane(cardPanel);
 		frame.setSize(180, 750);  // size the frame
 		frame.setVisible(true); // make it visible
 		
 		
-		//cardPanel.updatePanels();
+		cardPanel.updatePanels();
 		
 		
 		

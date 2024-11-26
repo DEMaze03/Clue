@@ -11,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class GameSuggestionPanel extends JDialog {
+	private JComboBox<String> personText;
+	private JComboBox<String> weaponText;
+	String roomName;
+	
 	
 	public GameSuggestionPanel(Board board) {
 		setTitle("Make a Suggestion");
@@ -35,14 +39,14 @@ public class GameSuggestionPanel extends JDialog {
 			weapons[i] = weapon;
 			i++;
 		}
-		String roomName = board.getRoom(board.getCell(board.getCurrentPlayer().getRow(), board.getCurrentPlayer().getCol())).getName();
+		roomName = board.getRoom(board.getCell(board.getCurrentPlayer().getRow(), board.getCurrentPlayer().getCol())).getName();
 		JTextField roomText = new JTextField(roomName);
 		roomText.setEditable(false);
-		JComboBox<String> personText = new JComboBox<String>(people);
-		JComboBox<String> weaponText = new JComboBox<String>(weapons);
+		personText = new JComboBox<String>(people);
+		weaponText = new JComboBox<String>(weapons);
 		
 		JButton submit = new JButton("Submit");
-		submit.addActionListener(new ActionListenerAccusationSubmit());
+		submit.addActionListener(new ActionListenerSuggestionSubmit(this));
 		JButton cancel = new JButton("cancel");
 		cancel.addActionListener(new ActionListenerCancel(this));
 
@@ -54,6 +58,18 @@ public class GameSuggestionPanel extends JDialog {
 		add(weaponText);
 		add(submit);
 		add(cancel);
+	}
+	
+	public String getRoomSelection() {
+		return roomName;
+	}
+	
+	public String getPersonSelection() {
+		return (String) personText.getSelectedItem();
+	}
+	
+	public String getWeaponSelection() {
+		return (String) weaponText.getSelectedItem();
 	}
 	
 	public static void main(String[] args) {
