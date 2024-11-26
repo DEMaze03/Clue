@@ -26,12 +26,18 @@ public class ActionListenerSuggestionSubmit implements ActionListener {
 				person = board.getDeck().get(suggestion.getPersonSelection());
 				weapon = board.getDeck().get(suggestion.getWeaponSelection());
 				Solution sug = new Solution(room,person,weapon);
+				board.getPlayers().get(sug.getPerson().getCardName()).setRow(board.getHuman().getRow());
+				board.getPlayers().get(sug.getPerson().getCardName()).setCol(board.getHuman().getCol());
 				((GameControlPanel) ClueGame.control).setGuess(person.getCardName(), room.getCardName(), weapon.getCardName(), board.getHuman().getColorObject());
 				if (board.handleSuggestion(board.getHuman(),sug) == null) {
-					JOptionPane.showMessageDialog(null, "You Win!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be Disproven!!!", board.handleSuggestion(board.getHuman(),sug).getOwner().getColorObject());
 				}else {
 					System.out.println(board.handleSuggestion(board.getHuman(),sug).getCardName());
-					board.getCurrentPlayer().updateSeenCard(board.handleSuggestion(board.getHuman(),sug));
+					if(board.getCurrentPlayer().getSeenCards().contains(board.handleSuggestion(board.getHuman(),sug))) {
+						//do nothing
+					}else {
+						board.getCurrentPlayer().updateSeenCard(board.handleSuggestion(board.getHuman(),sug));
+					}
 					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", board.handleSuggestion(board.getHuman(),sug).getOwner().getColorObject());
 					((GameCardPanel) ClueGame.cards).updatePanels();
 					

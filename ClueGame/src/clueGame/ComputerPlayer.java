@@ -57,7 +57,11 @@ public class ComputerPlayer extends Player {
 		int personIndex = (int) ((Math.random() * ((personCardsNotSeen.size()-1) - 0)) + 0);
 		int weaponIndex = (int) ((Math.random() * ((weaponCardsNotSeen.size()-1) - 0)) + 0);
 		//create a new solution object and return it
-		Solution solution = new Solution(room, personCardsNotSeen.get(weaponIndex), weaponCardsNotSeen.get(personIndex));
+		Solution solution = new Solution(room, personCardsNotSeen.get(personIndex), weaponCardsNotSeen.get(weaponIndex));
+		Board.getInstance().getCell(Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).getRow(),Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).getCol()).setOccupied(false);
+		Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).setRow(this.getRow());
+		Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).setCol(this.getCol());
+		((GameControlPanel) ClueGame.control).setGuess(solution.getPerson().getCardName(), room.getCardName(), solution.getWeapon().getCardName(), this.getColorObject());
 		return solution;
 	}
 	
@@ -94,6 +98,15 @@ public class ComputerPlayer extends Player {
 			returnList.get(solutionIndex).setOccupied(true);
 			this.setRow(returnList.get(solutionIndex).getRow());
 			this.setCol(returnList.get(solutionIndex).getCol());
+			if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
+				Solution suggestion = this.createSuggestion(Board.getInstance());
+				if(Board.getInstance().handleSuggestion(this, suggestion)==null) {
+					//Player loses
+					System.out.println("Player loses lmaooooo");
+				}else {
+					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
+				}
+			}
 			return returnList.get(solutionIndex);
 		}else {
 			//return random element from targetArrayList
@@ -101,6 +114,9 @@ public class ComputerPlayer extends Player {
 			targetArrayList.get(solutionIndex).setOccupied(true);
 			this.setRow(targetArrayList.get(solutionIndex).getRow());
 			this.setCol(targetArrayList.get(solutionIndex).getCol());
+			if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
+				this.createSuggestion(Board.getInstance());
+			}
 			return targetArrayList.get(solutionIndex);
 		}
 	}
