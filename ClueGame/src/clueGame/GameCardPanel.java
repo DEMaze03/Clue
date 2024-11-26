@@ -7,6 +7,7 @@ package clueGame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -38,6 +39,8 @@ public class GameCardPanel extends JPanel {
 	
 	// default constructor 
 	public GameCardPanel(HumanPlayer player) {
+		
+		setPreferredSize(new Dimension(180,750));
 		// create known card panel
 		this.player = player;
 		this.setLayout(new GridLayout(1,0));
@@ -102,44 +105,6 @@ public class GameCardPanel extends JPanel {
 		weaponSeen.removeAll();
 		weaponHand.removeAll();
 		
-		//reset the rows-needed trackers
-		roomHandRows = 0;
-		peopleHandRows = 0;
-		weaponsHandRows = 0;
-		roomSeenRows = 0;
-		peopleSeenRows = 0;
-		weaponsSeenRows = 0;
-		
-		//update the number of rows needed for the cards seen panels
-		for(Card card : player.getSeenCards()) {
-			switch(card.getCardType()) {
-			case CardType.ROOM:
-				roomSeenRows++;
-			break;
-			case CardType.PERSON:
-				peopleSeenRows++;
-			break;
-			case CardType.WEAPON:
-				weaponsSeenRows++;
-			break;
-			}
-		}
-		
-		//update the number of rows needed for the cards in-hand panels
-		for(Card card : player.getCards()) {
-			switch(card.getCardType()) {
-			case CardType.ROOM:
-				roomHandRows++;
-			break;
-			case CardType.PERSON:
-				peopleHandRows++;
-			break;
-			case CardType.WEAPON:
-				weaponsHandRows++;
-			break;
-			}
-		}
-		
 		//add the seen cards and the cards in-hand to their respective panels.
 		addSeen();
 		addHand();
@@ -153,7 +118,29 @@ public class GameCardPanel extends JPanel {
 	}
 	
 	public void addHand() {
+		
+		//reset rows for the in-hand cards
+		roomHandRows = 0;
+		peopleHandRows = 0;
+		weaponsHandRows = 0;
+		
+		//update the number of rows needed for the cards in-hand panels
+		for(Card handCard : player.getCards()) {
+			switch(handCard.getCardType()) {
+			case CardType.ROOM:
+				roomHandRows++;
+			break;
+			case CardType.PERSON:
+				peopleHandRows++;
+			break;
+			case CardType.WEAPON:
+				weaponsHandRows++;
+			break;
+			}
+		}
+		
 		for(Card card : player.getCards()) {
+			
 			switch(card.getCardType()) {
 			case CardType.ROOM:
 				roomHand.setLayout(new GridLayout(roomHandRows,0));
@@ -182,6 +169,27 @@ public class GameCardPanel extends JPanel {
 	}
 	
 	public void addSeen() {
+		
+		//reset the rows for the seen cards
+				roomSeenRows = 0;
+				peopleSeenRows = 0;
+				weaponsSeenRows = 0;
+		
+		//update the number of rows needed for the cards seen panels
+				for(Card card : player.getSeenCards()) {
+					switch(card.getCardType()) {
+					case CardType.ROOM:
+						roomSeenRows++;
+					break;
+					case CardType.PERSON:
+						peopleSeenRows++;
+					break;
+					case CardType.WEAPON:
+						weaponsSeenRows++;
+					break;
+					}
+				}
+		
 		for(Card card : player.getSeenCards()) {
 			if((player.getCards().contains(card)) == false){
 				switch(card.getCardType()) {

@@ -6,6 +6,8 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
@@ -62,9 +64,37 @@ public class BoardCell {
 						g.fillRect(offsetx, offsety, sizex, sizey);
 					break;
 					}
+					if(secretPassage) {
+						g.setColor(Color.PINK);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+						
+						g.setColor(Color.BLACK);
+
+				        // get font properties
+				        Font originalFont = g.getFont();
+				        g.setFont(new Font(originalFont.getFontName(), Font.BOLD, 15));
+
+				        
+				        // center font based on font / size
+				        FontMetrics fontDim = g.getFontMetrics(g.getFont());
+				        int textWidth = fontDim.stringWidth("S");
+				        int textHeight = fontDim.getHeight();
+				        int fixedX = offsetx + (sizex - textWidth) / 2;
+				        int fixedY = offsety + (sizey - textHeight) / 2 + fontDim.getAscent();
+
+				        
+				        //redraw font with updated location
+				        g.drawString("S", fixedX, fixedY);
+				        g.setFont(originalFont);
+					}
 				}else {
-					g.setColor(Color.GRAY);
-					g.fillRect(offsetx, offsety, sizex, sizey);
+					if(secretPassage) {
+						g.setColor(Color.PINK);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+					}else {
+						g.setColor(Color.GRAY);
+						g.fillRect(offsetx, offsety, sizex, sizey);
+					}
 				}
 	
 				//draw door based on doorDirection

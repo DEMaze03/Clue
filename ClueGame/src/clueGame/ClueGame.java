@@ -40,6 +40,8 @@ public class ClueGame extends JFrame {
 	
 	public static void main(String[] args) {
 		
+		String musicPath = "data/ClueSound.wav";
+		PlayMusic music = new PlayMusic(musicPath);
 		JFrame game = new ClueGame();
 		game.setVisible(true);
 		String player = board.getHuman().getName();
