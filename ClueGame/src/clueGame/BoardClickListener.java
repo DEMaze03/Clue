@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.event.MouseEvent;
+import javax.swing.JDialog;
 import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
@@ -32,6 +33,11 @@ public class BoardClickListener implements MouseListener {
 		        	for(BoardCell cell : player.getTargetList()) {
 		        		cell.setTargetFlag(false);
 		        		board.repaint();
+		        	}
+		        	// have suggestion here if player is in a room;
+		        	if (board.getCell(player.getRow(), player.getCol()).isARoom()) {
+		        		JDialog suggestion = new GameSuggestionPanel();
+		        		suggestion.setVisible(true);
 		        	}
 		        }else {
 		        	JOptionPane.showMessageDialog(null, "Oops! That's not a valid cell!", "A Message From Within..."+ board.getCell(row, col).getTargetFlag(), JOptionPane.INFORMATION_MESSAGE);
