@@ -35,7 +35,8 @@ public class GameSuggestionPanel extends JDialog {
 			weapons[i] = weapon;
 			i++;
 		}
-		JTextField roomText = new JTextField("example Room");
+		String roomName = board.getRoom(board.getCell(board.getCurrentPlayer().getRow(), board.getCurrentPlayer().getCol())).getName();
+		JTextField roomText = new JTextField(roomName);
 		roomText.setEditable(false);
 		JComboBox<String> personText = new JComboBox<String>(people);
 		JComboBox<String> weaponText = new JComboBox<String>(weapons);

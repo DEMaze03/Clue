@@ -12,7 +12,8 @@ public class ActionListenerAccusation implements ActionListener {
 	
     public void actionPerformed(ActionEvent e) {
 //		JOptionPane.showMessageDialog(null, "you clicked the accusation button!", "MAKE ACCUSATION", JOptionPane.INFORMATION_MESSAGE);
-		JDialog window = new GameAccusationPanel();
+		Board board = Board.getInstance();
+    	JDialog window = new GameAccusationPanel(board);
 		window.setVisible(true);
     }
 

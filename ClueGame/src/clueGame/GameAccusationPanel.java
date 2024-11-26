@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,7 +12,7 @@ import javax.swing.JTextField;
 
 public class GameAccusationPanel extends JDialog {
 	
-	public GameAccusationPanel() {
+	public GameAccusationPanel(Board board) {
 		setTitle("Make an Accusation");
 		setSize(350,150);
 		setLayout(new GridLayout(4,2));
@@ -20,11 +21,31 @@ public class GameAccusationPanel extends JDialog {
 		JLabel personLabel = new JLabel("Person:");
 		JLabel weaponLabel = new JLabel("Weapon:");
 		
-		String[] choices = { "CHOICE 1","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
+		ArrayList<String> peopleNames = board.getPlayerNames();
+		ArrayList<String> weaponNames = board.getWeaponNames();
+		ArrayList<String> roomNames = board.getRoomNames();
+		String[] people = new String[peopleNames.size()];
+		int i = 0;
+		for(String person : peopleNames) {
+			people[i] = person;
+			i++;
+		}
+		String[] weapons = new String[weaponNames.size()];
+		i = 0;
+		for(String weapon : weaponNames) {
+			weapons[i] = weapon;
+			i++;
+		}
+		String[] rooms = new String[roomNames.size()];
+		i = 0;
+		for(String room : roomNames) {
+			rooms[i] = room;
+			i++;
+		}
 		
-		JComboBox<String> roomText = new JComboBox<String>(choices);
-		JComboBox<String> personText = new JComboBox<String>(choices);
-		JComboBox<String> weaponText = new JComboBox<String>(choices);
+		JComboBox<String> roomText = new JComboBox<String>(rooms);
+		JComboBox<String> personText = new JComboBox<String>(people);
+		JComboBox<String> weaponText = new JComboBox<String>(weapons);
 		
 		JButton submit = new JButton("Submit");
 		submit.addActionListener(new ActionListenerAccusationSubmit());
@@ -43,8 +64,8 @@ public class GameAccusationPanel extends JDialog {
 	}
 	
 	public static void main(String[] args) {
-		JDialog box = new GameAccusationPanel();
-		box.setVisible(true);
+		//JDialog box = new GameAccusationPanel();
+		//box.setVisible(true);
 	}
 
 }
