@@ -207,11 +207,13 @@ public class Board extends JPanel{
 					if (dataList[colCount].length() == 2) {
 						if (dataList[colCount].charAt(1) == '#') { // if cell is label
 							grid[rowCount][colCount].setLabel(true);
+							grid[rowCount][colCount].setRoom(true);
 							Room room = roomMap.get(dataList[colCount].charAt(0));
 							room.setLabelCell(grid[rowCount][colCount]);
 							
 						} else if (dataList[colCount].charAt(1) == '*') {
 							grid[rowCount][colCount].setRoomCenter(true);
+							grid[rowCount][colCount].setRoom(true);
 							Room room = roomMap.get(dataList[colCount].charAt(0));
 							room.setCenterCell(grid[rowCount][colCount]);
 						
