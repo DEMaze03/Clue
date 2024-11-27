@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 public class ComputerPlayer extends Player {
 	
 	public ComputerPlayer(String name, String color, int row, int col, boolean isHuman) {
@@ -102,7 +104,15 @@ public class ComputerPlayer extends Player {
 				Solution suggestion = this.createSuggestion(Board.getInstance());
 				if(Board.getInstance().handleSuggestion(this, suggestion)==null) {
 					//Player loses
-					System.out.println("Player loses lmaooooo");
+					// okay i think this is where the accusation would be performed.
+					
+					if (board.getCurrentPlayer().getAccStatus()) {
+						if (board.checkAccusation(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon())) {
+							System.out.println("Player loses lmaooooo");
+							JOptionPane.showMessageDialog(null, "Oops! You Lose!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+					}
 				}else {
 					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
 				}
