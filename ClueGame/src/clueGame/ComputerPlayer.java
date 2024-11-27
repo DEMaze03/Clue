@@ -113,6 +113,12 @@ public class ComputerPlayer extends Player {
 						}
 						
 					}
+					
+					Player plr = board.getCurrentPlayer();
+					if (!plr.getIsHuman()) {
+						plr.setAccStatus(true);
+					}
+					
 				}else {
 					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
 				}
