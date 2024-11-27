@@ -6,6 +6,7 @@
 
 package clueGame;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -69,6 +70,7 @@ public class ComputerPlayer extends Player {
 	
 	//selectTargets - method to select a target using the board.getTargets() and board.calcTargets() methods
 	public BoardCell selectTarget(Board board, int roll) {
+		System.out.println(this.getName() + ": " +this.getSeenCards());
 		board.calcTargets(board.getCell(this.getRow(),this.getCol()), roll);
 		Set<BoardCell> targetList = board.getTargets();
 		ArrayList<BoardCell> targetArrayList = new ArrayList<BoardCell>();
@@ -105,11 +107,11 @@ public class ComputerPlayer extends Player {
 				if(Board.getInstance().handleSuggestion(this, suggestion)==null) {
 					//Player loses
 					// okay i think this is where the accusation would be performed.
-					
+					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be Disproven!!!", Color.WHITE);
 					if (board.getCurrentPlayer().getAccStatus()) {
 						if (board.checkAccusation(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon())) {
 							System.out.println("Player loses lmaooooo");
-							JOptionPane.showMessageDialog(null, "Oops! You Lose!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Oops! You Lose! Computer won!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
 						}
 						
 					}
@@ -121,6 +123,7 @@ public class ComputerPlayer extends Player {
 					
 				}else {
 					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
+					this.updateSeenCard(Board.getInstance().handleSuggestion(this, suggestion));
 				}
 			}
 			return returnList.get(solutionIndex);

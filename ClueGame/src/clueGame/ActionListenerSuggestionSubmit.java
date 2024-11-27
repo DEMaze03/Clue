@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,9 +29,11 @@ public class ActionListenerSuggestionSubmit implements ActionListener {
 				Solution sug = new Solution(room,person,weapon);
 				board.getPlayers().get(sug.getPerson().getCardName()).setRow(board.getHuman().getRow());
 				board.getPlayers().get(sug.getPerson().getCardName()).setCol(board.getHuman().getCol());
+				Board.getInstance().repaint();
 				((GameControlPanel) ClueGame.control).setGuess(person.getCardName(), room.getCardName(), weapon.getCardName(), board.getHuman().getColorObject());
 				if (board.handleSuggestion(board.getHuman(),sug) == null) {
-					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be Disproven!!!", board.handleSuggestion(board.getHuman(),sug).getOwner().getColorObject());
+					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be Disproven!!!", Color.WHITE);
+					((GameCardPanel) ClueGame.cards).updatePanels();
 				}else {
 					System.out.println(board.handleSuggestion(board.getHuman(),sug).getCardName());
 					if(board.getCurrentPlayer().getSeenCards().contains(board.handleSuggestion(board.getHuman(),sug))) {

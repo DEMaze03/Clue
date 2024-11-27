@@ -388,6 +388,8 @@ public class Board extends JPanel{
 					//add all cards to the arrayList except for those in the solution.
 					if ((entry.getKey().equals(solutionRoom) == false) && (entry.getKey().equals(solutionPerson) == false) && (entry.getKey().equals(solutionWeapon) == false)) {
 				    	cards.add(deck.get(entry.getKey()));
+				    	System.out.println("Solution: "+solutionRoom + solutionPerson + solutionWeapon);
+				    	System.out.println(entry.getKey());
 					}
 				}
 				//deal out all cards evenly to all players (for each player, give them a random card from the arrayList, then remove the card, continue until all
