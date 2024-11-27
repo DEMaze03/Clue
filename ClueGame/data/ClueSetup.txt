@@ -1,6 +1,5 @@
 // Room and Room Cards
 Room, Marquez, M
-Room, Brown, B
 Room, Hill, H
 Room, McNeil, N
 Room, CoorsTek, C

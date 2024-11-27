@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.swing.JOptionPane;
 
 public class ComputerPlayer extends Player {
+	private Solution prevSuggestion;
 	
 	public ComputerPlayer(String name, String color, int row, int col, boolean isHuman) {
 		super(name, color, row, col, isHuman);
@@ -44,7 +45,13 @@ public class ComputerPlayer extends Player {
 			}
 			
 			//if current deck card is in seen list, continue, otherwise, add the deck card to the correct list
-				if (this.getSeenCards().contains(deckCard.getValue())){
+			boolean cont = false;
+			for(Card c : this.getSeenCards()) {
+				if (c.equals(deckCard.getValue())){
+					cont = true;
+				}
+			}
+				if (cont){
 					continue;
 				}else {
 					if (deckCard.getValue().getCardType() == CardType.PERSON){
@@ -70,7 +77,14 @@ public class ComputerPlayer extends Player {
 	
 	//selectTargets - method to select a target using the board.getTargets() and board.calcTargets() methods
 	public BoardCell selectTarget(Board board, int roll) {
-		System.out.println(this.getName() + ": " +this.getSeenCards());
+		if (board.getCurrentPlayer().getAccStatus()) {
+			if (board.checkAccusation(prevSuggestion.getRoom(), prevSuggestion.getPerson(), prevSuggestion.getWeapon())) {
+				JOptionPane.showMessageDialog(null, "Oops! You Lose! Computer won!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				JOptionPane.showMessageDialog(null, "CPU was wrong. proposed solution was: \n" + prevSuggestion.getRoom().getCardName()+ prevSuggestion.getPerson().getCardName()+ prevSuggestion.getWeapon().getCardName(),"A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+		}
 		board.calcTargets(board.getCell(this.getRow(),this.getCol()), roll);
 		Set<BoardCell> targetList = board.getTargets();
 		ArrayList<BoardCell> targetArrayList = new ArrayList<BoardCell>();
@@ -85,9 +99,10 @@ public class ComputerPlayer extends Player {
 		//check if cell is a room center and if so, check if it's in the seen list. If it's not, add it to the return list
 		for(BoardCell cell : targetArrayList) {
 			if (cell.isRoomCenter()) {
-				
-				if(this.getSeenCards().contains(board.getDeck().get(board.getRoom(cell).getName())) == false) {
-					returnList.add(cell);
+				for(Card cards : this.getSeenCards()) {
+					if(board.getDeck().get(board.getRoom(cell).getName()).equals(cards.getCardName()) == false) {
+						returnList.add(cell);
+					}
 				}
 				
 			
@@ -105,20 +120,13 @@ public class ComputerPlayer extends Player {
 			if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
 				Solution suggestion = this.createSuggestion(Board.getInstance());
 				if(Board.getInstance().handleSuggestion(this, suggestion)==null) {
-					//Player loses
 					// okay i think this is where the accusation would be performed.
-					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be Disproven!!!", Color.WHITE);
-					if (board.getCurrentPlayer().getAccStatus()) {
-						if (board.checkAccusation(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon())) {
-							System.out.println("Player loses lmaooooo");
-							JOptionPane.showMessageDialog(null, "Oops! You Lose! Computer won!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
-						}
-						
-					}
+					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be disproven!!!", Color.WHITE);
 					
 					Player plr = board.getCurrentPlayer();
-					if (!plr.getIsHuman()) {
+					if (!plr.getIsHuman() && (this.getCards().contains(suggestion.getRoom()) == false) && (this.getCards().contains(suggestion.getWeapon()) == false) && (this.getCards().contains(suggestion.getPerson()) == false)) {
 						plr.setAccStatus(true);
+						prevSuggestion = suggestion;
 					}
 					
 				}else {

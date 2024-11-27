@@ -389,7 +389,7 @@ public class Board extends JPanel{
 					if ((entry.getKey().equals(solutionRoom) == false) && (entry.getKey().equals(solutionPerson) == false) && (entry.getKey().equals(solutionWeapon) == false)) {
 				    	cards.add(deck.get(entry.getKey()));
 				    	System.out.println("Solution: "+solutionRoom + solutionPerson + solutionWeapon);
-				    	System.out.println(entry.getKey());
+				    	
 					}
 				}
 				//deal out all cards evenly to all players (for each player, give them a random card from the arrayList, then remove the card, continue until all
@@ -398,8 +398,13 @@ public class Board extends JPanel{
 					 for(Map.Entry<String,Player> entry : players.entrySet()){
 						int index = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
 						players.get(entry.getKey()).updateHand(cards.get(index));
-						cards.remove(index);		
+						System.out.println("Gave " + cards.get(index).getCardName() + " to " + entry.getKey());
+						cards.remove(index);
+						if(cards.size() == 0) {
+							return;
+						}
 					}
+					 
 				}
 	}
 	
@@ -420,6 +425,7 @@ public class Board extends JPanel{
 	}
 	
 	public Card handleSuggestion(Player suggester, Solution suggestion) {
+		//do 2 loops to stop AI from spamming the same room over and over by disproving room first if possible
 		for (var player : players.entrySet()) {
 			
 			if (player.getValue().getName().equals(suggester.getName())) {
@@ -429,7 +435,12 @@ public class Board extends JPanel{
 			if (player.getValue().disproveSuggestion(suggestion.getRoom()) != (null)) {
 				return suggestion.getRoom();
 			}
-			
+		}
+			for (var player : players.entrySet()) {
+				
+				if (player.getValue().getName().equals(suggester.getName())) {
+					continue;
+				}
 			if (player.getValue().disproveSuggestion(suggestion.getPerson()) != (null)) {
 				return suggestion.getPerson();
 			}

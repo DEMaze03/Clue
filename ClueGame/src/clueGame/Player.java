@@ -47,11 +47,18 @@ public abstract class Player {
 	}
 	
 	public Card disproveSuggestion(Card card) {
-		if (this.cards.contains(card)) {
-			return card;
-		} else {
-			return null;
+		for(Card c : this.cards) {
+			System.out.println(this.getName() + "(Player): " +c.getCardName() + " compared to " + card.getCardName());
+			if(c.equals(card)) {
+				System.out.println(this.getName() + " has " + card.getCardName());
+				card.setOwner(this);
+				return card;
+			}
 		}
+		
+			System.out.println(this.getName() + " does not have " + card.getCardName());
+			return null;
+		
 	}
 	
 	public void draw(Graphics g, int xCoord, int yCoord, int width, int height) {		
