@@ -21,6 +21,7 @@ public abstract class Player {
 	private ArrayList<Card> cards;
 	private ArrayList<Card> seenCards;
 	private boolean turnStatus = false;
+	private boolean accNextTurn = false;
 	private int roomOffset = (int)(Math.random() * (20 + 20 + 1)) - 20;
 
 	
@@ -89,6 +90,10 @@ public abstract class Player {
 	public void setTurnStatus(boolean status) {
 		this.turnStatus = status;
 	}
+	
+	public void setAccStatus(boolean status) {
+		this.accNextTurn = status;
+	}
 		
 	//GETTERS
 	public boolean getIsHuman() {
@@ -139,6 +144,9 @@ public abstract class Player {
 
 	public boolean getTurnStatus() {
 		return this.turnStatus;
+	}
+	public boolean getAccStatus() {
+		return this.accNextTurn;
 	}
 	
 }
