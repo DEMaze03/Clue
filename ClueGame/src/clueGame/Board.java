@@ -382,10 +382,6 @@ public class Board extends JPanel{
 		//Calculate a random room, person, and weapon for the solution class
 		int solutionIndex = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
 		String solutionRoom = roomsToPick.get(solutionIndex);
-		for (Map.Entry<String,Card> entry : deck.entrySet()) {
-			System.out.println( solutionRoom + " " + entry.getKey());
-		}
-		System.out.println("\n \n");
 		solutionIndex = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
 		String solutionPerson = peopleToPick.get(solutionIndex);
 		solutionIndex = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
