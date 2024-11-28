@@ -61,6 +61,10 @@ public class Board extends JPanel{
 	public void initialize() {
 		deck = new HashMap<String, Card>(); 
 		
+		roomsToPick.clear();
+		weaponsToPick.clear();
+		peopleToPick.clear();
+		
 		try {
 			loadSetupConfig();
 		} catch (BadConfigFormatException e) {
@@ -74,6 +78,7 @@ public class Board extends JPanel{
 			System.out.println(e);
 			e.getStackTrace();
 		}
+		
 		calcAdjList();
 		
 		deal();
@@ -129,9 +134,11 @@ public class Board extends JPanel{
 						Player player = new HumanPlayer(playerName,playerColor,playerRow,playerColumn,true);
 						this.human = player;
 						players.put(playerName, player);
+						player.setRoomOffset(players.size());
 					}else {
 						Player player = new ComputerPlayer(playerName,playerColor,playerRow,playerColumn,false);
 						players.put(playerName, player);
+						player.setRoomOffset(players.size());
 					}
 					playerStr.add(playerName);
 					
@@ -375,6 +382,10 @@ public class Board extends JPanel{
 		//Calculate a random room, person, and weapon for the solution class
 		int solutionIndex = (int) ((Math.random() * ((roomsToPick.size()-1) - 0)) + 0);
 		String solutionRoom = roomsToPick.get(solutionIndex);
+		for (Map.Entry<String,Card> entry : deck.entrySet()) {
+			System.out.println( solutionRoom + " " + entry.getKey());
+		}
+		System.out.println("\n \n");
 		solutionIndex = (int) ((Math.random() * ((peopleToPick.size()-1) - 0)) + 0);
 		String solutionPerson = peopleToPick.get(solutionIndex);
 		solutionIndex = (int) ((Math.random() * ((weaponsToPick.size()-1) - 0)) + 0);
@@ -388,7 +399,6 @@ public class Board extends JPanel{
 					//add all cards to the arrayList except for those in the solution.
 					if ((entry.getKey().equals(solutionRoom) == false) && (entry.getKey().equals(solutionPerson) == false) && (entry.getKey().equals(solutionWeapon) == false)) {
 				    	cards.add(deck.get(entry.getKey()));
-				    	System.out.println("Solution: "+solutionRoom + solutionPerson + solutionWeapon);
 				    	
 					}
 				}
@@ -398,7 +408,6 @@ public class Board extends JPanel{
 					 for(Map.Entry<String,Player> entry : players.entrySet()){
 						int index = (int) ((Math.random() * ((cards.size()-1) - 0)) + 0);
 						players.get(entry.getKey()).updateHand(cards.get(index));
-						System.out.println("Gave " + cards.get(index).getCardName() + " to " + entry.getKey());
 						cards.remove(index);
 						if(cards.size() == 0) {
 							return;

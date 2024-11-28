@@ -71,17 +71,24 @@ public class ComputerPlayer extends Player {
 		Board.getInstance().getCell(Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).getRow(),Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).getCol()).setOccupied(false);
 		Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).setRow(this.getRow());
 		Board.getInstance().getPlayers().get(solution.getPerson().getCardName()).setCol(this.getCol());
-		((GameControlPanel) ClueGame.control).setGuess(solution.getPerson().getCardName(), room.getCardName(), solution.getWeapon().getCardName(), this.getColorObject());
+		
+		try {
+			((GameControlPanel) ClueGame.control).setGuess(solution.getPerson().getCardName(), room.getCardName(), solution.getWeapon().getCardName(), this.getColorObject());
+		}catch(Exception e) {
+			
+		}
 		return solution;
 	}
 	
 	//selectTargets - method to select a target using the board.getTargets() and board.calcTargets() methods
 	public BoardCell selectTarget(Board board, int roll) {
+		//if the CPU had a previous suggestion that wasn't disproven, make the CPU make an accusation
 		if (board.getCurrentPlayer().getAccStatus()) {
 			if (board.checkAccusation(prevSuggestion.getRoom(), prevSuggestion.getPerson(), prevSuggestion.getWeapon())) {
-				JOptionPane.showMessageDialog(null, "Oops! You Lose! Computer won!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Oops! You Lose! "+this.getName()+" won!", "A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
 			}else {
-				JOptionPane.showMessageDialog(null, "CPU was wrong. proposed solution was: \n" + prevSuggestion.getRoom().getCardName()+ prevSuggestion.getPerson().getCardName()+ prevSuggestion.getWeapon().getCardName(),"A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "CPU was wrong. proposed solution was: \n" + prevSuggestion.getPerson().getCardName()+" in "+ prevSuggestion.getRoom().getCardName()+ " with the "+prevSuggestion.getWeapon().getCardName(),"A Message From Within...", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 		}
@@ -99,12 +106,15 @@ public class ComputerPlayer extends Player {
 		//check if cell is a room center and if so, check if it's in the seen list. If it's not, add it to the return list
 		for(BoardCell cell : targetArrayList) {
 			if (cell.isRoomCenter()) {
+				boolean contains = false;
 				for(Card cards : this.getSeenCards()) {
-					if(board.getDeck().get(board.getRoom(cell).getName()).equals(cards.getCardName()) == false) {
-						returnList.add(cell);
+					if((board.getDeck().get(board.getRoom(cell).getName()).getCardName().equals(cards.getCardName()))) {
+						contains = true;
 					}
 				}
-				
+				if(!contains) {
+					returnList.add(cell);
+				}
 			
 			}
 		}
@@ -119,10 +129,13 @@ public class ComputerPlayer extends Player {
 			this.setCol(returnList.get(solutionIndex).getCol());
 			if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
 				Solution suggestion = this.createSuggestion(Board.getInstance());
+				//check if the suggestion can be disproven and if not, set the accusation flag
 				if(Board.getInstance().handleSuggestion(this, suggestion)==null) {
-					// okay i think this is where the accusation would be performed.
-					((GameControlPanel) ClueGame.control).setGuessResult("Unable to be disproven!!!", Color.WHITE);
-					
+					try {
+						((GameControlPanel) ClueGame.control).setGuessResult("Unable to be disproven!!!", Color.WHITE);
+					}catch(Exception e) {
+						
+					}
 					Player plr = board.getCurrentPlayer();
 					if (!plr.getIsHuman() && (this.getCards().contains(suggestion.getRoom()) == false) && (this.getCards().contains(suggestion.getWeapon()) == false) && (this.getCards().contains(suggestion.getPerson()) == false)) {
 						plr.setAccStatus(true);
@@ -130,12 +143,18 @@ public class ComputerPlayer extends Player {
 					}
 					
 				}else {
-					((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
+					try {
+						((GameControlPanel) ClueGame.control).setGuessResult("Suggestion Disproven!", Board.getInstance().handleSuggestion(this, suggestion).getOwner().getColorObject());
+					}catch(Exception e) {
+						
+					}
 					this.updateSeenCard(Board.getInstance().handleSuggestion(this, suggestion));
 				}
 			}
 			return returnList.get(solutionIndex);
 		}else {
+			//if target list is not empty choose a random element from it, otherwise just return the current cell
+			if(targetArrayList.size()>0) {
 			//return random element from targetArrayList
 			int solutionIndex = (int) ((Math.random() * ((targetArrayList.size()-1) - 0)) + 0);
 			targetArrayList.get(solutionIndex).setOccupied(true);
@@ -145,6 +164,9 @@ public class ComputerPlayer extends Player {
 				this.createSuggestion(Board.getInstance());
 			}
 			return targetArrayList.get(solutionIndex);
+			}else {
+				return Board.getInstance().getCell(this.getRow(), this.getCol());
+			}
 		}
 	}
 }

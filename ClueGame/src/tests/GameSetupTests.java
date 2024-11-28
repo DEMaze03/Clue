@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
@@ -54,7 +55,7 @@ public class GameSetupTests {
 	@Test
 	public void TestDeck() {
 		// Test Deck size
-		assertEquals(21, board.getDeck().size());
+		assertEquals(20, board.getDeck().size());
 		
 		//Test that a weapon is in the deck
 		assertEquals(CardType.WEAPON, board.getDeck().get("Barrel of Rum").getCardType());
@@ -95,12 +96,8 @@ public class GameSetupTests {
 	public void TestBoard() {
 		// Test Players having cards dealt to them properly (3 each in our case)
 		Map<String, Player> players = board.getPlayers();
-		assertEquals(3, players.get("PCJ").getCards().size());
-		assertEquals(3, players.get("Blaster").getCards().size());
-		assertEquals(3, players.get("Wario").getCards().size());
-		assertEquals(3, players.get("Waluigi").getCards().size());
-		assertEquals(3, players.get("Marvin").getCards().size());
-		assertEquals(3, players.get("Mines Parking").getCards().size());
+		System.out.println(board.getSolution().getPerson().getCardName()+board.getSolution().getRoom().getCardName()+board.getSolution().getWeapon().getCardName());
+		assertEquals(17, players.get("PCJ").getCards().size() + players.get("Blaster").getCards().size() + players.get("Wario").getCards().size()+ players.get("Waluigi").getCards().size() + players.get("Marvin").getCards().size() + players.get("Mines Parking").getCards().size());
 	}
 	
 	

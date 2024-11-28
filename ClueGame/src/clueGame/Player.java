@@ -22,7 +22,7 @@ public abstract class Player {
 	private ArrayList<Card> seenCards;
 	private boolean turnStatus = false;
 	private boolean accNextTurn = false;
-	private int roomOffset = (int)(Math.random() * (20 + 20 + 1)) - 20;
+	private int roomOffset;
 
 	
 	public Player(String name, String color, int row, int col, boolean isHuman) {
@@ -42,21 +42,22 @@ public abstract class Player {
 		card.setOwner(this);
 	}
 	
+	public void clearHand() {
+		cards.clear();
+		seenCards.clear();
+	}
+	
 	public void updateSeenCard(Card card) {
 		seenCards.add(card);
 	}
 	
 	public Card disproveSuggestion(Card card) {
 		for(Card c : this.cards) {
-			System.out.println(this.getName() + "(Player): " +c.getCardName() + " compared to " + card.getCardName());
 			if(c.equals(card)) {
-				System.out.println(this.getName() + " has " + card.getCardName());
 				card.setOwner(this);
 				return card;
 			}
 		}
-		
-			System.out.println(this.getName() + " does not have " + card.getCardName());
 			return null;
 		
 	}
@@ -65,7 +66,7 @@ public abstract class Player {
 		g.setColor(this.getColorObject());
 		if(Board.getInstance().getCell(this.getRow(), this.getCol()).isRoomCenter()) {
 			
-			g.fillOval(xCoord+roomOffset, yCoord, width, height);
+			g.fillOval(xCoord+(8*roomOffset), yCoord, width, height);
 		}else {
 			g.fillOval(xCoord, yCoord, width, height);
 		}
@@ -86,6 +87,10 @@ public abstract class Player {
 		
 	
 	//SETTERS
+	public void setRoomOffset(int offset) {
+		this.roomOffset = offset;
+	}
+	
 	public void setRow(int row) {
 		this.row = row;
 	}

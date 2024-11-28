@@ -18,10 +18,6 @@ public class Card {
 	
 	//override for .equals() to accurately compare cards
 	public boolean equals(Card target) {
-		
-		/*if (!this.cardType.equals(target.getCardType())) {
-			return false;
-		}*/
 		if (!this.cardName.equals(target.getCardName())) {
 			return false;
 		}

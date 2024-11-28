@@ -1,3 +1,8 @@
+/*
+ * GameAccusationPanel - JDialog for creating an accusation for the human player
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.GridLayout;
@@ -24,6 +29,7 @@ public class GameAccusationPanel extends JDialog {
 		JLabel personLabel = new JLabel("Person:");
 		JLabel weaponLabel = new JLabel("Weapon:");
 		
+		//get all possible players and weapons from the board
 		ArrayList<String> peopleNames = board.getPlayerNames();
 		ArrayList<String> weaponNames = board.getWeaponNames();
 		ArrayList<String> roomNames = board.getRoomNames();
@@ -46,6 +52,7 @@ public class GameAccusationPanel extends JDialog {
 			i++;
 		}
 		
+		//use JComboBoxes to create drop down menus for the accusation
 		roomText = new JComboBox<String>(rooms);
 		personText = new JComboBox<String>(people);
 		weaponText = new JComboBox<String>(weapons);
@@ -66,6 +73,7 @@ public class GameAccusationPanel extends JDialog {
 
 	}
 	
+	//getters for actionListenerAccusationSubmit
 	public String getRoomSelection() {
 		return (String) roomText.getSelectedItem();
 	}
@@ -76,11 +84,6 @@ public class GameAccusationPanel extends JDialog {
 	
 	public String getWeaponSelection() {
 		return (String) weaponText.getSelectedItem();
-	}
-	
-	public static void main(String[] args) {
-		//JDialog box = new GameAccusationPanel();
-		//box.setVisible(true);
 	}
 
 }

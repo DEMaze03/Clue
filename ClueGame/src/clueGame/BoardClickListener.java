@@ -1,3 +1,9 @@
+/*
+ * BoardClickListener - action listener for the when you click on the board. Implements human player Movement
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
+
 package clueGame;
 
 import java.awt.event.MouseEvent;

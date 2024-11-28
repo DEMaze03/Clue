@@ -1,3 +1,8 @@
+/*
+ * ActionListenerCancel - action listener for the cancel buttons
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.event.ActionEvent;

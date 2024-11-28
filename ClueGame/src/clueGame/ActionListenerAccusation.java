@@ -1,3 +1,8 @@
+/*
+ * ActionListenerAccusation - action listener for the accusation button
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.event.ActionEvent;

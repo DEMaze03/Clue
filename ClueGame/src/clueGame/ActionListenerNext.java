@@ -1,3 +1,8 @@
+/*
+ * ActionListenerNext - action listener for the Next button on the control panel
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
 package clueGame;
 
 import java.awt.event.ActionEvent;

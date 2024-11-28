@@ -1,3 +1,9 @@
+/*
+ * GameSuggestionPanel - JDialog for creating a suggestion for the human player
+ * Authors: Daylon Maze & Elijas Sliva
+ */
+
+
 package clueGame;
 
 import java.awt.GridLayout;
@@ -21,10 +27,12 @@ public class GameSuggestionPanel extends JDialog {
 		setSize(350,150);
 		setLayout(new GridLayout(4,2));
 		
+		//labels for the panel
 		JLabel roomLabel = new JLabel("Current Room:");
 		JLabel personLabel = new JLabel("Person:");
 		JLabel weaponLabel = new JLabel("Weapon:");
 		
+		//get all possible players and weapons from the board
 		ArrayList<String> peopleNames = board.getPlayerNames();
 		ArrayList<String> weaponNames = board.getWeaponNames();
 		String[] people = new String[peopleNames.size()];
@@ -42,6 +50,7 @@ public class GameSuggestionPanel extends JDialog {
 		roomName = board.getRoom(board.getCell(board.getCurrentPlayer().getRow(), board.getCurrentPlayer().getCol())).getName();
 		JTextField roomText = new JTextField(roomName);
 		roomText.setEditable(false);
+		//use JComboBoxes to create drop down menus.
 		personText = new JComboBox<String>(people);
 		weaponText = new JComboBox<String>(weapons);
 		
@@ -60,6 +69,7 @@ public class GameSuggestionPanel extends JDialog {
 		add(cancel);
 	}
 	
+	//getters for actionListenerSuggestionSubmit
 	public String getRoomSelection() {
 		return roomName;
 	}
@@ -70,11 +80,6 @@ public class GameSuggestionPanel extends JDialog {
 	
 	public String getWeaponSelection() {
 		return (String) weaponText.getSelectedItem();
-	}
-	
-	public static void main(String[] args) {
-		//JDialog box = new GameSuggestionPanel();
-		//box.setVisible(true);
 	}
 	
 	

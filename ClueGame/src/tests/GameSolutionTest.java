@@ -93,10 +93,17 @@ class GameSolutionTest {
 		
 		Solution suggestion = new Solution(ventureCard, new Card("Blaster", CardType.PERSON), new Card("Clear Whiskey", CardType.WEAPON));
 		
+		board.returnPlayer("PCJ").clearHand();
+		board.returnPlayer("Marvin").clearHand();
+		board.returnPlayer("Wario").clearHand();
+		board.returnPlayer("Wario").clearHand();
+		board.returnPlayer("Waluigi").clearHand();
+		board.returnPlayer("Blaster").clearHand();
+		board.returnPlayer("Mines Parking").clearHand();
+		
 		board.returnPlayer("PCJ").updateHand(parkingTicketCard);
 		board.returnPlayer("Marvin").updateHand(tennisRacketCard);
 		board.returnPlayer("Wario").updateHand(minesParkingCard);
-		
 		
 		assertEquals(null, board.handleSuggestion(board.returnPlayer("PCJ"), suggestion));
 		board.returnPlayer("PCJ").updateHand(ventureCard);
