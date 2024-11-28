@@ -96,7 +96,6 @@ public class GameSetupTests {
 	public void TestBoard() {
 		// Test Players having cards dealt to them properly (3 each in our case)
 		Map<String, Player> players = board.getPlayers();
-		System.out.println(board.getSolution().getPerson().getCardName()+board.getSolution().getRoom().getCardName()+board.getSolution().getWeapon().getCardName());
 		assertEquals(17, players.get("PCJ").getCards().size() + players.get("Blaster").getCards().size() + players.get("Wario").getCards().size()+ players.get("Waluigi").getCards().size() + players.get("Marvin").getCards().size() + players.get("Mines Parking").getCards().size());
 	}
 	
